@@ -10,12 +10,6 @@ find_replace () {
   fi
 }
 
-if [[ ! -z $(whence open) ]]; then
-  open() {
-    nautilus $1
-  }
-fi
-
 # Git checkout
 gch() {
   git checkout "$(git branch | fzf | tr -d '[:space:]')"
