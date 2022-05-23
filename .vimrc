@@ -20,12 +20,19 @@ if !isdirectory(s:cachedir."/undodir")
   call mkdir(s:cachedir."/undodir", "", 0770)
 endif
 
+if !exists('g:os_env')
+  if has('win64') || has('win32') || has('win16')
+    let g:os_env = 'WINDOWS'
+  else
+    let g:os_env = toupper(substitute(system('uname'), '\n', '', ''))
+  endif
+endif
+
 
 " -------
 " General
 " -------
 set modifiable 
-language en_GB.utf8
 set shell=/bin/bash
 set fileencoding=utf-8
 
@@ -44,6 +51,10 @@ set ignorecase " Always case-insensitive
 set backupcopy=yes
 set ttyfast
 let mapleader=" "
+
+if g:os_env !~ 'DARWIN'
+  language en_GB.utf8
+endif
 
 if !has('nvim')
   set mouse=
