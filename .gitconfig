@@ -1,0 +1,24 @@
+
+[user]
+    name = Jamy Golden
+    email = jamy@jamygolden.com
+
+[core]
+    excludesfile = ~/.gitignore_global
+    editor = nvim
+    ignorecase = false
+
+[alias]
+    co = checkout
+    reset-home-origin = !git checkout master && git fetch && git reset --hard origin/master
+    commit-pop = reset HEAD~
+    undo = reset --soft 'HEAD@{1}'
+    st = status -s
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    br = branch
+    amend = commit --amend
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    fix = commit --fixup
+    as = rebase -i --autosquash master
+    sync = !git reset-home-origin && git co - && git rebase master
+

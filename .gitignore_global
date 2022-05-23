@@ -1,0 +1,18 @@
+node_modules/
+*~
+.DS_Store
+node_env*
+Vagrantfile
+.vagrant/
+
+# IDEs/Editors
+coc-settings.json
+*.sublime-project
+*.sublime-workspace
+.vscode
+.nvimrc
+.vimrc
+.tern-project
+.swp
+.ctrlp
+Session.vim
