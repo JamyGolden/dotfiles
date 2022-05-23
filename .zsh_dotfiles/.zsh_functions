@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 find_replace () {
   rg "$1"
@@ -10,9 +10,9 @@ find_replace () {
   fi
 }
 
-if [[ ! $(type -t open) == function ]]; then
+if [[ ! -z $(whence open) ]]; then
   open() {
-    nohup nautilus -w $1 > /dev/null 2>&1 &
+    nautilus $1
   }
 fi
 

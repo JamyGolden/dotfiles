@@ -1,0 +1,25 @@
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+if [ -f $HOME/.zsh_dotfiles/.zsh_secrets ]; then 
+  . $HOME/.zsh_dotfiles/.zsh_secrets
+fi
+
+if [ -f $HOME/.zsh_dotfiles/.zsh_exports ]; then 
+  . $HOME/.zsh_dotfiles/.zsh_exports
+fi
+
+if [ -f $HOME/.zsh_dotfiles/.zsh_aliases ]; then 
+  . $HOME/.zsh_dotfiles/.zsh_aliases
+fi
+
+if [ -f $HOME/.zsh_dotfiles/.zsh_functions ]; then 
+  . $HOME/.zsh_dotfiles/.zsh_functions
+fi
+
+if [ -f $HOME/.cargo/env ]; then 
+  . $HOME/.cargo/env
+fi
