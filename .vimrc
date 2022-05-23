@@ -50,7 +50,6 @@ set smartcase " Enable smart-case search
 set ignorecase " Always case-insensitive
 set backupcopy=yes
 set ttyfast
-let mapleader=" "
 
 if g:os_env !~ 'DARWIN'
   language en_GB.utf8
@@ -156,7 +155,6 @@ Plug 'suy/vim-context-commentstring' " Code comment support
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Async completion
 Plug 'Yggdroot/indentLine'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'tpope/vim-obsession' " Save vim sessions
 Plug 'stephenway/postcss.vim' " postcss syntax support
 
 call plug#end() " Initialize plugin system
