@@ -9,8 +9,13 @@
     ignorecase = false
 
 [alias]
+    ; scripts - use `main`, otherwise use `master`
+    rho = "!f() { if [ ! -z \"$(git branch --merged | grep main)\" ]; then git checkout main && git fetch && git reset --hard origin/main; else git checkout master && git fetch && git reset --hard origin/master; fi }; f"
+    sync = "!f() { if [ ! -z \"$(git branch --merged | grep main)\" ]; then git rho && git co - && git rebase main; else git rho && git co - && git rebase master; fi }; f"
+    as = "!f() { if [ ! -z \"$(git branch --merged | grep main)\" ]; then git rebase -i --autosquash main; else git rebase -i --autosquash master; fi }; f"
+
+    ; public - standard
     co = checkout
-    reset-home-origin = !git checkout master && git fetch && git reset --hard origin/master
     commit-pop = reset HEAD~
     undo = reset --soft 'HEAD@{1}'
     st = status -s
@@ -19,6 +24,4 @@
     amend = commit --amend
     lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     fix = commit --fixup
-    as = rebase -i --autosquash master
-    sync = !git reset-home-origin && git co - && git rebase master
-
+    pfwl = push --force-with-lease origin HEAD
