@@ -20,6 +20,10 @@ if [ -f $HOME/.zsh_dotfiles/.zsh_functions ]; then
   . $HOME/.zsh_dotfiles/.zsh_functions
 fi
 
+if [ -f $HOME/.zsh_dotfiles/.zsh_other ]; then 
+  . $HOME/.zsh_dotfiles/.zsh_other
+fi
+
 if [ -f $HOME/.cargo/env ]; then 
   . $HOME/.cargo/env
 fi
