@@ -1,3 +1,4 @@
+require "jamygolden/plugins/alpha-nvim"
 require 'jamygolden/plugins/base16'
 require 'jamygolden/plugins/editorconfig'
 require 'jamygolden/plugins/gitsigns'

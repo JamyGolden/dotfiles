@@ -22,3 +22,16 @@ create_dir(paths.undo_dir)
 opt.undodir=paths.undo_dir .. '//' -- Persistent undo
 opt.directory=paths.swp_dir .. '//' -- swp file tmp storage
 opt.backupdir=paths.backup_dir .. '//' -- backup file tmp storage
+
+-----------------------------------------------------------------------
+-- Fonts
+-----------------------------------------------------------------------
+local font_name = os.getenv("FONT_NAME")
+local font_filename = "Fira Mono Regular Nerd Font Complete.otf"
+
+create_dir(paths.undo_dir)
+
+if fn.empty(fn.glob(paths.fonts_dir)) > 0 and #font_name > 0 then
+  print("Installing font at "..font_filename)
+  os.execute(string.format("%s/scripts/setup.sh", paths.nvim_config_dir))
+end

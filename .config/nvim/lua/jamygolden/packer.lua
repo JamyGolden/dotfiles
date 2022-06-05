@@ -34,6 +34,10 @@ return require('packer').startup(function(use)
   use 'alvan/vim-closetag' -- Auto close html tags
   use 'christoomey/vim-tmux-navigator' -- vim/tmux navigation integration
   use 'gpanders/editorconfig.nvim' -- Editorconfig defaults
+  use {
+    "goolord/alpha-nvim",
+    requires = { "kyazdani42/nvim-web-devicons" },
+  }
 
   ---------------------------------------------------------------------
   -- LSP / IDE
