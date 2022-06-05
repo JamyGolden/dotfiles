@@ -100,6 +100,4 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-if [ -f $HOME/.zsh_profile ]; then 
-  . $HOME/.zsh_profile
-fi
+[ -f $HOME/.zsh_profile ] && source $HOME/.zsh_profile

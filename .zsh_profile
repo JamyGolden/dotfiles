@@ -4,26 +4,14 @@ case $- in
       *) return;;
 esac
 
-if [ -f $HOME/.zsh_dotfiles/.zsh_secrets ]; then 
-  . $HOME/.zsh_dotfiles/.zsh_secrets
-fi
+ZSH_DOTFILES=$HOME/.zsh_dotfiles
 
-if [ -f $HOME/.zsh_dotfiles/.zsh_exports ]; then 
-  . $HOME/.zsh_dotfiles/.zsh_exports
-fi
+for filepath in $ZSH_DOTFILES/.zsh_*; do
+  if [ -f $filepath ]; then 
+    . $filepath
+  fi
+done
 
-if [ -f $HOME/.zsh_dotfiles/.zsh_aliases ]; then 
-  . $HOME/.zsh_dotfiles/.zsh_aliases
-fi
-
-if [ -f $HOME/.zsh_dotfiles/.zsh_functions ]; then 
-  . $HOME/.zsh_dotfiles/.zsh_functions
-fi
-
-if [ -f $HOME/.zsh_dotfiles/.zsh_other ]; then 
-  . $HOME/.zsh_dotfiles/.zsh_other
-fi
-
-if [ -f $HOME/.cargo/env ]; then 
-  . $HOME/.cargo/env
-fi
+[ -f $HOME/.cargo/env ] && source $HOME/.cargo/env
+[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
+[[ -s $HOME/.gvm/scripts/gvm ]] && source $HOME/.gvm/scripts/gvm
