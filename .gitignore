@@ -1,2 +1,3 @@
-!.config/nvim/coc-settings.json
 !.vimrc
+.config/nvim/plugin
+.config/nvim/colors

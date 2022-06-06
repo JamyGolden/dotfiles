@@ -1,0 +1,5 @@
+require('jamygolden/setup')
+require('jamygolden/options')
+require('jamygolden/keybindings')
+require('jamygolden/packer')
+require('jamygolden/plugins')

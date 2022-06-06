@@ -1,4 +1,5 @@
 node_modules/
+lua_modules/
 *~
 .DS_Store
 node_env*
