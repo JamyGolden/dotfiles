@@ -1,11 +1,18 @@
 local telescope = require 'telescope'
 local keymaps = require 'jamygolden/utils/keymaps'
+local trouble = require("trouble.providers.telescope")
 local nmap = keymaps.nmap
 
 -----------------------------------------------------------------------
 -- Setup
 -----------------------------------------------------------------------
 telescope.setup {
+  defaults = {
+    mappings = {
+      i = { ["<c-t>"] = trouble.open_with_trouble },
+      n = { ["<c-t>"] = trouble.open_with_trouble },
+    },
+  },
   pickers = {
     find_files = {
       hidden = true

@@ -43,6 +43,12 @@ return require('packer').startup(function(use)
   ---------------------------------------------------------------------
   -- LSP / IDE
   ---------------------------------------------------------------------
+  -- List warning/error handling
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons"
+  }
+  -- Fuzzy find
   use {
     'nvim-telescope/telescope.nvim',
     requires = {
