@@ -19,7 +19,7 @@ return require('packer').startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} },
   } -- Functions like fancy tabs
   use 'tpope/vim-commentary' -- Code comment support
-  -- use 'tpope/vim-fugitive' -- Git integration
+  use 'tpope/vim-fugitive' -- Git integration
   use 'tpope/vim-repeat' -- Update repeat '.' functionality
   use 'tpope/vim-sensible' -- Defaults
   use 'tpope/vim-sleuth' -- Buffer defaults
