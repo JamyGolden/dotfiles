@@ -1,6 +1,12 @@
-#!/usr/bin/env zsh
+#!/bin/sh
 
-eval "$(direnv hook zsh)"
+if [ -n "$BASH_VERSION" ]; then
+  eval "$(direnv hook bash)"
+fi
+
+if [ -n "$ZSH_VERSION" ]; then
+  eval "$(direnv hook zsh)"
+fi
 
 [ -f $HOME/.cargo/env ] && source $HOME/.cargo/env
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh

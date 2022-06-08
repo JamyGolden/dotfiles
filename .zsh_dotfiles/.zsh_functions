@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/bin/sh
 
 find_replace () {
   rg "$1"
@@ -32,7 +32,7 @@ kp() {
     if [ ! -z $pid ]; then
       # Attempt to kill the port
       echo $pid | xargs kill
-      
+
       # If the ports pid still exists alert the user
       updated_pid=$(lsof -ti:$1)
       if [ -z $updated_pid ]; then
