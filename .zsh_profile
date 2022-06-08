@@ -7,11 +7,7 @@ esac
 ZSH_DOTFILES=$HOME/.zsh_dotfiles
 
 for filepath in $ZSH_DOTFILES/.zsh_*; do
-  if [ -f $filepath ]; then 
+  if [ -f $filepath ]; then
     . $filepath
   fi
 done
-
-[ -f $HOME/.cargo/env ] && source $HOME/.cargo/env
-[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
-[[ -s $HOME/.gvm/scripts/gvm ]] && source $HOME/.gvm/scripts/gvm

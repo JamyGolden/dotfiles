@@ -1,3 +1,12 @@
 #!/usr/bin/env zsh
 
 eval "$(direnv hook zsh)"
+
+[ -f $HOME/.cargo/env ] && source $HOME/.cargo/env
+[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
+[[ -s $HOME/.gvm/scripts/gvm ]] && source $HOME/.gvm/scripts/gvm
+[ -e /home/jamygolden/.nix-profile/etc/profile.d/nix.sh ] && source /home/jamygolden/.nix-profile/etc/profile.d/nix.sh
+
+# SDKMAN
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
