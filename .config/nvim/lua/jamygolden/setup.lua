@@ -26,12 +26,14 @@ opt.backupdir=paths.backup_dir .. '//' -- backup file tmp storage
 -----------------------------------------------------------------------
 -- Fonts
 -----------------------------------------------------------------------
-local font_name = os.getenv("FONT_NAME")
-local font_filename = "Fira Mono Regular Nerd Font Complete.otf"
+if not vim.fn.has('mac') then
+  local font_name = os.getenv("FONT_NAME")
+  local font_filename = "Fira Mono Regular Nerd Font Complete.otf"
 
-create_dir(paths.undo_dir)
+  create_dir(paths.undo_dir)
 
-if fn.empty(fn.glob(paths.fonts_dir)) > 0 and #font_name > 0 then
-  print("Installing font at "..font_filename)
-  os.execute(string.format("%s/scripts/setup.sh", paths.nvim_config_dir))
+  if fn.empty(fn.glob(paths.fonts_dir)) > 0 and #font_name > 0 then
+    print("Installing font at "..font_filename)
+    os.execute(string.format("%s/scripts/setup.sh", paths.nvim_config_dir))
+  end
 end
