@@ -19,6 +19,10 @@ export LC_MESSAGES="en_GB.UTF-8"
 
 if [[ $IS_MAC == 1 ]]; then
   export PATH=/opt/homebrew/bin:$PATH
+
+  # Java
+  export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+  export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 fi
 
 # Base16 Shell
