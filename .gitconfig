@@ -10,9 +10,9 @@
 
 [alias]
     ; scripts - use `main`, otherwise use `master`
-    rho = "!f() { if [ ! -z \"$(git branch --merged | grep main)\" ]; then git checkout main && git fetch && git reset --hard origin/main; else git checkout master && git fetch && git reset --hard origin/master; fi }; f"
-    sync = "!f() { if [ ! -z \"$(git branch --merged | grep main)\" ]; then git rho && git co - && git rebase main; else git rho && git co - && git rebase master; fi }; f"
-    as = "!f() { if [ ! -z \"$(git branch --merged | grep main)\" ]; then git rebase -i --autosquash main; else git rebase -i --autosquash master; fi }; f"
+    rho = "!f() { if [ -n \"$(git branch | grep main)\" ]; then git checkout main && git fetch && git reset --hard origin/main; else git checkout master && git fetch && git reset --hard origin/master; fi }; f"
+    sync = "!f() { if [ -n \"$(git branch | grep main)\" ]; then git rho && git co - && git rebase main; else git rho && git co - && git rebase master; fi }; f"
+    as = "!f() { if [ -n \"$(git branch | grep main)\" ]; then git rebase -i --autosquash main; else git rebase -i --autosquash master; fi }; f"
 
     ; public - standard
     co = checkout
