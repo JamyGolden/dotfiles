@@ -1,3 +1,5 @@
 #!/usr/bin/env zsh
 
 alias gradle="gw"
+alias g="git"
+alias vim="nvim"

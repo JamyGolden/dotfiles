@@ -25,3 +25,6 @@
     lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     fix = commit --fixup
     pfwl = push --force-with-lease origin HEAD
+    ra = rebase --abort
+    rc = rebase --continue
+    sp = stash pop
