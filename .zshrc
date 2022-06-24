@@ -70,7 +70,8 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(history zsh-autosuggestions)
+BASE16_THEME_DEFAULT='ocean'
+plugins=(history zsh-autosuggestions base16-shell)
 
 source $ZSH/oh-my-zsh.sh
 
