@@ -10,8 +10,6 @@ vim.g.mapleader = ' '
 map({ 'n', 'v' }, '<Leader>y', '\"+y', { silent = false })
 nmap('<Leader>Y', 'gg\"+yG', { silent = false })
 vmap('<Leader>p', '\"_dP')
-vmap('J', ':m \">+1<Enter>gv=gv')
-vmap('K', ':m \"<-2<Enter>gv=gv')
 
 -- Close tmp windows (Like GitFugitive) with <Leader>q
 nmap('<Leader>q', function()

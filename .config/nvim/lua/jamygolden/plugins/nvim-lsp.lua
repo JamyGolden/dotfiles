@@ -44,6 +44,10 @@ lspconfig.sumneko_lua.setup {
     },
   },
 }
+
+-- rust
+lspconfig.rust_analyzer.setup {}
+
 -- tsserver
 lspconfig.tsserver.setup {
   capabilities = capabilities

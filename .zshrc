@@ -70,8 +70,11 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-BASE16_THEME_DEFAULT='ocean'
-plugins=(history zsh-autosuggestions base16-shell)
+
+export BASE16_THEME_DEFAULT="ocean"
+export BASE16_HEXCHAT_PATH="$HOME/projects/base16/hexchat"
+export HEXCHAT_COLORS_CONF_PATH="$HOME/.var/app/io.github.Hexchat/config/hexchat/colors.conf"
+plugins=(history zsh-autosuggestions zsh-vi-mode base16-shell)
 
 source $ZSH/oh-my-zsh.sh
 

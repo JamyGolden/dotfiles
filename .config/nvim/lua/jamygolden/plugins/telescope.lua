@@ -24,8 +24,12 @@ telescope.load_extension('fzf')
 -----------------------------------------------------------------------
 -- Keymaps
 -----------------------------------------------------------------------
-nmap('<leader>k', '<cmd>lua require("telescope.builtin").find_files()<cr>')
-nmap('<leader>ff', '<cmd>lua require("telescope.builtin").git_files()<cr>')
-nmap('<leader>fg', '<cmd>lua require("telescope.builtin").live_grep()<cr>')
+nmap('<leader>k', '<cmd>lua require("telescope.builtin").git_files()<cr>')
+nmap('<leader>fk', '<cmd>lua require("telescope.builtin").find_files()<cr>')
+nmap('<leader>ff', '<cmd>lua require("telescope.builtin").live_grep()<cr>')
 nmap('<leader>fb', '<cmd>lua require("telescope.builtin").buffers()<cr>')
 nmap('<leader>fh', '<cmd>lua require("telescope.builtin").help_tags()<cr>')
+nmap('<leader>fgs', '<cmd>lua require("telescope.builtin").git_status()<cr>')
+nmap('<leader>fgb', '<cmd>lua require("telescope.builtin").git_branches()<cr>')
+nmap('<leader>fgc', '<cmd>lua require("telescope.builtin").git_commits()<cr>')
+nmap('<leader>f/', '<cmd>lua require("telescope.builtin").current_buffer_fuzzy_find()<cr>')
