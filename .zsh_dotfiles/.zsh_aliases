@@ -2,4 +2,16 @@
 
 alias gradle="gw"
 alias g="git"
-alias vim="nvim"
+
+# Switch out existing alias with new command
+# {{existing alias}}-{{new command}}
+alias_switches=("ls-exa" "cat-bat" "ps-procs")
+for i in "${alias_switches[@]}"; do
+  original_cmd=${i%-*}
+  new_cmd=${i#*-}
+  new_command_path=$(command -v "$new_cmd")
+
+  if [[ -n "$new_command_path" && "$new_command_path" != "$new_cmd" ]]; then
+    alias $original_cmd=$new_cmd
+  fi
+done
