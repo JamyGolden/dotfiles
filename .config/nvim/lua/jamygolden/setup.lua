@@ -19,9 +19,9 @@ create_dir(paths.backup_dir)
 create_dir(paths.swp_dir)
 create_dir(paths.undo_dir)
 
-opt.undodir=paths.undo_dir .. '//' -- Persistent undo
-opt.directory=paths.swp_dir .. '//' -- swp file tmp storage
-opt.backupdir=paths.backup_dir .. '//' -- backup file tmp storage
+opt.undodir=paths.undo_dir .. '/' -- Persistent undo
+opt.directory=paths.swp_dir .. '/' -- swp file tmp storage
+opt.backupdir=paths.backup_dir .. '/' -- backup file tmp storage
 
 -----------------------------------------------------------------------
 -- Fonts

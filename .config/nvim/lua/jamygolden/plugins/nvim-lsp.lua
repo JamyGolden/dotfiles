@@ -77,6 +77,13 @@ lspconfig.sumneko_lua.setup {
   },
 }
 
+-- kotlin
+lspconfig.kotlin_language_server.setup{
+  capabilities = capabilities,
+  on_attach = on_attach,
+  flags = lsp_flags,
+}
+
 -- rust
 lspconfig.rust_analyzer.setup {
   capabilities = capabilities,

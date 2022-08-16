@@ -17,3 +17,5 @@ coc-settings.json
 .swp
 .ctrlp
 Session.vim
+.ideavimrc
+.idea/*

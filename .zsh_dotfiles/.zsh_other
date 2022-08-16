@@ -8,9 +8,19 @@ if [ -n "$ZSH_VERSION" ]; then
   eval "$(direnv hook zsh)"
 fi
 
-[ -f $HOME/.cargo/env ] && source $HOME/.cargo/env
-[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
-[ -e /home/jamygolden/.nix-profile/etc/profile.d/nix.sh ] && source /home/jamygolden/.nix-profile/etc/profile.d/nix.sh
+# Cargo
+[ -f "$HOME/.cargo/env" ] && source $HOME/.cargo/env
+[ -f "$HOME/.fzf.zsh" ] && source $HOME/.fzf.zsh
+
+if [ -f "$HOME/.cargo/bin/zoxide" ]; then
+  eval "$(zoxide init zsh)"
+fi
+
+# Nix
+if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
+  source "$HOME/.nix-profile/etc/profile.d/nix.sh"
+  export NIXPKGS_ALLOW_UNFREE=1
+fi
 
 # SDKMAN
 export SDKMAN_DIR="$HOME/.sdkman"
