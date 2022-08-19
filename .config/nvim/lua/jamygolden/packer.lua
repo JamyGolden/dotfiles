@@ -24,7 +24,6 @@ return require('packer').startup(function(use)
   use 'tpope/vim-sensible' -- Defaults
   use 'tpope/vim-sleuth' -- Buffer defaults
   use 'tpope/vim-surround' -- Shortcuts for brackets/quotes/tags
-  use 'tpope/vim-vinegar' -- File manager
 
   ---------------------------------------------------------------------
   -- Nice-to-have plugins
@@ -47,6 +46,7 @@ return require('packer').startup(function(use)
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons"
   }
+
   -- Fuzzy find
   use {
     'nvim-telescope/telescope.nvim',
@@ -84,11 +84,16 @@ return require('packer').startup(function(use)
     }
   }
 
-  -- use 'pangloss/vim-javascript' -- js/ts
-  -- use 'leafgarland/typescript-vim' -- js/ts
-  -- use 'peitalin/vim-jsx-typescript' -- js/ts
-  -- use 'maxmellon/vim-jsx-pretty' -- js/ts
-  -- use 'jparise/vim-graphql' -- GraphQL syntax
+  use {
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = "v2.x",
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'kyazdani42/nvim-web-devicons', -- not strictly required, but recommended
+      'MunifTanjim/nui.nvim',
+    }
+  }
+
   -- use 'stephenway/postcss.vim' -- postcss syntax support
 
   -- Automatically set up your configuration after cloning packer.nvim
