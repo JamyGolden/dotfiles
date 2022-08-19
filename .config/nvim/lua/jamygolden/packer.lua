@@ -25,7 +25,6 @@ return require('packer').startup(function(use)
   use 'tpope/vim-sleuth' -- Buffer defaults
   use 'tpope/vim-surround' -- Shortcuts for brackets/quotes/tags
   use 'tpope/vim-vinegar' -- File manager
-  use 'base16-project/base16-vim' -- Theme provider
 
   ---------------------------------------------------------------------
   -- Nice-to-have plugins
