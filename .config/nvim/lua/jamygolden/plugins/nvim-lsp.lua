@@ -91,6 +91,9 @@ lspconfig.rust_analyzer.setup {
   flags = lsp_flags,
 }
 
+-- kotlin
+lspconfig.kotlin_language_server.setup{}
+
 -- tsserver
 lspconfig.tsserver.setup {
   capabilities = capabilities,
