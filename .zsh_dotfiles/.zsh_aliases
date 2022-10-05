@@ -5,7 +5,7 @@ alias g="git"
 
 # Switch out existing alias with new command
 # {{existing alias}}-{{new command}}
-alias_switches=("ls-exa" "cat-bat" "ps-procs")
+alias_switches=("ls-exa" "cat-bat" "ps-procs" "z-cd")
 for i in "${alias_switches[@]}"; do
   original_cmd=${i%-*}
   new_cmd=${i#*-}
