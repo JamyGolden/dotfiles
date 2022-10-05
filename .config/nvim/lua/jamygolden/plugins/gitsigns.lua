@@ -1,4 +1,6 @@
-require('gitsigns').setup({
+local gitsigns = require('gitsigns')
+
+gitsigns.setup({
   on_attach = function(bufnr)
     local gs = package.loaded.gitsigns
 

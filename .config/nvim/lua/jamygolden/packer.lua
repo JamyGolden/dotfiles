@@ -65,6 +65,19 @@ return require('packer').startup(function(use)
     run = ':TSUpdate',
   }
 
+  -- Testing
+  use {
+    'nvim-neotest/neotest',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-treesitter/nvim-treesitter',
+      'antoinemadec/FixCursorHold.nvim',
+      'mfussenegger/nvim-dap',
+      'haydenmeade/neotest-jest',
+      'nvim-neotest/neotest-plenary'
+    }
+  }
+
   -- Language Server Client
   use {
     'neovim/nvim-lspconfig',
