@@ -29,3 +29,4 @@ opt.ruler = true -- Show row and column ruler information
 opt.number = true -- line numbers and distances
 opt.undolevels = 1000 -- Number of undo levels
 opt.undofile = true
+opt.relativenumber = true
