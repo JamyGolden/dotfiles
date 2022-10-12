@@ -1,0 +1,4 @@
+" Plugins
+set commentary
+set highlightedyank
+set surround
