@@ -22,7 +22,3 @@ nmap('<Leader>q', function()
     cmd('q')
   end
 end)
-
--- Install and update vim Plug
-nmap('<Leader>1', ':luafile $MYVIMRC | :PackerInstall<Enter>', { silent = false })
-nmap('<Leader><Enter>', ':luafile $MYVIMRC<Enter>', { silent = false })
