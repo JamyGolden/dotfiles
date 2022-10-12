@@ -8,6 +8,7 @@ local nmap = keymaps.nmap
 -----------------------------------------------------------------------
 telescope.setup {
   defaults = {
+    file_ignore_patterns = { 'node_modules/', '.git/', 'dist/', 'build/' },
     mappings = {
       i = { ["<c-t>"] = trouble.open_with_trouble },
       n = { ["<c-t>"] = trouble.open_with_trouble },
@@ -16,15 +17,21 @@ telescope.setup {
   pickers = {
     find_files = {
       hidden = true
-    }
-  }
+    },
+    live_grep = {
+      additional_args = function(opts)
+        return {"--hidden"}
+      end
+    },
+    find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
+  },
 }
 telescope.load_extension('fzf')
 
 -----------------------------------------------------------------------
 -- Keymaps
 -----------------------------------------------------------------------
-nmap('<leader>k', '<cmd>lua require("telescope.builtin").git_files()<cr>')
+nmap('<leader>k', '<cmd>lua require("telescope.builtin").git_files({ show_untracked = true })<cr>')
 nmap('<leader>fk', '<cmd>lua require("telescope.builtin").find_files()<cr>')
 nmap('<leader>ff', '<cmd>lua require("telescope.builtin").live_grep()<cr>')
 nmap('<leader>fr', '<cmd>lua require("telescope.builtin").resume()<cr>')
