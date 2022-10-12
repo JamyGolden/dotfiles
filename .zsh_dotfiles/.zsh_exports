@@ -33,6 +33,9 @@ else
 
   # https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key
   export GPG_TTY=$(tty)
+
+  # Work related
+  export PATH=$PATH:/opt/gradle/gradle-7.5/bin
 fi
 
 # nvm
