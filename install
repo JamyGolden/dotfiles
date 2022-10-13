@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+script_path=${BASH_SOURCE[0]}
+script_path=$(readlink -f $script_path)
+DOTFILES=${script_path%/*}
+
+# nvim
+rm -rf $HOME/.config/nvim
+ln -s $DOTFILES/.config/nvim $HOME/.config/nvim
+
+# Scripts
+mkdir -p $HOME/.local/bin
+ln -s $DOTFILES/.local/bin/parallel-commands $HOME/.local/bin/parallel-commands
+
+# Tmux
+rm -rf $HOME/.local/bin/tmux-sessionizer
+ln -s $DOTFILES/.local/bin/tmux-sessionizer $HOME/.local/bin/tmux-sessionizer
+rm -f $DOTFILES/.tmux.conf
+ln -s $DOTFILES/.tmux.conf $HOME/.tmux.conf
+
+# zsh
+rm -rf $HOME/.zsh_dotfiles
+ln -s $DOTFILES/.zsh_dotfiles $HOME/.zsh_dotfiles
+ln -s $DOTFILES/secrets/.zsh_secrets $HOME/.zsh_dotfiles/.zsh_secrets
+
+# Single files
+rm -f $DOTFILES/.gitignore_global
+ln -s $DOTFILES/.gitignore_global $HOME/.gitignore_global
+rm -f $DOTFILES/.ideavimrc
+ln -s $DOTFILES/.ideavimrc $HOME/.ideavimrc
+rm -f $DOTFILES/.gitconfig
+ln -s $DOTFILES/.gitconfig $HOME/.gitconfig
+rm -f $DOTFILES/.zsh_profile
+ln -s $DOTFILES/.zsh_profile $HOME/.zsh_profile
+rm -f $DOTFILES/.zshrc
+ln -s $DOTFILES/.zshrc $HOME/.zshrc
