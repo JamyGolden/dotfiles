@@ -23,6 +23,7 @@ export FONT_NAME="FiraMono"
 
 if [[ $IS_MAC == 1 ]]; then
   export PATH=/opt/homebrew/bin:$PATH
+  export PATH=/usr/local/sbin:$PATH
 
   # Java
   export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
