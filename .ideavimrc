@@ -1,3 +1,9 @@
+" Options
+set relativenumber " Relative gutter line-numbers to cursor
+set number " Show absolute line number on current line
+set smartcase " Enable smart-case search
+set ignorecase " Always case-insensitive
+
 " Plugins
 set commentary
 set highlightedyank
