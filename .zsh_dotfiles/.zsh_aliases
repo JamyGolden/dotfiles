@@ -5,13 +5,19 @@ alias g="git"
 
 # Switch out existing alias with new command
 # {{existing alias}}-{{new command}}
-alias_switches=("ls-exa" "cat-bat" "ps-procs" "z-cd")
+alias_switches=("ls-exa" "cat-bat" "ps-procs")
 for i in "${alias_switches[@]}"; do
   original_cmd=${i%-*}
   new_cmd=${i#*-}
-  new_command_path=$(command -v "$new_cmd")
+  new_cmd_path=$(command -v "$new_cmd")
 
-  if [[ -n "$new_command_path" && "$new_command_path" != "$new_cmd" ]]; then
+  if [[ -n "$new_cmd_path" && "$new_cmd_path" != "$new_cmd" ]]; then
     alias $original_cmd=$new_cmd
   fi
 done
+
+# `z` is different to above since `zoxide` is the app and `z` is the
+# command
+if [[ -n "$(command -v 'zoxide')" && -n "$(command -v 'z')" ]]; then
+  alias cd=z
+fi
