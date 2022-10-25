@@ -8,7 +8,7 @@ local nmap = keymaps.nmap
 -----------------------------------------------------------------------
 telescope.setup {
   defaults = {
-    file_ignore_patterns = { 'node_modules/', '.git/', 'dist/', 'build/' },
+    file_ignore_patterns = { 'node_modules/', '.git/', 'dist/', 'build/', '.yarn' },
     mappings = {
       i = { ["<c-t>"] = trouble.open_with_trouble },
       n = { ["<c-t>"] = trouble.open_with_trouble },
