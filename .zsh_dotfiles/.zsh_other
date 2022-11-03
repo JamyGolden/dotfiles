@@ -5,6 +5,14 @@
 # ---------------------------------------------------------------------
 
 # Cargo
+# -----
+
+# Install
+if [ -z $(command -v "cargo") ]; then
+  curl https://sh.rustup.rs -sSf | sh
+fi
+
+# Run
 [ -f "$HOME/.cargo/env" ] && source $HOME/.cargo/env
 
 # Nix
