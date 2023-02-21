@@ -138,14 +138,10 @@ end
 local buttons = {
   type = "group",
   val = {
-    button("s", "   Restore", ":SessionManager load_last_session<CR>"),
     button("r", "   Recents", ":Telescope oldfiles<CR>"),
-    button("p", "   Projects", ":Telescope projects<CR>"),
     button("f", "   Search", ":Telescope find_files<CR>"),
     button("e", "   Create", ":ene <BAR> startinsert<CR>"),
     button("u", "   Update", ":PackerSync<CR>"),
-    button("c", "   Config", ":!tmux-sessionizer<CR>"),
-    button("b", "   test", ":echo 'test'"),
     button("q", "   Quit", ":qa!<CR>"),
   },
   opts = {
