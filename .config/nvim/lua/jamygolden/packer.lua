@@ -30,7 +30,6 @@ return require('packer').startup(function(use)
   ---------------------------------------------------------------------
   use 'Yggdroot/indentLine' -- Visually represent initial line space tabs
   use 'lewis6991/gitsigns.nvim' -- Git indications in the line gutter
-  use 'alvan/vim-closetag' -- Auto close html tags
   use 'christoomey/vim-tmux-navigator' -- vim/tmux navigation integration
   use 'gpanders/editorconfig.nvim' -- Editorconfig defaults
   use {
