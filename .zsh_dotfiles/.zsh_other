@@ -78,3 +78,5 @@ fi
 if [ -f "$HOME/.cargo/bin/zoxide" ]; then
   eval "$(zoxide init zsh)"
 fi
+
+unset apps_to_install
