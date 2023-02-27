@@ -22,4 +22,11 @@ if [[ -n "$(command -v 'zoxide')" && -n "$(command -v 'z')" ]]; then
   alias cd=z
 fi
 
+# This path is set in .local/nvim/scripts/setup/lsp.sh
+path_luamake="$HOME/projects/lsp/lua-language-server/3rd/luamake/luamake"
+if [ -e $path_luamake ]; then
+  alias luamake=$path_luamake
+fi
+
 unset alias_switches
+unset path_luamake
