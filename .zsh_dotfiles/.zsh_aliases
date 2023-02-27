@@ -21,3 +21,5 @@ done
 if [[ -n "$(command -v 'zoxide')" && -n "$(command -v 'z')" ]]; then
   alias cd=z
 fi
+
+unset alias_switches
