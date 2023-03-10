@@ -97,6 +97,10 @@ return require('packer').startup(function(use)
     }
   }
 
+  -- Required for kotlin_language_server
+  -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#kotlin_language_server
+  use 'udalov/kotlin-vim'
+
   use {
     'nvim-neo-tree/neo-tree.nvim',
     branch = "v2.x",
