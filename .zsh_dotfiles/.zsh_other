@@ -5,14 +5,6 @@
 # ---------------------------------------------------------------------
 
 # Cargo
-# -----
-
-# Install
-if [ -z $(command -v "cargo") ]; then
-  curl https://sh.rustup.rs -sSf | sh
-fi
-
-# Run
 [ -f "$HOME/.cargo/env" ] && source $HOME/.cargo/env
 
 # Nix
@@ -26,7 +18,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] \
   && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-# nvm
+# NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 if [ -n "$BASH_VERSION" ]; then
@@ -44,27 +36,6 @@ fi
 
 if [ -n "$ZSH_VERSION" ]; then
   eval "$(direnv hook zsh)"
-fi
-
-# ---------------------------------------------------------------------
-# CLI tools
-# ---------------------------------------------------------------------
-
-apps_to_install=("exa" "bat" "procs")
-
-for i in "${apps_to_install[@]}"; do
-  if [[ -z "$(command -v ${i})" ]]; then
-    cargo install ${i}
-  fi
-done
-
-# tealdeer installs to `tldr`
-if [ -z $(command -v "tldr") ]; then
-  cargo install tealdeer
-fi
-
-if [ -z $(command -v "zoxide") ]; then
-  cargo install zoxide --locked
 fi
 
 # ---------------------------------------------------------------------

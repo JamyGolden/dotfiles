@@ -6,7 +6,7 @@ DOTFILES_PATH=${script_path%/*}
 symlink_to_home() {
   local_path="$1"
 
-  rm -rf "$HOME/$1"
+  rm "$HOME/$1"
   ln -s "$DOTFILES_PATH/$1" "$HOME/$1"
 }
 
@@ -22,6 +22,12 @@ symlink_to_home ".local/bin/tmux-sessionizer"
 symlink_to_home ".tmux.conf"
 
 # zsh
+if [ ! -d "$HOME/.z_dotfiles" ]; then
+  mkdir "$HOME/.z_dotfiles"
+fi
+rm "$HOME/.z_dotfiles/.z_secrets"
+ln -s "$DOTFILES_PATH/secrets/.z_secrets" "$HOME/.z_dotfiles/.z_secrets"
+
 symlink_to_home ".zsh_dotfiles"
 ln -s "$DOTFILES_PATH/secrets/.zsh_secrets" "$HOME/.zsh_dotfiles/.zsh_secrets"
 
