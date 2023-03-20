@@ -1,0 +1,11 @@
+font:
+  size: 14.0
+  normal:
+    family: FiraMono Nerd Font
+    style: Medium
+  bold:
+    family: FiraMono Nerd Font
+    style: Bold
+  italic:
+    family: FiraMono Nerd Font
+    style: Italic
