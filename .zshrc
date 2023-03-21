@@ -16,6 +16,10 @@ if [ -f "$ZSH_DOTFILES/.zsh_secrets" ]; then
   . "$ZSH_DOTFILES/.zsh_secrets"
 fi
 
+# cleanup
+
+unset ZSH_DOTFILES
+
 # The alias below is required to be set in the .zshrc file, even
 # though it is set in ".zsh_dotfiles/zsh_aliases". The below comment
 # is a hack to trick the lsp make file into leaving .zshrc uneditted
