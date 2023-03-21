@@ -24,6 +24,11 @@ if ! npm_package_exists_check "vscode-langservers-extracted"; then
   npm i -g vscode-langservers-extracted
 fi
 
+# stylelint
+if ! npm_package_exists_check "stylelint-lsp"; then
+  npm i -g stylelint-lsp
+fi
+
 # Language Servers
 # ----------------
 path_local_scripts="$HOME/.local/bin"
