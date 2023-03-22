@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 if [[ "$IS_MAC" == 1 ]]; then
   echo "Font setup script doesn't work on Mac"

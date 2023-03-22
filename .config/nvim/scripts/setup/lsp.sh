@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 npm_package_exists_check() {
   # If the package is not installed

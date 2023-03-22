@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 apt-get install ninja-build
 
 # Language Servers

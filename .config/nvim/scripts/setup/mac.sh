@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+#
 brew install ninja
 
 # nvim lsp
