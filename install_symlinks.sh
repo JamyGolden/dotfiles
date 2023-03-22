@@ -13,6 +13,7 @@ symlink_to_home() {
   fi
 
   ln -s "$DOTFILES_PATH/$1" "$destination_path"
+  echo "Symlink created for $destination_path"
 }
 
 # nvim
@@ -38,6 +39,7 @@ if [ -d "$HOME/.z_dotfiles" ]; then
 fi
 mkdir "$HOME/.z_dotfiles"
 ln -s "$DOTFILES_PATH/secrets/.z_secrets" "$HOME/.z_dotfiles/.z_secrets"
+echo "Symlink created for $HOME/.z_dotfiles/.z_secrets"
 
 # zsh
 symlink_to_home ".zsh_dotfiles"
@@ -45,6 +47,7 @@ if [ -h "$HOME/.zsh_dotfiles/.zsh_secrets" ]; then
   rm "$HOME/.zsh_dotfiles/.zsh_secrets"
 fi
 ln -s "$DOTFILES_PATH/secrets/.zsh_secrets" "$HOME/.zsh_dotfiles/.zsh_secrets"
+echo "Symlink created for $HOME/.zsh_dotfiles/.zsh_secrets"
 
 # Single files
 # ------------

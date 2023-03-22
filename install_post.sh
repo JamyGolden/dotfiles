@@ -6,6 +6,7 @@ remove_and_symlink() {
   fi
 
   ln -s "$1" "$2"
+  echo "Symlink created for $2"
 }
 
 if [ ! -d "$HOME/projects" ]; then
