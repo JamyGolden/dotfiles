@@ -17,35 +17,35 @@ if [ ! -d "$HOME/projects/tinted-theming" ]; then
 fi
 
 # Install base16-shell
-base16_shell_path="$HOME/projects/tinted-theming/shell"
-base16_ohmyzsh_path="$HOME/.oh-my-zsh/plugins/base16-shell"
-if [ ! -d "$base16_shell_path" ]; then
-  git clone git@github.com:tinted-theming/base16-shell.git "$base16_shell_path"
+tintedtheming_shell_path="$HOME/projects/tinted-theming/shell"
+tintedtheming_ohmyzsh_path="$HOME/.oh-my-zsh/plugins/base16-shell"
+if [ ! -d "$tintedtheming_shell_path" ]; then
+  git clone git@github.com:tinted-theming/base16-shell.git "$tintedtheming_shell_path"
 fi
-if [ ! -d "$base16_ohmyzsh_path" ]; then
+if [ ! -d "$tintedtheming_ohmyzsh_path" ]; then
   mkdir -p "$HOME/.oh-my-zsh/plugins/base16-shell"
 fi
-remove_and_symlink "$base16_shell_path/base16-shell.plugin.zsh" \
+remove_and_symlink "$tintedtheming_shell_path/base16-shell.plugin.zsh" \
   "$HOME/.oh-my-zsh/plugins/base16-shell/base16-shell.plugin.zsh"
 
 # Install base16-fzf
-base16_fzf_path="$HOME/projects/tinted-theming/fzf"
-if [ ! -d "$base16_fzf_path" ]; then
-  git clone git@github.com:tinted-theming/base16-fzf.git "$base16_fzf_path"
+tintedtheming_fzf_path="$HOME/projects/tinted-theming/fzf"
+if [ ! -d "$tintedtheming_fzf_path" ]; then
+  git clone git@github.com:tinted-theming/base16-fzf.git "$tintedtheming_fzf_path"
 fi
-remove_and_symlink "$base16_fzf_path" \
+remove_and_symlink "$tintedtheming_fzf_path" \
   "$HOME/.config/tinted-theming/base16-fzf"
 
 # Install base16-tmux
-base16_tmux_path="$HOME/projects/tinted-theming/tmux"
-if [ ! -d "$base16_tmux_path" ]; then
-  git clone git@github.com:tinted-theming/base16-tmux.git "$base16_tmux_path"
+tintedtheming_tmux_path="$HOME/projects/tinted-theming/tmux"
+if [ ! -d "$tintedtheming_tmux_path" ]; then
+  git clone git@github.com:tinted-theming/base16-tmux.git "$tintedtheming_tmux_path"
 fi
-remove_and_symlink "$base16_tmux_path" "$HOME/.tmux/plugins/base16-tmux"
+remove_and_symlink "$tintedtheming_tmux_path" "$HOME/.tmux/plugins/base16-tmux"
 
 # Install base16-vim
-base16_vim_path="$HOME/projects/tinted-theming/vim"
-if [ ! -d "$base16_vim_path" ]; then
-  git clone git@github.com:tinted-theming/base16-vim.git "$base16_vim_path"
+tintedtheming_vim_path="$HOME/projects/tinted-theming/vim"
+if [ ! -d "$tintedtheming_vim_path" ]; then
+  git clone git@github.com:tinted-theming/base16-vim.git "$tintedtheming_vim_path"
 fi
-remove_and_symlink "$base16_vim_path/colors" "$HOME/.config/nvim/colors"
+remove_and_symlink "$tintedtheming_vim_path/colors" "$HOME/.config/nvim/colors"
