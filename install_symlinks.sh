@@ -1,7 +1,8 @@
 #!/usr/bin/env zsh
 
-script_path=${(%):-%x}
-DOTFILES_PATH=${script_path%/*}
+script_path=${(%):-%x} # Current file relative path
+script_path=$(readlink -f $script_path) # Current file absolute path
+DOTFILES_PATH=${script_path%/*} # Parent directory absolute path
 
 symlink_to_home() {
   local_path="$1"
