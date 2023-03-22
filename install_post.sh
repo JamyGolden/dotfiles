@@ -42,3 +42,10 @@ if [ ! -d "$base16_tmux_path" ]; then
   git clone git@github.com:tinted-theming/base16-tmux.git "$base16_tmux_path"
 fi
 remove_and_symlink "$base16_tmux_path" "$HOME/.tmux/plugins/base16-tmux"
+
+# Install base16-vim
+base16_vim_path="$HOME/projects/tinted-theming/vim"
+if [ ! -d "$base16_vim_path" ]; then
+  git clone git@github.com:tinted-theming/base16-vim.git "$base16_vim_path"
+fi
+remove_and_symlink "$base16_vim_path/colors" "$HOME/.config/nvim/colors"
