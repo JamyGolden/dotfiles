@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 remove_and_symlink() {
-  if [ ! -f "$2" ]; then
+  if [ -h "$2" ]; then
     rm "$2"
   fi
 
@@ -23,7 +23,7 @@ if [ ! -d "$base16_shell_path" ]; then
   git clone git@github.com:tinted-theming/base16-shell.git "$base16_shell_path"
 fi
 if [ ! -d "$base16_ohmyzsh_path" ]; then
-  mkdir "$HOME/.oh-my-zsh/plugins/base16-shell"
+  mkdir -p "$HOME/.oh-my-zsh/plugins/base16-shell"
 fi
 remove_and_symlink "$base16_shell_path/base16-shell.plugin.zsh" \
   "$HOME/.oh-my-zsh/plugins/base16-shell/base16-shell.plugin.zsh"
