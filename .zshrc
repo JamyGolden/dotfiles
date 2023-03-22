@@ -8,9 +8,9 @@ source $ZSH/oh-my-zsh.sh
 
 ZSH_DOTFILES=$HOME/.zsh_dotfiles
 . "$ZSH_DOTFILES/.zsh_exports"
-. "$ZSH_DOTFILES/.zsh_aliases"
 . "$ZSH_DOTFILES/.zsh_functions"
 . "$ZSH_DOTFILES/.zsh_other"
+. "$ZSH_DOTFILES/.zsh_aliases" # Set last because some aliases require cli inits
 
 if [ -f "$ZSH_DOTFILES/.zsh_secrets" ]; then
   . "$ZSH_DOTFILES/.zsh_secrets"
