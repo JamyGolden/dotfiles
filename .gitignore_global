@@ -7,15 +7,10 @@ Vagrantfile
 .vagrant/
 
 # IDEs/Editors
-coc-settings.json
 *.sublime-project
 *.sublime-workspace
 .vscode
-.nvimrc
-.vimrc
-.tern-project
 .swp
-.ctrlp
 Session.vim
 .ideavimrc
 .idea/*
