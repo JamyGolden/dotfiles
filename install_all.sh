@@ -9,23 +9,14 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 # ---------------------------------------------------------------------
-# Languages
+# CLI tools
 # ---------------------------------------------------------------------
-
-# Node and Yarn
-# -------------
-nvm install node
-npm i -g yarn
 
 # Rust and Cargo
 # --------------
 if [ -z $(command -v "cargo") ]; then
   curl https://sh.rustup.rs -sSf | sh
 fi
-
-# ---------------------------------------------------------------------
-# CLI tools
-# ---------------------------------------------------------------------
 
 # apt/homebrew
 # -------
@@ -58,6 +49,11 @@ fi
 if [ ! -d "$HOME/.nvm" ]; then
   mkdir $HOME/.nvm
 fi
+
+# Node and Yarn
+# -------------
+nvm install node
+npm i -g yarn
 
 # Cargo
 # -----
