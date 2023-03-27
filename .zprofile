@@ -1,7 +1,9 @@
-Z_DOTFILES=$HOME/.z_dotfiles
+# Not using zsh env vars because this file is also symlinked to
+# `$HOME/.profile` and executed with bash
+z_dotfiles_path=$HOME/.config/zsh
 
-if [ -f "$Z_DOTFILES/.z_secrets" ]; then
-  . "$Z_DOTFILES/.z_secrets"
+if [ -f "$z_dotfiles_path/.z_secrets" ]; then
+  . "$z_dotfiles_path/.z_secrets"
 fi
 
-unset Z_DOTFILES
+unset z_dotfiles_path

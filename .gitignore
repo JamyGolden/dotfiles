@@ -1,4 +1,8 @@
-!.vimrc
 .config/nvim/plugin
 .config/nvim/colors
-.zsh_dotfiles/.zsh_secrets
+.config/tmux/plugins
+.config/zsh/.zsh_secrets
+.config/zsh/.z_secrets
+
+# For compdumps in .config/zsh
+.zcompdump*

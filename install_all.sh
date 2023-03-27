@@ -82,9 +82,9 @@ fi
 
 # fzf
 # ---
-rm -rf "$HOME/.fzf"
-git clone --depth 1 "https://github.com/junegunn/fzf.git" "$HOME/.fzf"
-$HOME/.fzf/install
+rm -rf "$XDG_CONFIG_HOME/fzf"
+git clone --depth 1 "https://github.com/junegunn/fzf.git" "$XDG_CONFIG_HOME/fzf"
+$XDG_CONFIG_HOME/fzf/install --xdg
 
 # bitwarden
 # ---------
