@@ -17,6 +17,8 @@ end
 
 map({ 'n', 'v' }, '<Leader>y', '\"+y', { silent = false })
 nmap('<Leader>Y', 'gg\"+yG', { silent = false })
+nmap('<C-u>', '<C-u>zz')
+nmap('<C-d>', '<C-d>zz')
 vmap('<Leader>p', '\"_dP')
 nmap('<Leader>qq', ':q<cr>')
 nmap('<Leader>qQ', ':qa<cr>')
