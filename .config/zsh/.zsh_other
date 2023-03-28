@@ -30,6 +30,11 @@ if [ -n "$ZSH_VERSION" ]; then
   [ -s "$NVM_DIR/zsh_completion" ] && \. "$NVM_DIR/zsh_completion"
 fi
 
+# Docker Desktop App
+if [[ $IS_MAC == 1 ]]; then
+  source "$HOME/.docker/init-zsh.sh" || true
+fi
+
 # ---------------------------------------------------------------------
 # General tools
 # ---------------------------------------------------------------------
