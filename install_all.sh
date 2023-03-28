@@ -54,6 +54,7 @@ fi
 # -------------
 nvm install node
 npm i -g yarn
+yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config
 
 # Cargo
 # -----
