@@ -1,12 +1,12 @@
 [user]
     name = Jamy Golden
     email = jamy@jamygolden.com
-
 [core]
     editor = nvim
     ignorecase = false
     pager = delta
-
+[pull]
+    rebase = true
 [interactive]
     diffFilter = delta --color-only
 [add.interactive]
