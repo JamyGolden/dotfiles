@@ -8,4 +8,13 @@ export HISTFILE="$XDG_STATE_HOME/zsh/history"
 # Env vars to XDG
 # https://wiki.archlinux.org/title/XDG_Base_Directory
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export DVDCSS_CACHE="$XDG_DATA_HOME/dvdcss"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export GOPATH="$XDG_DATA_HOME/go"
 export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
+export LESSHISTFILE="$XDG_STATE_HOME/less/history"
+export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export SCREENRC="$XDG_CONFIG_HOME/screen/screenrc"
+export WINEPREFIX="$XDG_DATA_HOME/wine"

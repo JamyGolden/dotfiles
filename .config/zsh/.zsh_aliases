@@ -3,6 +3,9 @@
 alias gradle="gw"
 alias g="git"
 
+# Aliases set for XDG purposes
+alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
+
 # Switch out existing alias with new command
 # {{existing alias}}-{{new command}}
 alias_switches=("ls-exa" "cat-bat" "ps-procs")
