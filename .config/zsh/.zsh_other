@@ -5,7 +5,7 @@
 # ---------------------------------------------------------------------
 
 # Cargo
-[ -f "$HOME/.cargo/env" ] && source $HOME/.cargo/env
+[ -f "$XDG_DATA_HOME/cargo/env" ] && source $XDG_DATA_HOME/cargo/env
 
 # Nix
 if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
@@ -47,7 +47,7 @@ fi
 
 
 # Zoxide
-if [ -f "$HOME/.cargo/bin/zoxide" ]; then
+if [ -f "$XDG_DATA_HOME/cargo/bin/zoxide" ]; then
   eval "$(zoxide init zsh)"
 fi
 
