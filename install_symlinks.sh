@@ -37,8 +37,9 @@ symlink_to_home ".config/zsh"
 # z and zsh secrets
 # -----------------
 # .profile and .zprofile
-symlink "$DOTFILES_PATH/.zprofile" "$HOME/.profile"
-symlink_to_home ".zprofile"
+if [[ $IS_MAC == 0 ]]; then
+  symlink "$DOTFILES_PATH/.zprofile" "$HOME/.profile"
+fi
 
 # z secrets
 symlink "$DOTFILES_PATH/secrets/.z_secrets" "$XDG_CONFIG_HOME/zsh/.z_secrets"
