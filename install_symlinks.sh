@@ -40,6 +40,7 @@ symlink_to_home ".config/zsh"
 if [[ $IS_MAC == 0 ]]; then
   symlink "$DOTFILES_PATH/.zprofile" "$HOME/.profile"
 fi
+symlink_to_home ".zshenv"
 
 # z secrets
 symlink "$DOTFILES_PATH/secrets/.z_secrets" "$XDG_CONFIG_HOME/zsh/.z_secrets"
