@@ -30,6 +30,7 @@ symlink_to_home ".config/git"
 symlink_to_home ".config/ideavim"
 symlink_to_home ".config/nvim"
 symlink_to_home ".config/readline"
+symlink_to_home ".config/stylelua"
 symlink_to_home ".config/tmux"
 symlink_to_home ".config/zsh"
 
