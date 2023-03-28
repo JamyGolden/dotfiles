@@ -14,12 +14,12 @@ if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
 fi
 
 # SDKMAN
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] \
-  && source "$HOME/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="$XDG_DATA_HOME/sdkman"
+[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] \
+  && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
 # NVM
-export NVM_DIR="$HOME/.nvm"
+export NVM_DIR="$XDG_DATA_HOME/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 if [ -n "$BASH_VERSION" ]; then
   # This loads nvm bash_completion
