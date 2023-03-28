@@ -45,6 +45,12 @@ symlink "$DOTFILES_PATH/secrets/.z_secrets" "$XDG_CONFIG_HOME/zsh/.z_secrets"
 # zsh secrets
 symlink "$DOTFILES_PATH/secrets/.zsh_secrets" "$XDG_CONFIG_HOME/zsh/.zsh_secrets"
 
+# Mac only
+# --------
+if [[ $IS_MAC == 1 ]]; then
+  symlink ".config/LaunchAgents/xdg-env-launch-agent.plist" "$HOME/Library/LaunchAgents/xdg-env-launch-agent.plist"
+fi
+
 # General scripts on $PATH
 # ------------------------
 mkdir -p "$HOME/.local/bin"
