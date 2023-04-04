@@ -23,7 +23,7 @@ vmap('<Leader>p', '\"_dP')
 nmap('<Leader>qq', ':q<cr>')
 nmap('<Leader>qQ', ':qa<cr>')
 nmap('<Leader>cp', set_path_to_global_clipboard_func())
-nmap('<Leader>ca', set_path_to_global_clipboard_func(true))
+nmap('<Leader>ca', set_path_to_global_clipboard_func())
 
 -- Close tmp windows (Like GitFugitive) with <Leader>q
 nmap('<Leader>q', function()

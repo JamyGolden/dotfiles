@@ -38,7 +38,7 @@ local function getGreeting(name)
     [4] = "  Good evening",
     [5] = "望 Good night",
   }
-  local greetingIndex = ""
+  local greetingIndex = 0
   if hour == 23 or hour < 7 then
     greetingIndex = 1
   elseif hour < 12 then
@@ -108,7 +108,6 @@ local fortune = {
 
 local function button(sc, txt, keybind)
   local sc_ = sc:gsub("%s", ""):gsub("SPC", "<leader>")
-  local is_keybind = type(keybind) == 'string'
 
   local opts = {
     position = "center",
