@@ -43,10 +43,10 @@ fi
 symlink_to_home ".zshenv"
 
 # z secrets
-symlink "$DOTFILES_PATH/secrets/.z_secrets" "$XDG_CONFIG_HOME/zsh/.z_secrets"
+symlink "$DOTFILES_PATH/secrets/.z_secrets" "$HOME/.config/zsh/.z_secrets"
 
 # zsh secrets
-symlink "$DOTFILES_PATH/secrets/.zsh_secrets" "$XDG_CONFIG_HOME/zsh/.zsh_secrets"
+symlink "$DOTFILES_PATH/secrets/.zsh_secrets" "$HOME/.config/zsh/.zsh_secrets"
 
 # Mac only
 # --------
