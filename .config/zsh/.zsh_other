@@ -5,20 +5,36 @@
 # ---------------------------------------------------------------------
 
 # Cargo
+# -----
+
+# If non XDG cargo exists, move it and change path in cargo/env
+if [[ -d "$HOME/.cargo" && ! -d "$XDG_DATA_HOME/cargo" ]]; then
+  path_cargo="$XDG_DATA_HOME/cargo"
+  mv "$HOME/.cargo" "$path_cargo"
+
+  if [[ $IS_MAC == 1 ]]; then
+    sed -i '' 's/$HOME\/\.cargo/$XDG_DATA_HOME\/cargo/' "$path_cargo/env"
+  else
+    sed -i 's/$HOME\/\.cargo/$XDG_DATA_HOME\/cargo/' "$path_cargo/env"
+  fi
+fi
 [ -f "$XDG_DATA_HOME/cargo/env" ] && source $XDG_DATA_HOME/cargo/env
 
 # Nix
+# ---
 if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
   source "$HOME/.nix-profile/etc/profile.d/nix.sh"
   export NIXPKGS_ALLOW_UNFREE=1
 fi
 
 # SDKMAN
+# ------
 export SDKMAN_DIR="$XDG_DATA_HOME/sdkman"
 [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] \
   && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
 # NVM
+# ---
 export NVM_DIR="$XDG_DATA_HOME/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 if [ -n "$BASH_VERSION" ]; then
@@ -31,6 +47,7 @@ if [ -n "$ZSH_VERSION" ]; then
 fi
 
 # Docker Desktop App
+# ------------------
 if [[ $IS_MAC == 1 ]]; then
   [ -s "$HOME/.docker/init-zsh.sh" ] && \. "$HOME/.docker/init-zsh.sh" || true
 fi
