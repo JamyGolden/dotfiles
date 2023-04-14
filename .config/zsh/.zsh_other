@@ -32,7 +32,7 @@ fi
 
 # Docker Desktop App
 if [[ $IS_MAC == 1 ]]; then
-  source "$HOME/.docker/init-zsh.sh" || true
+  [ -s "$HOME/.docker/init-zsh.sh" ] && \. "$HOME/.docker/init-zsh.sh" || true
 fi
 
 # ---------------------------------------------------------------------
