@@ -103,7 +103,7 @@ gui_apps_to_install=(
   "sublime-text|com.sublimetext.three"
   "telegram|org.telegram.desktop"
   "vlc|org.videolan.VLC"
-  "vscode|com.visualstudio.code"
+  "visual-studio-code|com.visualstudio.code"
   "whatsapp|io.github.mimbrero.WhatsAppDesktop"
 )
 for i in "${gui_apps_to_install[@]}"; do
