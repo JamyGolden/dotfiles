@@ -32,12 +32,14 @@ fi
 # Language Servers
 # ----------------
 
+path_lsp_repos="$HOME/projects/lsp"
+mkdir -p $path_lsp_repos
+
 # kotlin-language-server
 if [ -z $(command -v "kotlin-language-server") ]; then
   path_kotlin_language_server="$path_lsp_repos/kotlin-language-server"
 
   # build
-  mkdir -p $path_lsp_repos
   rm -rf $path_kotlin_language_server
   git clone "git@github.com:fwcd/kotlin-language-server.git" $path_kotlin_language_server
   cd $path_kotlin_language_server
