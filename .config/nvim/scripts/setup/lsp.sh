@@ -51,8 +51,3 @@ if [ -z $(command -v "kotlin-language-server") ]; then
 
   unset -f path_kotlin_language_server
 fi
-
-# cleanup
-unset -f npm_package_exists_check
-unset -f path_local_scripts
-unset -f path_lsp_repos
