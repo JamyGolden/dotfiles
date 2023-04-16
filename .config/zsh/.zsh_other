@@ -20,13 +20,6 @@ if [[ -d "$HOME/.cargo" && ! -d "$XDG_DATA_HOME/cargo" ]]; then
 fi
 [ -f "$XDG_DATA_HOME/cargo/env" ] && source $XDG_DATA_HOME/cargo/env
 
-# Nix
-# ---
-if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
-  source "$HOME/.nix-profile/etc/profile.d/nix.sh"
-  export NIXPKGS_ALLOW_UNFREE=1
-fi
-
 # SDKMAN
 # ------
 export SDKMAN_DIR="$XDG_DATA_HOME/sdkman"
