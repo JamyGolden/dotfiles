@@ -6,6 +6,10 @@ alias g="git"
 # Aliases set for XDG purposes
 alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
 
+if [[ -n "$(command -v 'xbindkeys')" ]]; then
+  alias xbindkeys=xbindkeys -f "$XDG_CONFIG_HOME/xbindkeys/config"
+fi
+
 # Switch out existing alias with new command
 # {{existing alias}}-{{new command}}
 alias_switches=("ls-exa" "cat-bat" "ps-procs")
