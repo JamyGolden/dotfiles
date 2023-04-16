@@ -15,3 +15,8 @@ set surround
 
 " Key bindings
 map <leader>n <Action>(GotoNextError)
+map <leader>f <Action>(GotoFile)
+map <leader>g <Action>(FindInPath)
+map <leader>b <Action>(Switcher)
+vnoremap <leader>y "+y
+nnoremap <leader>y "+y
