@@ -12,10 +12,10 @@ fi
 
 # Switch out existing alias with new command
 # {{existing alias}}-{{new command}}
-alias_switches=("ls-exa" "cat-bat" "ps-procs")
+alias_switches=("ls|exa" "cat|bat" "ps|procs" "rm|trash-put")
 for i in "${alias_switches[@]}"; do
-  original_cmd=${i%-*}
-  new_cmd=${i#*-}
+  original_cmd=${i%|*}
+  new_cmd=${i#*|}
   new_cmd_path=$(command -v "$new_cmd")
 
   if [[ -n "$new_cmd_path" && "$new_cmd_path" != "$new_cmd" ]]; then

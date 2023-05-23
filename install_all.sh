@@ -26,6 +26,7 @@ cli_tools_to_install=(
   "rename"
   "ripgrep"
   "tmux"
+  "trash-cli"
 )
 for i in "${cli_tools_to_install[@]}"; do
   if [[ -z "$(command -v ${i})" ]]; then
