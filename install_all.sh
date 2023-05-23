@@ -27,7 +27,7 @@ cli_tools_to_install=(
   "ripgrep"
   "tmux"
 )
-for i in "${cargo_tools_to_install[@]}"; do
+for i in "${cli_tools_to_install[@]}"; do
   if [[ -z "$(command -v ${i})" ]]; then
     if [[ $IS_MAC == 1 ]]; then
       brew install ${i}
