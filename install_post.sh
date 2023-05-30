@@ -73,6 +73,8 @@ git clone https://github.com/christoomey/vim-tmux-navigator.git "$tmux_plugins_p
 # Other manual instructions
 # -------------------------
 
-echo "Manual setup instructions"
-echo "=========================\n"
-echo "Sublime merge: Add \"xdg-config/git:rw\" to Flateal -> Sublime Merge -> Other files"
+if [[ $IS_MAC == 0 ]]; then
+  echo "Manual setup instructions"
+  echo "=========================\n"
+  echo "Sublime merge: Add \"xdg-config/git:rw\" to Flateal -> Sublime Merge -> Other files"
+fi

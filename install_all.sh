@@ -1,6 +1,16 @@
 #!/usr/bin/env zsh
 
 # ---------------------------------------------------------------------
+# Script setup
+# ---------------------------------------------------------------------
+
+if [[ $(uname -s) == "Darwin"* ]]; then
+  IS_MAC=1
+else
+  IS_MAC=0
+fi
+
+# ---------------------------------------------------------------------
 # Shell
 # ---------------------------------------------------------------------
 
@@ -97,7 +107,7 @@ gui_apps_to_install=(
   "discord|discordapp"
   "firefox|org.mozilla.firefox"
   "google-chrome|com.google.Chrome"
-  "intellij-idea|com.jetbrains.IntelliJ-IDEA-Ultimate"
+  "intellij-idea|"
   "signal|org.signal.Signal"
   "slack|com.slack.Slack"
   "sublime-merge|com.sublimemerge.App"
@@ -125,3 +135,6 @@ done
 # For work
 # --------
 echo "You should manually install google-cloud-cli: https://cloud.google.com/sdk/docs/install-sdk"
+if [[ $IS_MAC == 0 ]]; then
+  echo "Install intellij-idea from their site. There are permission issues with flatpak. https://www.jetbrains.com/help/idea/installation-guide.html"
+fi
