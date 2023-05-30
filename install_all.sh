@@ -10,13 +10,48 @@ else
   IS_MAC=0
 fi
 
+log_begin() {
+  echo "Installing: $1"
+}
+
+log_end() {
+  echo "Done installing: $1"
+  echo "-------------------"
+}
+
+# We need XDG paths
+source .zshenv
+
 # ---------------------------------------------------------------------
 # Shell
 # ---------------------------------------------------------------------
 
 # Oh my zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+if [ ! -d "$XDG_CONFIG_HOME/oh-my-zsh" ]; then
+  log_begin "oh-my-zsh"
+
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+  log_end "oh-my-zsh"
+fi
+
+ohmyzsh_plugins=(
+  "zsh-users/zsh-autosuggestions"
+  "jeffreytse/zsh-vi-mode"
+)
+for i in "${ohmyzsh_plugins[@]}"; do
+  plugin_github_path=$i
+  plugin_name=${i#*/}
+
+  if [ ! -d "$ZSH_CUSTOM/plugins/$plugin_name" ]; then
+    log_begin "$plugin_name"
+
+    git clone "https://github.com/$plugin_github_path" \
+      "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/$plugin_name"
+
+    log_end "$plugin_name"
+  fi
+done
 
 # ---------------------------------------------------------------------
 # CLI tools
@@ -25,75 +60,112 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 # Rust and Cargo
 # --------------
 if [ -z $(command -v "cargo") ]; then
+  log_end "Rust/Cargo"
+
   curl https://sh.rustup.rs -sSf | sh
+
+  log_end "Rust/Cargo"
 fi
 
 # apt/homebrew
 # -------
 cli_tools_to_install=(
+  "direnv"
   "jq"
-  "neovim"
   "rename"
-  "ripgrep"
   "tmux"
   "trash-cli"
 )
 for i in "${cli_tools_to_install[@]}"; do
   if [[ -z "$(command -v $i)" ]]; then
+    log_begin "$i"
+
     if [[ $IS_MAC == 1 ]]; then
       brew install $i
     else
       apt install $i
     fi
+
+    log_end "$i"
   fi
 done
 
 # nvm
 # ---
-if [ -z $(command -v "nvm") ]; then
+
+# nvm is initialised via a script, so check dir to test for existance
+if [ ! -d "$NVM_DIR" ]; then
+  log_begin "nvm"
+
   if [[ $IS_MAC == 1 ]]; then
     brew install nvm
   else
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
   fi
-fi
-if [ ! -d "$HOME/.nvm" ]; then
-  mkdir $HOME/.nvm
+
+  log_end "nvm"
 fi
 
 # Node and Yarn
 # -------------
-nvm install node
-npm i -g yarn
-yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config
+
+if [ -z $(command -v "node") ]; then
+  log_begin "Node"
+
+  nvm install node
+
+  log_begin "Node"
+fi
+
+if [ -z $(command -v "yarn") ]; then
+  log_begin "Yarn"
+
+  npm i -g yarn
+  yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config
+
+  log_end "Yarn"
+fi
 
 # Cargo
 # -----
-cargo_tools_to_install=("exa" "bat" "procs")
+cargo_tools_to_install=("exa" "bat" "procs" "ripgrep")
 
 for i in "${cargo_tools_to_install[@]}"; do
-  if [[ -z "$(command -v ${i})" ]]; then
-    cargo install ${i}
+  if [[ -z "$(command -v $i)" ]]; then
+    log_begin "$1"
+
+    cargo install $i
+
+    log_end "$1"
   fi
 done
 
 if [ -z $(command -v "tldr") ]; then # `tealdeer` installs to `tldr`
+  log_begin "tealdeer"
+
   cargo install tealdeer
+
+  log_end "tealdeer"
 fi
 
 if [ -z $(command -v "zoxide") ]; then
+  log_begin "zoxide"
+
   cargo install zoxide --locked
+
+  log_end "zoxide"
 fi
 
 # fzf
 # ---
-rm -rf "$XDG_CONFIG_HOME/fzf"
-git clone --depth 1 "https://github.com/junegunn/fzf.git" "$XDG_CONFIG_HOME/fzf"
-$XDG_CONFIG_HOME/fzf/install --xdg
+if [ ! -d "$XDG_CONFIG_HOME/fzf" ]; then
+  log_begin "fzf"
 
-# bitwarden
-# ---------
-npm i -g @bitwarden/cli
+  git clone --depth 1 "https://github.com/junegunn/fzf.git" "$XDG_CONFIG_HOME/fzf"
+  $XDG_CONFIG_HOME/fzf/install --xdg
+
+  log_end "fzf"
+fi
 
 # ---------------------------------------------------------------------
 # GUI apps
@@ -122,9 +194,19 @@ for i in "${gui_apps_to_install[@]}"; do
   linux_app_name=${i#*\|}
 
   if [[ $IS_MAC == 1 ]]; then
+    log_begin "$mac_app_name"
+
     brew install --cask "$mac_app_name"
+
+    log_end "$mac_app_name"
   else
-    flatpak install "$linux_app_name"
+    if [[ -n $linux_app_name && -z "$(flatpak list --app | grep $linux_app_name)" ]]; then
+      log_begin "$linux_app_name"
+
+      flatpak install "$linux_app_name"
+
+      log_end "$linux_app_name"
+    fi
   fi
 done
 
