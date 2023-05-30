@@ -54,8 +54,20 @@ for i in "${ohmyzsh_plugins[@]}"; do
 done
 
 # ---------------------------------------------------------------------
-# CLI tools
+# Languages and package managers
 # ---------------------------------------------------------------------
+
+# Java
+# ----
+if [ -z $(command -v "java") ]; then
+  if [[ $IS_MAC == 1 ]]; then
+    brew install java
+    brew info java
+    read "?Java must be symlinked, the instructions should be above (if not run `brew info java`). Make sure to symlink before running another install script?"
+  else
+    apt install default-jre
+  fi
+fi
 
 # Rust and Cargo
 # --------------
@@ -92,7 +104,6 @@ done
 
 # nvm
 # ---
-
 # nvm is initialised via a script, so check dir to test for existance
 if [ ! -d "$NVM_DIR" ]; then
   log_begin "nvm"
@@ -108,7 +119,6 @@ fi
 
 # Node and Yarn
 # -------------
-
 if [ -z $(command -v "node") ]; then
   log_begin "Node"
 
@@ -125,6 +135,10 @@ if [ -z $(command -v "yarn") ]; then
 
   log_end "Yarn"
 fi
+
+# ---------------------------------------------------------------------
+# CLI tools
+# ---------------------------------------------------------------------
 
 # Cargo
 # -----
