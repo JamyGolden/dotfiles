@@ -29,11 +29,11 @@ cli_tools_to_install=(
   "trash-cli"
 )
 for i in "${cli_tools_to_install[@]}"; do
-  if [[ -z "$(command -v ${i})" ]]; then
+  if [[ -z "$(command -v $i)" ]]; then
     if [[ $IS_MAC == 1 ]]; then
-      brew install ${i}
+      brew install $i
     else
-      apt install ${i}
+      apt install $i
     fi
   fi
 done
