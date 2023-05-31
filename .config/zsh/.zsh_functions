@@ -1,5 +1,9 @@
 #!/usr/bin/env zsh
 
+# General functions
+# ---------------
+
+# Project find/replace strings in files
 find_replace () {
   rg "$1"
   if read -n1 -p "choice?Are you sure you? Y/n"; then
@@ -8,16 +12,6 @@ find_replace () {
   else
     echo "\nCancelled"
   fi
-}
-
-# Git checkout
-gch() {
-  git checkout "$(git branch | fzf | tr -d '[:space:]')"
-}
-
-# Git clean branches
-gcb() {
-  git branch --merged | grep -Ev "(\*|master|main|develop)" | xargs git branch -d
 }
 
 # Kill port
@@ -46,4 +40,70 @@ kp() {
   else
     echo "error: Not a port number" >&2;
   fi
+}
+
+# Git functions
+# -------------
+
+# Git Primary BRanch - returns `master` or `main`
+gpbr() {
+  if [ -n "$(git branch | grep main)" ]; then
+    echo 'main'
+  elif [ -n "$(git branch | grep master)" ]; then
+    echo 'master'
+  fi
+}
+
+# Git checkout local branch with fzf (ch - CHeckout)
+gch() {
+  git checkout "$(git branch | fzf | tr -d '[:space:]')"
+}
+
+# Git clean already rebased branches (cb - CleanBranches)
+gcb() {
+  branches=$(git branch --merged | grep -Ev "(\*|main|master|develop)")
+
+  if [ -z "$branches" ]; then
+    echo "There are no branches to delete"
+    return
+  fi
+
+  echo $branches | xargs git branch -d
+}
+
+# Git reset main branch to origin/main (rho - ResetHomeOrigin)
+grho() {
+  primary_branch_name=$(gpbr)
+
+  # The user must first stash files
+  if [ -n "$(git status | grep 'modified')" ]; then
+    echo "This will reset your unstaged files. Please first stash your files."
+    git st
+    return
+  fi
+
+  git checkout "$primary_branch_name"
+  git fetch
+  git reset --hard "origin/$primary_branch_name";
+}
+
+# Git rebase current branch with origin/main
+gsync() {
+  primary_branch_name=$(gpbr)
+
+  if [ -n "$(git status | grep 'modified')" ]; then
+    git stash
+  fi
+
+  grho
+  git checkout -
+  git rebase "$primary_branch_name"
+  git stash pop
+}
+
+# Interactive rebase with (as - AutoSquash)
+gas() {
+  primary_branch_name=$(gpbr)
+
+  git rebase -i --autosquash $primary_branch_name
 }

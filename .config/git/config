@@ -21,12 +21,22 @@
     colorMoved = default
 
 [alias]
-    ; scripts - use `main`, otherwise use `master`
-    rho = "!f() { if [ -n \"$(git branch | grep main)\" ]; then git checkout main && git fetch && git reset --hard origin/main; else git checkout master && git fetch && git reset --hard origin/master; fi }; f"
-    sync = "!f() { if [ -n \"$(git branch | grep main)\" ]; then git rho && git co - && git rebase main; else git rho && git co - && git rebase master; fi }; f"
-    as = "!f() { if [ -n \"$(git branch | grep main)\" ]; then git rebase -i --autosquash main; else git rebase -i --autosquash master; fi }; f"
+    ; functions
+    ; use `main` as primary branch if it exists, otherwise `master`
+    ; -------------------------------------------------------------
+    ; Reset main branch to origin/main (rho - ResetHomeOrigin)
+    rho = "!zsh -c 'source $ZDOTDIR/.zsh_functions && grho'"
+    ; Rebase current branch with origin/main
+    sync = "!zsh -c 'source $ZDOTDIR/.zsh_functions && gsync'"
+    ; Interactive rebase with (as - AutoSquash)
+    as = "!zsh -c 'source $ZDOTDIR/.zsh_functions && gas'"
+    ; Checkout local branch with fzf (ch - CHeckout)
+    ch = "!zsh -c 'source $ZDOTDIR/.zsh_functions && gch'"
+    ; Clean already rebased branches (cb - CleanBranches)
+    cb = "!zsh -c 'source $ZDOTDIR/.zsh_functions && gcb'"
 
-    ; public - standard
+    ; standard
+    ; --------
     co = checkout
     commit-pop = reset HEAD~
     undo = reset --soft 'HEAD@{1}'
