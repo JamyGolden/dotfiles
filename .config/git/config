@@ -30,6 +30,8 @@
     sync = "!zsh -c 'source $ZDOTDIR/.zsh_functions && gsync'"
     ; Interactive rebase with (as - AutoSquash)
     as = "!zsh -c 'source $ZDOTDIR/.zsh_functions && gas'"
+    ; List branches by most recent branch commit (brr - BRanchRecent)
+    brr = "!zsh -c 'source $ZDOTDIR/.zsh_functions && gbrr'"
     ; Checkout local branch with fzf (ch - CHeckout)
     ch = "!zsh -c 'source $ZDOTDIR/.zsh_functions && gch'"
     ; Clean already rebased branches (cb - CleanBranches)
