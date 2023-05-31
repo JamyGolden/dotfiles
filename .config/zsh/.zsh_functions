@@ -18,6 +18,11 @@ find_replace () {
 kp() {
   port_re='^[0-9]{4}$'
 
+  if [ -z "$1" ]; then
+    echo "You need to specify a port to kill. '$ ps aux | less' or '$ procs' to view running ports."
+    return
+  fi
+
   # If arg is a valif port
   if [[ $1 =~ $port_re ]]; then
     pid=$(lsof -ti:$1)
