@@ -94,16 +94,9 @@ grho() {
 
 # Git rebase current branch with origin/main
 gsync() {
-  primary_branch_name=$(gpbr)
-
-  if [ -n "$(git status | grep 'modified')" ]; then
-    git stash
-  fi
-
   grho
   git checkout -
   git rebase "$primary_branch_name"
-  git stash pop
 }
 
 # Interactive rebase with (as - AutoSquash)
