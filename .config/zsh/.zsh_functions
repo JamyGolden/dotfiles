@@ -127,5 +127,5 @@ gbrr() {
     colorline=$(echo "$line" | sed 's/^[^|]*|//');
 
     echo "$ahead|$behind|$colorline" | awk -F'|' -vOFS='|' '{$5=substr($5,1,70)}1';
-  done | ( echo "ahead|behind||branch|lastcommit|message|author\n" && cat) | column -ts'|';
+  done | ( echo "ahead|behind||branch|lastcommit|author\n" && cat) | column -ts'|';
 }
