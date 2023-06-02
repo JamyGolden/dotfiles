@@ -79,6 +79,7 @@ gcb() {
 # Git reset main branch to origin/main (rho - ResetHomeOrigin)
 grho() {
   primary_branch_name=$(gpbr)
+  current_branch=$(git rev-parse --abbrev-ref HEAD)
 
   # The user must first stash files
   if [ -n "$(git status | grep 'modified')" ]; then
@@ -87,7 +88,10 @@ grho() {
     return
   fi
 
-  git checkout "$primary_branch_name"
+  # Don't checkout to primary branch if git is already there
+  if [ "$current_branch" != "$primary_branch_name" ]; then
+    git checkout "$primary_branch_name"
+  fi
   git fetch
   git reset --hard "origin/$primary_branch_name";
 }
