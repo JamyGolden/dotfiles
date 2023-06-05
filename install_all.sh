@@ -131,7 +131,6 @@ if [ -z $(command -v "yarn") ]; then
   log_begin "Yarn"
 
   npm i -g yarn
-  yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config
 
   log_end "Yarn"
 fi
