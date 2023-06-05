@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+export GOPATH="$XDG_DATA_HOME/go"
+
+if [[ $IS_MAC == 0 ]]; then
+  expect_truthy $(echo $PATH | grep 'go/bin') "go/bin"
+else
+  expect_truthy "$(echo $PATH | grep -v 'go/bin')" "go/bin inverse"
+fi
+
+expect_exists "$(command -v 'go')" "go"

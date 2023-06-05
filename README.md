@@ -118,6 +118,11 @@ $ ./install_post.sh # Postinstall
 `.z_*` implies the file will be run in `.z_profile`. Read more about the
 [Zsh startup/shutdown files].
 
+## Tests
+
+Run `.config/zsh/.z_tests` to test your zsh setup to ensure it's running
+correctly.
+
 [Zsh]: https://zsh.sourceforge.io/
 [OhMyZsh]: https://ohmyz.sh/
 [zsh-autosuggestions]: https://github.com/zsh-users/zsh-autosuggestions

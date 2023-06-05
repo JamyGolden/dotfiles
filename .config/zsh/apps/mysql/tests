@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+
+expect_export "MYSQL_HISTFILE" "$XDG_DATA_HOME/mysql_history"

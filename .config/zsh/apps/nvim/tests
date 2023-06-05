@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+expect_export "EDITOR" "nvim"
+expect_exists "$(command -v 'nvim')" "nvim"

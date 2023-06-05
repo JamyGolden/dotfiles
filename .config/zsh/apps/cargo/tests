@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+expect_export "CARGO_HOME" "$XDG_DATA_HOME/cargo"
+expect_truthy $(echo $PATH | grep 'cargo/bin') "cargo/bin"
+expect_exists $(command -v "cargo")

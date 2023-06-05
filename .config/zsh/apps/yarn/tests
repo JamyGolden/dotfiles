@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+
+bin_path="yarn/bin"
+
+expect_truthy "$(echo $PATH | grep $bin_path)" "$bin_path"
+expect_exists "$XDG_CONFIG_HOME/yarn/config" "yarn"

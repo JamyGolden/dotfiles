@@ -1,0 +1,101 @@
+#!/usr/bin/env zsh
+
+z_test_status=0 # 0 pass, 1 fail
+
+# General expect function comparing two strings.
+#
+# @name expect
+# @param {string} expected - Expected string.
+# @param {string} actual - Actual string.
+# @example expect "foo" "foo"
+expect() {
+  if [[ "$1" == "$2" ]]; then
+    echo "Pass: $1"
+  else
+    echo "Fail: $1"
+    z_test_status=1
+  fi
+}
+
+# Tests whether a path exists.
+#
+# @name: expect_exists
+# @param {string} path - path to directory or file.
+# @param {string} [test_name] - Used for test logging.
+# @example expect_exists "$HOME/.tmux.conf" "tmux config"
+expect_exists() {
+  if [ -e "$1" ]; then
+    echo "Pass: ${2:-$1} exists"
+  else
+    echo "Fail: ${2:-$1}"
+    z_test_status=1
+  fi
+}
+
+# Tests whether a value is not empty.
+#
+# @name: expect_truthy
+# @param {string} value - Typically a command path.
+# @param {string} [testName] - Used for test logging.
+# @example expect_truthy "$(command -v 'nvim')" "Neovim"
+expect_truthy() {
+  if [ -n "$1" ]; then
+    echo "Pass: ${2:-$1} exists"
+  else
+    echo "Fail: ${2:-$1}"
+    z_test_status=1
+  fi
+}
+
+# Tests whether a value is empty.
+#
+# @name: expect_truthy
+# @param {string} value - Typically a command path.
+# @param {string} [test_name] - Used for test logging.
+# @example expect_falsy "$(command -v 'brew')" "homebrew"
+expect_falsy() {
+  if [ -z "$1" ]; then
+    echo "Pass: $2 does not exists"
+  else
+    echo "Fail: $2 exists"
+    z_test_status=1
+  fi
+}
+
+# Tests whether an environment variale value matches the proivded value.
+#
+# @name: expect_truthy
+# @param {string} env_var - Environment variable name.
+# @param {string} [expected_result] - Value for env var to be tested
+# against.
+# @example expect_export "CARGO_HOME" "$XDG_DATA_HOME/cargo"
+expect_export() {
+  env_var=$1
+  expected_value=$2
+
+  if [[ "${(P)env_var}" == "$expected_value" ]]; then
+    echo "Pass: $env_var is set to $expected_value"
+  else
+    echo "Fail: $env_var is not set to $expected_value"
+    z_test_status=1
+  fi
+}
+
+# Run all test files
+for app_test_file in $(find "$XDG_CONFIG_HOME/zsh/apps" -type f -name 'tests'); do
+  . $app_test_file
+done
+
+# Log final result
+if [[ $z_test_status == 0 ]]; then
+  echo "-----------------------------------------"
+  echo "Test status (.zenv_tests): All tests pass"
+  echo "-----------------------------------------"
+else
+  echo "-------------------------------------------"
+  echo "Test status (zenv_tests): Tests have failed"
+  echo "-------------------------------------------"
+fi
+
+unset z_test_status
+unset -f expect expect_exists expect_export

@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+#
+expect_export "ZDOTDIR" "$XDG_CONFIG_HOME/zsh"
+expect_export "HISTFILE" "$XDG_STATE_HOME/zsh/history"
+expect_exists "$XDG_STATE_HOME/zsh/history" "zsh histfile"

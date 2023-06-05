@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+expect_export "NPM_CONFIG_USERCONFIG" "$XDG_CONFIG_HOME/npm/npmrc"
+expect_exists "$(command -v 'npm')" "npm"

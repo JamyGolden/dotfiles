@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+if [[ $IS_MAC == 0 ]]; then
+  expect_export "$GPG_TTY"
+else
+  expect "$GPG_TTY" ""
+fi
+
+expect_exists "$(command -v 'git')" "git"

@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+
+expect_exists $(command -v "direnv")
