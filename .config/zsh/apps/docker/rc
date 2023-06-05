@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+# https://www.docker.com/
+
+# Docker Desktop App
+# ------------------
+if [[ $IS_MAC == 1 ]]; then
+  [ -s "$HOME/.docker/init-zsh.sh" ] && \. "$HOME/.docker/init-zsh.sh" || true
+fi

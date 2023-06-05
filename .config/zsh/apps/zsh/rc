@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+# Ensure $HISTFILE is setup correctly
+if [ ! -f "$XDG_STATE_HOME/zsh/history" ]; then
+  echo "Your \$HISTFILE is being set somewhere else, check /etc/zshrc" \
+    "and comment it out"
+fi

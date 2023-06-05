@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+# Alias set for XDG purposes
+alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"

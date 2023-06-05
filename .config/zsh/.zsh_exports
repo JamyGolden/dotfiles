@@ -10,33 +10,26 @@ fi
 # -------------
 path_dirs=(
   "$HOME/.local/bin"
-  "$HOME/.yarn/bin"
   "$HOME/bin"
   "/usr/local/bin"
-  "/usr/local/go/bin"
 )
 
 if [[ $IS_MAC == 1 ]]; then
-  path_dirs+=("/opt/homebrew/bin")
   # Don't add to linux path since it's not it's not strictly necessary
   # and it's safer not to include superuser binaries to PATH
   path_dirs+=("/usr/local/sbin")
-
-  # Java
-  path_dirs+=("/opt/homebrew/opt/openjdk/bin")
-else
-  # Work related
-  path_dirs+=("/opt/gradle/gradle-7.5/bin")
 fi
 
 for path_dir in "${path_dirs[@]}"; do
   export PATH="$path_dir:$PATH"
 done
 
+for app_exports_file in $(find "$XDG_CONFIG_HOME/zsh/apps" -type f -name 'exports'); do
+  . $app_exports_file
+done
+
 # Other
 # -------------
-export EDITOR=nvim
-export AWS_PROFILE=default
 export LC_NUMERIC="en_GB.UTF-8"
 export LC_TIME="en_GB.UTF-8"
 export LC_COLLATE="en_GB.UTF-8"
@@ -44,15 +37,9 @@ export LC_MONETARY="en_GB.UTF-8"
 export LC_MESSAGES="en_GB.UTF-8"
 export FONT_NAME="FiraMono"
 
-if [[ $IS_MAC == 1 ]]; then
-  # Java
-  export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
-else
+if [[ $IS_MAC == 0 ]]; then
   # https://github.com/bazelbuild/rules_closure/issues/351
   export OPENSSL_CONF=/dev/null
-
-  # https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key
-  export GPG_TTY=$(tty)
 fi
 
 unset path_dirs

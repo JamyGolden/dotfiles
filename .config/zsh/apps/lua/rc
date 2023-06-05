@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+# This path is set in .local/nvim/scripts/setup/lsp.sh
+path_luamake="$HOME/projects/lsp/lua-language-server/3rd/luamake/luamake"
+
+if [ -e $path_luamake ]; then
+  alias luamake=$path_luamake
+fi
+
+unset path_luamake

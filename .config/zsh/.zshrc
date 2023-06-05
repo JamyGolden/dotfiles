@@ -8,8 +8,10 @@ source $ZSH/oh-my-zsh.sh
 
 . "$ZDOTDIR/.zsh_exports"
 . "$ZDOTDIR/.zsh_functions"
-. "$ZDOTDIR/.zsh_other"
-. "$ZDOTDIR/.zsh_aliases" # Set last because some aliases require cli inits
+
+for app_rc_file in $(find "$XDG_CONFIG_HOME/zsh/apps" -type f -name 'rc'); do
+  . $app_rc_file
+done
 
 if [ -f "$ZDOTDIR/.zsh_secrets" ]; then
   . "$ZDOTDIR/.zsh_secrets"

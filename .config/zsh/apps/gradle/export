@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+if [[ $IS_MAC == 0 ]]; then
+  PATH="/opt/gradle/gradle-7.5/bin:$PATH"
+fi

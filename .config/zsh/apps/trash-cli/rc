@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+original_cmd="rm"
+new_cmd="trash-put"
+new_cmd_path=$(command -v "$new_cmd")
+
+if [[ -n "$new_cmd_path" && "$new_cmd_path" != "$new_cmd" ]]; then
+  alias $original_cmd=$new_cmd
+fi
+
+unset original_cmd new_cmd new_cmd_path

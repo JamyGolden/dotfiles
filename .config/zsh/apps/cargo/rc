@@ -1,0 +1,17 @@
+#!/usr/bin/env zsh
+
+# https://doc.rust-lang.org/cargo/
+
+# If non XDG cargo exists, move it and change path in cargo/env
+if [[ -d "$HOME/.cargo" && -n "$XDG_DATA_HOME" && ! -d "$XDG_DATA_HOME/cargo" ]]; then
+  path_cargo="$XDG_DATA_HOME/cargo"
+  mv "$HOME/.cargo" "$path_cargo"
+
+  if [[ $IS_MAC == 1 ]]; then
+    sed -i '' 's/$HOME\/\.cargo/$XDG_DATA_HOME\/cargo/' "$path_cargo/env"
+  else
+    sed -i 's/$HOME\/\.cargo/$XDG_DATA_HOME\/cargo/' "$path_cargo/env"
+  fi
+fi
+
+[ -f "$XDG_DATA_HOME/cargo/env" ] && source $XDG_DATA_HOME/cargo/env
