@@ -5,6 +5,12 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
+if [[ $(uname -s) == "Darwin"* ]]; then
+  export IS_MAC=1
+else
+  export IS_MAC=0
+fi
+
 for app_env_file in $(find "$XDG_CONFIG_HOME/zsh/apps" -type f -name 'env'); do
   . $app_env_file
 done
