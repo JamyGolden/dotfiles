@@ -1,11 +1,5 @@
 #!/usr/bin/env zsh
 
-if [[ $(uname -s) == "Darwin"* ]]; then
-  export IS_MAC=1
-else
-  export IS_MAC=0
-fi
-
 # PATH specific
 # -------------
 path_dirs=(
