@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
 
-if [[ $IS_MAC == 0 ]]; then
+if [[ $IS_MAC == 1 ]]; then
   PATH="/opt/homebrew/bin:$PATH"
 fi
