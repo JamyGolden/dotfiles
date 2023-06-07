@@ -6,6 +6,13 @@ apt_to_install=(
   "git-all"
   "libssl-dev"
   "xsel"
+
+  # Required for gvm
+  "mercurial"
+  "make"
+  "binutils"
+  "bison"
+  "gcc"
 )
 apt_gui_to_install=(
   "gparted"

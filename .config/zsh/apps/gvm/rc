@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+
+gvm_script_path="$HOME/.gvm/scripts/gvm"
+
+# This should be updated with each terminal session so it's here and not
+# in an exports file
+export GOROOT_BOOTSTRAP="$GOROOT"
+
+if [ -f $gvm_script_path ]; then
+  . "$gvm_script_path"
+fi
+
+unset gvm_script_path

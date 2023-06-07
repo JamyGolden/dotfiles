@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
-if [[ $IS_MAC == 0 ]]; then
-  PATH="/usr/local/go/bin:$PATH"
-fi
+# gvm go
+PATH="$HOME/.gvm/gos/go1.20.5/bin:$PATH"
+
+# Installed go packages
+PATH="$HOME/go/bin:$PATH"

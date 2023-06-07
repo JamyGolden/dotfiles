@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
 
+# Install xcode and related cli tools
+xcode-select --install
+
 # ---------------------------------------------------------------------
 # Package managers
 # ---------------------------------------------------------------------
@@ -10,6 +13,7 @@ if [ -z $(command -v "brew") ]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 brew update
+brew install mecurial # For gvm
 
 # ---------------------------------------------------------------------
 # Other

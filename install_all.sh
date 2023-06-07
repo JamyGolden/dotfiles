@@ -80,7 +80,7 @@ if [ -z $(command -v "cargo") ]; then
 fi
 
 # apt/homebrew
-# -------
+# ------------
 cli_tools_to_install=(
   "direnv"
   "jq"
@@ -101,6 +101,18 @@ for i in "${cli_tools_to_install[@]}"; do
     log_end "$i"
   fi
 done
+
+# gvm/go
+# ------
+if [[ -z $(command -v "go") && ! -f "$HOME/.gvm/scripts/gvm" ]]; then
+  bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+
+  . "$HOME/.gvm/scripts/gvm"
+  gvm install go1.4 -B
+  gvm use go.14
+  export GOROOT_BOOTSTRAP=$GOROOT
+  gvm install go1.20.5
+fi
 
 # nvm
 # ---

@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+expect_export "GOROOT_BOOTSTRAP" "$GOROOT"
+expect_exists "$(command -v 'gvm')" "gvm"
