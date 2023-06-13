@@ -3,4 +3,4 @@
 brew install ninja
 
 # nvim lsp
-brew install lua-language-server
+brew install kotlin-language-server lua-language-server

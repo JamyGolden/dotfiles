@@ -28,26 +28,3 @@ fi
 if ! npm_package_exists_check "stylelint-lsp"; then
   npm i -g stylelint-lsp
 fi
-
-# Language Servers
-# ----------------
-
-path_lsp_repos="$HOME/projects/lsp"
-mkdir -p $path_lsp_repos
-
-# kotlin-language-server
-if [ -z $(command -v "kotlin-language-server") ]; then
-  path_kotlin_language_server="$path_lsp_repos/kotlin-language-server"
-
-  # build
-  rm -rf $path_kotlin_language_server
-  git clone "git@github.com:fwcd/kotlin-language-server.git" $path_kotlin_language_server
-  cd $path_kotlin_language_server
-  ./gradlew :server:installDist
-
-  # symlink binary
-  rm "$path_local_scripts/kotlin-language-server"
-  ln -s "$path_kotlin_language_server/server/build/install/server/bin/kotlin-language-server" "$path_local_scripts/kotlin-language-server"
-
-  unset -f path_kotlin_language_server
-fi
