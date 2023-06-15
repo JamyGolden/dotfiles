@@ -1,25 +1,30 @@
 #!/usr/bin/env bash
 
 if [[ $# -eq 1 ]]; then
-  selected=$1
+  selected_path=$1
 else
-  selected=$(fd . ~/projects ~/projects/finn ~/projects/tinted-theming --type=d --max-depth=1 | fzf)
+  selected_path=$(fd . ~/projects ~/projects/finn ~/projects/tinted-theming --type=d --max-depth=1 | fzf)
 fi
 
-if [[ -z $selected ]]; then
+if [[ -z $selected_path ]]; then
   exit 0
 fi
 
-selected_name=$(basename "$selected" | tr . _)
+selected_name=$(basename "$selected_path" | tr . _)
 tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-  tmux new-session -s $selected_name -c $selected
+  tmux new-session -s $selected_name -c selected_path$
   exit 0
 fi
 
 if ! tmux has-session -t $selected_name 2> /dev/null; then
-  tmux new-session -ds $selected_name -c $selected
+  editor_window_name="$EDITOR"
+
+  tmux new-session -d -s $selected_name -n $editor_window_name -c $selected_path # Create initial window
+  tmux send-keys -t $selected_name:$editor_window_name.0 "$EDITOR ." Enter # Open nvim
+  tmux new-window -t $selected_name:2 -c $selected_path # Create second window
+  tmux switch -t $selected_name:1 # Switch to editor window
 fi
 
 tmux switch-client -t $selected_name
