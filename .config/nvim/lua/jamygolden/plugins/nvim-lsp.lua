@@ -103,7 +103,7 @@ lspconfig.tsserver.setup {
 }
 
 -- stylelint
-vim.cmd([[autocmd BufWritePre *.css lua vim.lsp.buf.formatting_sync()]])
+-- vim.cmd([[autocmd BufWritePre *.css lua vim.lsp.buf.formatting_sync()]])
 lspconfig.stylelint_lsp.setup {
   capabilities = capabilities,
   on_attach = on_attach,

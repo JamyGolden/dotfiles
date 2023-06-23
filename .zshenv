@@ -1,3 +1,7 @@
+# Repo path
+# ---------
+export DOTFILES_REPO_PATH="$HOME/projects/jamygolden-dotfiles"
+
 # XDG
 # ---
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -11,9 +15,11 @@ else
   export IS_MAC=0
 fi
 
-for app_env_file in $(find "$XDG_CONFIG_HOME/zsh/apps" -type f -name 'env'); do
-  . $app_env_file
+for app_env_file in $(find "$DOTFILES_REPO_PATH/apps" -type f -name 'env' | sort); do
+  . "$app_env_file"
 done
+
+unset app_env_file
 
 # Other
 # Env vars to XDG

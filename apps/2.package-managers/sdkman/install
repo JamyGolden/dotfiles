@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+if [[ $IS_MAC == 0 ]]; then
+  curl -s "https://get.sdkman.io" | bash
+fi

@@ -82,7 +82,7 @@ expect_export() {
 }
 
 # Run all test files
-for app_test_file in $(find "$XDG_CONFIG_HOME/zsh/apps" -type f -name 'tests'); do
+for app_test_file in $(find "$XDG_CONFIG_HOME/zsh/apps" -type f -name 'tests' | sort); do
   . $app_test_file
 done
 

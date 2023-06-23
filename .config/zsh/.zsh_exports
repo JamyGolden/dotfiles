@@ -18,9 +18,11 @@ for path_dir in "${path_dirs[@]}"; do
   export PATH="$path_dir:$PATH"
 done
 
-for app_exports_file in $(find "$XDG_CONFIG_HOME/zsh/apps" -type f -name 'exports'); do
-  . $app_exports_file
+for app_exports_file in $(find "$DOTFILES_REPO_PATH/apps" -type f -name 'exports' | sort); do
+  . "$app_exports_file"
 done
+
+unset app_exports_file
 
 # Other
 # -------------

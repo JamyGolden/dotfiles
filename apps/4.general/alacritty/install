@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+if [[ $IS_MAC == 1 ]]; then
+  brew install alacritty
+else
+  # Install through system to avoid permission issues
+  add-apt-repository -y ppa:mmstick76/alacritty
+  apt install -y alacritty
+fi

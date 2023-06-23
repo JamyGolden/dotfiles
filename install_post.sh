@@ -1,4 +1,7 @@
 #!/usr/bin/env zsh
+#
+# We need XDG paths and $DOTFILES_REPO_PATH
+. zshenv
 
 remove_and_symlink() {
   if [ -h "$2" ]; then

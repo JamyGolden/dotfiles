@@ -97,7 +97,6 @@ will set up Zsh as the default shell.
 
 ```bash
 $ ./install_linux.sh # Setups up Linux machine
-$ ./install_all.sh # Shared setup between Mac and Linux
 $ ./install_symlinks.sh # Symlink dotfiles
 $ ./install_post.sh # Postinstall
 ```
@@ -107,7 +106,6 @@ $ ./install_post.sh # Postinstall
 ```bash
 $ xcode-select --install # Install XCode and related cli tools
 $ ./install_mac.sh # Setups up Linux machine
-$ ./install_all.sh # Shared setup between Mac and Linux
 $ ./install_symlinks.sh # Symlink dotfiles
 $ ./install_post.sh # Postinstall
 ```

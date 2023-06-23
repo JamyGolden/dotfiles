@@ -1,0 +1,19 @@
+#!/usr/bin/env zsh
+
+if [[ $IS_MAC == 0 ]]; then
+  applications_path="$HOME/Applications"
+  tmp_filename="jetbrains-toolbox.tar.gz"
+  jetbrains_product_code="TBA"
+
+  if [ ! -f "$applications_path/jetbrains-toolbox" ]; then
+    curl -L "https://download.jetbrains.com/product?code=$jetbrains_product_code&latest&distribution=linux" --output $tmp_filename
+
+    mkdir -p $applications_path
+    tar -xvzf $tmp_filename -C $applications_path --strip 1
+    rm $tmp_filename
+  fi
+
+  unset applications_path jetbrains_product_code
+else
+  brew install intellij-idea
+fi

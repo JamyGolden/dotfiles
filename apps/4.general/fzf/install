@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+if [ ! -d "$XDG_CONFIG_HOME/fzf" ]; then
+  log_begin "fzf"
+
+  git clone --depth 1 "https://github.com/junegunn/fzf.git" "$XDG_CONFIG_HOME/fzf"
+  $XDG_CONFIG_HOME/fzf/install --xdg
+
+  log_end "fzf"
+fi

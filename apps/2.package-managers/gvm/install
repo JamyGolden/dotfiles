@@ -1,0 +1,25 @@
+#!/usr/bin/env zsh
+
+# Requirements
+# ------------
+if [[ $IS_MAC == 1 ]]; then
+  brew install mecurial
+else
+  apt_to_install=(
+    "mercurial"
+    "make"
+    "binutils"
+    "bison"
+    "gcc"
+  )
+  apt update
+  apt install -y "${apt_to_install[@]}"
+fi
+
+# gvm
+# ---
+if [[ -z $(command -v "go") && ! -f "$HOME/.gvm/scripts/gvm" ]]; then
+  bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+
+  . "$HOME/.gvm/scripts/gvm"
+fi

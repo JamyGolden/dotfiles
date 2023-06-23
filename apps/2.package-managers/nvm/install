@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+
+# nvm is initialised via a script, so check dir to test for existance
+if [ ! -d "$NVM_DIR" ]; then
+  log_begin "nvm"
+
+  if [[ $IS_MAC == 1 ]]; then
+    brew install nvm
+  else
+    latest_nvm_version="$(curl 'https://api.github.com/repos/nvm-sh/nvm/tags' | jq -r '.[0].name')"
+    curl -o- "https://raw.githubusercontent.com/nvm-sh/nvm/$latest_nvm_version/install.sh" | bash
+  fi
+fi

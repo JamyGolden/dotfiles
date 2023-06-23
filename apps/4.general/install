@@ -1,0 +1,89 @@
+#!/usr/bin/env zsh
+
+# These apps are installed in a typical and common way so it's easier to
+# group them than to have seperate directories for each app
+
+# CLI tools
+# ---------
+
+cli_tools_to_install=(
+  "direnv"
+  "jq"
+  "rename"
+  "tmux"
+  "trash-cli"
+)
+for i in "${cli_tools_to_install[@]}"; do
+  if [[ -z "$(command -v $i)" ]]; then
+    log_begin "$i"
+
+    if [[ $IS_MAC == 1 ]]; then
+      brew install $i
+    else
+      apt install $i
+    fi
+
+    log_end "$i"
+  fi
+done
+
+cargo_tools_to_install=("exa" "bat" "procs" "ripgrep")
+for i in "${cargo_tools_to_install[@]}"; do
+  if [[ -z "$(command -v $i)" ]]; then
+    log_begin "$1"
+
+    cargo install $i
+
+    log_end "$1"
+  fi
+done
+
+# GUI apps
+# --------
+
+# "<homebrew install name>|<flatpak install name>" separated by pipe
+# Anything added here should provide both the hombrew and flatpak
+# install name
+gui_apps_to_install=(
+  "alfred|"
+  "bitwarden|com.bitwarden.desktop"
+  "discord|discordapp"
+  "firefox|org.mozilla.firefox"
+  "google-chrome|com.google.Chrome"
+  "signal|org.signal.Signal"
+  "slack|com.slack.Slack"
+  "sublime-merge|com.sublimemerge.App"
+  "sublime-text|com.sublimetext.three"
+  "telegram|org.telegram.desktop"
+  "visual-studio-code|com.visualstudio.code"
+  "vlc|org.videolan.VLC"
+  "whatsapp|io.github.mimbrero.WhatsAppDesktop"
+  "|com.github.tchx84.Flatseal"
+  "|io.github.Hexchat"
+  "|io.github.seadve.Kooha"
+  "|org.openrgb.OpenRGB"
+)
+for i in "${gui_apps_to_install[@]}"; do
+  mac_app_name=${i%\|*}
+  linux_app_name=${i#*\|}
+
+  if [[ $IS_MAC == 1 ]]; then
+    if [ -n $mac_app_name ]; then
+      log_begin "$mac_app_name"
+
+      brew install --cask "$mac_app_name"
+
+      log_end "$mac_app_name"
+    fi
+  else
+    if [[ -n $linux_app_name && -z "$(flatpak list --app | grep $linux_app_name)" ]]; then
+      log_begin "$linux_app_name"
+
+      flatpak install "$linux_app_name"
+
+      log_end "$linux_app_name"
+    fi
+  fi
+done
+
+unset mac_app_name linux_app_name

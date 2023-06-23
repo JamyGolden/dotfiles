@@ -9,9 +9,11 @@ source $ZSH/oh-my-zsh.sh
 . "$ZDOTDIR/.zsh_exports"
 . "$ZDOTDIR/.zsh_functions"
 
-for app_rc_file in $(find "$XDG_CONFIG_HOME/zsh/apps" -type f -name 'rc'); do
-  . $app_rc_file
+for app_rc_file in $(find "$DOTFILES_REPO_PATH/apps" -type f -name 'rc' | sort); do
+  . "$app_rc_file"
 done
+
+unset app_rc_file
 
 if [ -f "$ZDOTDIR/.zsh_secrets" ]; then
   . "$ZDOTDIR/.zsh_secrets"

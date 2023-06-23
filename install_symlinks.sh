@@ -1,8 +1,7 @@
 #!/usr/bin/env zsh
 
-script_path=${(%):-%x} # Current file relative path
-script_path=$(readlink -f $script_path) # Current file absolute path
-DOTFILES_PATH=${script_path%/*} # Parent directory absolute path
+# We need XDG paths and $DOTFILES_REPO_PATH
+. zshenv
 
 symlink() {
   target_path="$1"
@@ -17,7 +16,7 @@ symlink() {
 }
 
 symlink_to_home() {
-  target_path="$DOTFILES_PATH/$1"
+  target_path="$DOTFILES_REPO_PATH/$1"
   destination_path="$HOME/$1"
 
   symlink "$target_path" "$destination_path"
@@ -39,14 +38,14 @@ symlink_to_home ".config/zsh"
 symlink_to_home ".zshenv"
 # .profile and .zprofile
 if [[ $IS_MAC == 0 ]]; then
-  symlink "$DOTFILES_PATH/.config/zsh/.zprofile" "$HOME/.profile"
+  symlink "$DOTFILES_REPO_PATH/.config/zsh/.zprofile" "$HOME/.profile"
 fi
 
 # z secrets
-symlink "$DOTFILES_PATH/secrets/.z_secrets" "$HOME/.config/zsh/.z_secrets"
+symlink "$DOTFILES_REPO_PATH/secrets/.z_secrets" "$HOME/.config/zsh/.z_secrets"
 
 # zsh secrets
-symlink "$DOTFILES_PATH/secrets/.zsh_secrets" "$HOME/.config/zsh/.zsh_secrets"
+symlink "$DOTFILES_REPO_PATH/secrets/.zsh_secrets" "$HOME/.config/zsh/.zsh_secrets"
 
 # Mac only
 # --------

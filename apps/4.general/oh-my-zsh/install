@@ -1,0 +1,27 @@
+#!/usr/bin/env zsh
+
+if [ ! -d "$XDG_CONFIG_HOME/oh-my-zsh" ]; then
+  log_begin "oh-my-zsh"
+
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+  log_end "oh-my-zsh"
+fi
+
+ohmyzsh_plugins=(
+  "zsh-users/zsh-autosuggestions"
+  "jeffreytse/zsh-vi-mode"
+)
+for i in "${ohmyzsh_plugins[@]}"; do
+  plugin_github_path=$i
+  plugin_name=${i#*/}
+
+  if [ ! -d "$ZSH_CUSTOM/plugins/$plugin_name" ]; then
+    log_begin "$plugin_name"
+
+    git clone "https://github.com/$plugin_github_path" \
+      "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/$plugin_name"
+
+    log_end "$plugin_name"
+  fi
+done

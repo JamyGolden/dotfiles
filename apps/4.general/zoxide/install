@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+if [ -z $(command -v "zoxide") && -n $(command -v "cargo") ]; then
+  log_begin "zoxide"
+
+  cargo install zoxide --locked
+
+  log_end "zoxide"
+fi
+

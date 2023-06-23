@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+
+echo "You should manually install google-cloud-cli: https://cloud.google.com/sdk/docs/install-sdk"
