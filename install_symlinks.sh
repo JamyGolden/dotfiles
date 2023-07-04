@@ -36,9 +36,9 @@ symlink_to_home ".config/zsh"
 # z and zsh secrets
 # -----------------
 symlink_to_home ".zshenv"
-# .profile and .zprofile
+# .profile
 if [[ $IS_MAC == 0 ]]; then
-  symlink "$DOTFILES_REPO_PATH/.config/zsh/.zprofile" "$HOME/.profile"
+  symlink_to_home ".profile"
 fi
 
 # z secrets
