@@ -4,7 +4,7 @@
 if [ ! -d "$NVM_DIR" ]; then
   log_begin "nvm"
 
-  if [[ $IS_MAC == 1 ]]; then
+  if [[ "$OS_TYPE" == "mac" ]]; then
     brew install nvm
   else
     latest_nvm_version="$(curl 'https://api.github.com/repos/nvm-sh/nvm/tags' | jq -r '.[0].name')"

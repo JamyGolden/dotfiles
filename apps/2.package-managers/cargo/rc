@@ -7,7 +7,7 @@ if [[ -d "$HOME/.cargo" && -n "$XDG_DATA_HOME" && ! -d "$XDG_DATA_HOME/cargo" ]]
   path_cargo="$XDG_DATA_HOME/cargo"
   mv "$HOME/.cargo" "$path_cargo"
 
-  if [[ $IS_MAC == 1 ]]; then
+  if [[ "$OS_TYPE" == "mac" ]]; then
     sed -i '' 's/$HOME\/\.cargo/$XDG_DATA_HOME\/cargo/' "$path_cargo/env"
   else
     sed -i 's/$HOME\/\.cargo/$XDG_DATA_HOME\/cargo/' "$path_cargo/env"

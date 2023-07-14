@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-if [[ $IS_MAC == 1 ]]; then
+if [[ "$OS_TYPE" == "mac" ]]; then
   PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 else
   export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"

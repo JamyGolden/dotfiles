@@ -2,8 +2,10 @@
 
 # jq is used to parse data to facilitate this repos app installs
 
-if [[ $IS_MAC == 1 ]]; then
+if [[ "$OS_TYPE" == "mac" ]]; then
   brew install jq
-else
+elif [[ "$OS_TYPE" == "debian" ]]; then
   sudo apt install jq
+else
+  echo "jq install not supported by OS."
 fi

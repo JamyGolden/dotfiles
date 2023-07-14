@@ -3,13 +3,13 @@
 # Mac
 # ---
 
-if [[ $IS_MAC == 1 ]]; then
+if [[ "$OS_TYPE" == "mac" ]]; then
   if [ -z $(command -v "docker") ]; then
     curl -o "$HOME/Downloads/Docker.dmg" "https://desktop.docker.com/mac/main/arm64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64"
     echo "Make sure to install Docker yourself: $HOME/Downloads/Docker.dmg"
     open "$HOME/Downloads"
   fi
-else
+if [[ "$OS_TYPE" == "debian" ]]; then
   if [ -z $(command -v "docker") ]; then
     # Update the apt package index and install packages to allow apt to use a repository over HTTPS:
     sudo apt update
@@ -38,4 +38,6 @@ else
     sudo groupadd docker
     sudo usermod -aG docker "$USER"
   fi
+else
+  echo "Docker install not supported by OS."
 fi

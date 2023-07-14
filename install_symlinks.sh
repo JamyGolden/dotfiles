@@ -37,7 +37,7 @@ symlink_to_home ".config/zsh"
 # -----------------
 symlink_to_home ".zshenv"
 # .profile
-if [[ $IS_MAC == 0 ]]; then
+if [[ "$OS_TYPE" == "debian" ]]; then
   symlink_to_home ".profile"
 fi
 
@@ -49,7 +49,7 @@ symlink "$DOTFILES_REPO_PATH/secrets/.zsh_secrets" "$HOME/.config/zsh/.zsh_secre
 
 # Mac only
 # --------
-if [[ $IS_MAC == 1 ]]; then
+if [[ "$OS_TYPE" == "mac" ]]; then
   symlink ".config/LaunchAgents/xdg-env-launch-agent.plist" "$HOME/Library/LaunchAgents/xdg-env-launch-agent.plist"
 fi
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 if [ -z $(command -v "java") ]; then
-  if [[ $IS_MAC == 1 ]]; then
+  if [[ "$OS_TYPE" == "mac" ]]; then
     brew install java
     brew info java
     read "?Java must be symlinked, the instructions should be above (if not run `brew info java`). Make sure to symlink before running another install script?"

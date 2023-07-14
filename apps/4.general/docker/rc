@@ -4,6 +4,6 @@
 
 # Docker Desktop App
 # ------------------
-if [[ $IS_MAC == 1 ]]; then
+if [[ "$OS_TYPE" == "mac" ]]; then
   [ -s "$HOME/.docker/init-zsh.sh" ] && \. "$HOME/.docker/init-zsh.sh" || true
 fi

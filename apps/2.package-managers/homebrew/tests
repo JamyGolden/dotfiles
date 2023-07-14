@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-if [[ $IS_MAC == 1 ]]; then
+if [[ "$OS_TYPE" == "mac" ]]; then
   expect_exists "$(command -v 'brew')" "homebrew"
 else
   expect_falsy "$(command -v 'brew')" "homebrew"

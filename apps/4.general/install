@@ -17,9 +17,9 @@ for i in "${cli_tools_to_install[@]}"; do
   if [[ -z "$(command -v $i)" ]]; then
     log_begin "$i"
 
-    if [[ $IS_MAC == 1 ]]; then
+    if [[ "$OS_TYPE" == "mac" ]]; then
       brew install $i
-    else
+    elif [[ "$OS_TYPE" == "debian" ]]; then
       sudo apt install $i
     fi
 
@@ -67,7 +67,7 @@ for i in "${gui_apps_to_install[@]}"; do
   mac_app_name=${i%\|*}
   linux_app_name=${i#*\|}
 
-  if [[ $IS_MAC == 1 ]]; then
+  if [[ "$OS_TYPE" == "mac" ]]; then
     if [ -n $mac_app_name ]; then
       log_begin "$mac_app_name"
 

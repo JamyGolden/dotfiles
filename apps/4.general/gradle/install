@@ -1,3 +1,7 @@
 #!/usr/bin/env zsh
 
-sdk install gradle
+if [ "$(command -v 'sdk')" ]; then
+  sdk install gradle
+else
+  echo "gradle can't be installed because sdk does not exist."
+fi

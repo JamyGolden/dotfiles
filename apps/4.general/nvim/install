@@ -1,11 +1,15 @@
 #!/usr/bin/env zsh
 
-if [[ $IS_MAC == 1 ]]; then
+if [[ "$OS_TYPE" == "mac" ]]; then
   brew install nvim
 else
-  if [ "$(command -v 'nvim ')" ]; then
+  install_path="$HOME/.local/bin/nvim"
+
+  if [ -z "$install_path" ]; then
   	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-    chmod u+x nvim.appimage
-    mv ./nvim.appimage "$HOME/.local/bin/nvim"
+    chmod u+x ./nvim.appimage
+    mv ./nvim.appimage $install_path
   fi
+
+  unset install_path
 fi

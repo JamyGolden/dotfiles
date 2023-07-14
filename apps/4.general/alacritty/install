@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 
-if [[ $IS_MAC == 1 ]]; then
+if [[ "$OS_TYPE" == "mac" ]]; then
   brew install alacritty
-else
+elif [[ "$OS_TYPE" == "debian" ]]; then
   # https://github.com/alacritty/alacritty/blob/master/INSTALL.md#debianubuntu
   sudo apt install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
   cargo install alacritty
@@ -22,4 +22,7 @@ else
   # cleanup
   cd -
   rm -r $install_path
+  unset install_path
+else
+  echo "Alacritty install not supported by OS."
 fi

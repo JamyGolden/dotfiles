@@ -5,6 +5,8 @@ environment from a fresh operating system install. This dotfiles repo
 can be used for Linux and MacOS machines; I actively use this repo on my
 MacbookPro and Linux desktop machine, which I use interchangeably.
 
+Currently only Debian Linux is supported.
+
 ## What's included?
 
 ### Shell
@@ -90,22 +92,14 @@ Dotfiles are installed to `$XDG_CONFIG_HOME` where possible.
 
 ## Installation
 
-### Linux
-
 If bash is installed by default, these scripts will run correctly and
 will set up Zsh as the default shell.
 
-```bash
-$ ./install_linux.sh # Setups up Linux machine
-$ ./install_symlinks.sh # Symlink dotfiles
-$ ./install_post.sh # Postinstall
-```
-
-### Mac
+The installation will detect what OS you are using and will setup
+accordingly.
 
 ```bash
-$ xcode-select --install # Install XCode and related cli tools
-$ ./install_mac.sh # Setups up Linux machine
+$ ./install_all.sh # Setups up Linux machine
 $ ./install_symlinks.sh # Symlink dotfiles
 $ ./install_post.sh # Postinstall
 ```

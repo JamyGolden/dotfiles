@@ -2,7 +2,7 @@
 
 bin_path="openjdk/bin"
 
-if [[ $IS_MAC == 1 ]]; then
+if [[ "$OS_TYPE" == "mac" ]]; then
   expect_truthy "$(echo $PATH | grep $bin_path)" "$bin_path"
 else
   expect_falsy "$(echo $PATH | grep $bin_path)" "$bin_path"

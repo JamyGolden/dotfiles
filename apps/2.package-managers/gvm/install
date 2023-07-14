@@ -2,9 +2,9 @@
 
 # Requirements
 # ------------
-if [[ $IS_MAC == 1 ]]; then
+if [[ "$OS_TYPE" == "mac" ]]; then
   brew install mecurial
-else
+elif [[ "$OS_TYPE" == "debian" ]]; then
   apt_to_install=(
     "mercurial"
     "make"

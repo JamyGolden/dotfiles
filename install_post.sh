@@ -76,7 +76,7 @@ git clone https://github.com/christoomey/vim-tmux-navigator.git "$tmux_plugins_p
 # Other manual instructions
 # -------------------------
 
-if [[ $IS_MAC == 0 ]]; then
+if [[ "$OS_TYPE" == "debian" ]]; then
   echo "Manual setup instructions"
   echo "=========================\n"
   echo "Sublime merge: Add \"xdg-config/git:rw\" to Flateal -> Sublime Merge -> Other files"

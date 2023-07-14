@@ -8,7 +8,7 @@ path_dirs=(
   "/usr/local/bin"
 )
 
-if [[ $IS_MAC == 1 ]]; then
+if [[ "$OS_TYPE" == "mac" ]]; then
   # Don't add to linux path since it's not it's not strictly necessary
   # and it's safer not to include superuser binaries to PATH
   path_dirs+=("/usr/local/sbin")
@@ -33,7 +33,7 @@ export LC_MONETARY="en_GB.UTF-8"
 export LC_MESSAGES="en_GB.UTF-8"
 export FONT_NAME="FiraMono"
 
-if [[ $IS_MAC == 0 ]]; then
+if [[ "$OS_TYPE" == "debian" ]]; then
   # https://github.com/bazelbuild/rules_closure/issues/351
   export OPENSSL_CONF=/dev/null
 fi

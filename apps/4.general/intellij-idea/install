@@ -1,6 +1,8 @@
 #!/usr/bin/env zsh
 
-if [[ $IS_MAC == 0 ]]; then
+if [[ "$OS_TYPE" == "mac" ]]; then
+  brew install intellij-idea
+elif [[ "$OS_TYPE" == "debian" ]]; then
   applications_path="$HOME/Applications"
   tmp_filename="jetbrains-toolbox.tar.gz"
   jetbrains_product_code="TBA"
@@ -15,5 +17,5 @@ if [[ $IS_MAC == 0 ]]; then
 
   unset applications_path jetbrains_product_code
 else
-  brew install intellij-idea
+  echo "Intellij install not supported by OS."
 fi
