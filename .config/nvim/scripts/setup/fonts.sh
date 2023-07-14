@@ -31,10 +31,10 @@ if [ "${#fonts}" -eq 0 ]; then
   exit 0
 fi;
 
-version='2.1.0'
-fonts_dir="${HOME}/.local/share/fonts"
+version='3.0.2'
+fonts_dir="$XDG_DATA_HOME/fonts"
 
-if [[ ! -d "$fonts_dir" ]]; then
+if [ ! -d "$fonts_dir" ]; then
   mkdir -p "$fonts_dir"
 fi
 
@@ -47,6 +47,10 @@ for font in "${fonts[@]}"; do
   rm "$zip_file"
 done
 
+# Remove unwanted files
 find "$fonts_dir" -name '*Windows Compatible*' -delete
+rm "$fonts_dir/LICENSE"
+rm "$fonts_dir/readme.md"
 
+# Update OS font cache
 fc-cache -fv
