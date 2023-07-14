@@ -3,6 +3,6 @@
 # If flatpak doesn't exist, install it
 if [[ $IS_MAC == 0 ]]; then
   if [ -z $(command -v "flatpak") ]; then
-    apt install flatpak
+    sudo apt install flatpak
   fi
 fi

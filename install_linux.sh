@@ -11,14 +11,14 @@ apt_to_install=(
 apt_gui_to_install=(
   "gparted"
 )
-apt update
-apt install -y "${apt_to_install[@]}"
-apt install -y "${apt_gui_to_install[@]}"
+sudo apt update
+sudo apt install -y "${apt_to_install[@]}"
+sudo apt install -y "${apt_gui_to_install[@]}"
 
 # zsh
 # Install and use z shell
 # -----------------------
-apt install zsh
+sudo apt install zsh
 chsh -s $(which zsh)
 
 # Run common os install script

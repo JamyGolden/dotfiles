@@ -12,8 +12,8 @@ else
     "bison"
     "gcc"
   )
-  apt update
-  apt install -y "${apt_to_install[@]}"
+  sudo apt update
+  sudo apt install -y "${apt_to_install[@]}"
 fi
 
 # gvm

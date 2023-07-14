@@ -5,5 +5,5 @@
 if [[ $IS_MAC == 1 ]]; then
   brew install jq
 else
-  apt install jq
+  sudo apt install jq
 fi

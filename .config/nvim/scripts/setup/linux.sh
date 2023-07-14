@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-apt-get install ninja-build
+sudo apt install ninja-build
 
 # Language Servers
 # ----------------

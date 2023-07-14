@@ -20,7 +20,7 @@ for i in "${cli_tools_to_install[@]}"; do
     if [[ $IS_MAC == 1 ]]; then
       brew install $i
     else
-      apt install $i
+      sudo apt install $i
     fi
 
     log_end "$i"
