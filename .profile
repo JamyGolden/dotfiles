@@ -1,7 +1,9 @@
 # This file is specifically for Linux intellij which doesn't load zsh
 # when executing tests
 
-eval "$(direnv hook bash)"
+if [ "$(command -v 'direnv')" ]; then
+  eval "$(direnv hook bash)"
+fi
 
 z_dotfiles_path="$HOME"/.config/zsh
 
