@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+if [[ $IS_MAC == 1 ]]; then
+  brew install nvim
+else
+  if [ "$(command -v 'nvim ')" ]; then
+  	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+    chmod u+x nvim.appimage
+    mv ./nvim.appimage "$HOME/.local/bin/nvim"
+  fi
+fi
