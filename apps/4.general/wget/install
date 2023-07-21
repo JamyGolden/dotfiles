@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+if [[ "$OS_TYPE" == "mac" ]; then
+  log_begin "wget"
+
+  brew install wget
+
+  log_end "wget"
+fi
