@@ -1,3 +1,3 @@
-if [ -f "$ZDOTDIR/.z_secrets" ]; then
+if [ -s "$ZDOTDIR/.z_secrets" ]; then
   . "$ZDOTDIR/.z_secrets"
 fi

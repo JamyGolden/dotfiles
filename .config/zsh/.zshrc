@@ -15,7 +15,7 @@ done
 
 unset app_rc_file
 
-if [ -f "$ZDOTDIR/.zsh_secrets" ]; then
+if [ -s "$ZDOTDIR/.zsh_secrets" ]; then
   . "$ZDOTDIR/.zsh_secrets"
 fi
 

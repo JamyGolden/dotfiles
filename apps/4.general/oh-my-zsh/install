@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+log_begin "ohmyzsh"
+
 if [ ! -d "$XDG_CONFIG_HOME/oh-my-zsh" ]; then
   log_begin "oh-my-zsh"
 
@@ -25,3 +27,5 @@ for i in "${ohmyzsh_plugins[@]}"; do
     log_end "$plugin_name"
   fi
 done
+
+log_end "ohmyzsh"

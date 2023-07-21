@@ -7,7 +7,7 @@ fi
 
 z_dotfiles_path="$HOME"/.config/zsh
 
-if [ -f "$z_dotfiles_path/.z_secrets" ]; then
+if [ -s "$z_dotfiles_path/.z_secrets" ]; then
   . "$z_dotfiles_path/.z_secrets"
 fi
 

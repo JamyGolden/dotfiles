@@ -1,7 +1,11 @@
 #!/usr/bin/env zsh
 
 if [ "$(command -v 'sdk')" ]; then
+  log_begin "gradle"
+
   sdk install gradle
+
+  log_end "gradle"
 else
   echo "gradle can't be installed because sdk does not exist."
 fi

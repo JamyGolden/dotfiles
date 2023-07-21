@@ -1,11 +1,16 @@
 #!/usr/bin/env zsh
 
 # jq is used to parse data to facilitate this repos app installs
+if [[ -z "$(command -v 'jq')" ]]; then
+  log_begin "jq"
 
-if [[ "$OS_TYPE" == "mac" ]]; then
-  brew install jq
-elif [[ "$OS_TYPE" == "debian" ]]; then
-  sudo apt install jq
-else
-  echo "jq install not supported by OS."
+  if [[ "$OS_TYPE" == "mac" ]]; then
+    brew install jq
+  elif [[ "$OS_TYPE" == "debian" ]]; then
+    sudo apt install jq
+  else
+    echo "'jq' install not supported by OS."
+  fi
+
+  log_end "jq"
 fi

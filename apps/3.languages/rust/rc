@@ -14,4 +14,4 @@ if [[ -d "$HOME/.cargo" && -n "$XDG_DATA_HOME" && ! -d "$XDG_DATA_HOME/cargo" ]]
   fi
 fi
 
-[ -f "$XDG_DATA_HOME/cargo/env" ] && source $XDG_DATA_HOME/cargo/env
+[ -s "$XDG_DATA_HOME/cargo/env" ] && source $XDG_DATA_HOME/cargo/env

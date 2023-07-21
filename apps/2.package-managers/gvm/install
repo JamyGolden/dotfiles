@@ -2,6 +2,8 @@
 
 # Requirements
 # ------------
+log_begin "gvm"
+
 if [[ "$OS_TYPE" == "mac" ]]; then
   brew install mecurial
 elif [[ "$OS_TYPE" == "debian" ]]; then
@@ -18,8 +20,10 @@ fi
 
 # gvm
 # ---
-if [[ -z $(command -v "go") && ! -f "$HOME/.gvm/scripts/gvm" ]]; then
+if [[ -z "$(command -v 'go')" && ! -f "$HOME/.gvm/scripts/gvm" ]]; then
   bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
 
   . "$HOME/.gvm/scripts/gvm"
 fi
+
+log_end "gvm"

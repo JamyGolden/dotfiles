@@ -12,7 +12,7 @@ export XDG_BIN_HOME="$HOME/.local/bin" # Not officially in the spec
 
 if [[ $(uname -s) == "Darwin"* ]]; then
   export OS_TYPE="mac"
-elif [ -f "/etc/debian_version" ]; then
+elif [ -s "/etc/debian_version" ]; then
   export OS_TYPE="debian"
 else
   export OS_TYPE="unknown"

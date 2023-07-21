@@ -6,7 +6,7 @@ gvm_script_path="$HOME/.gvm/scripts/gvm"
 # in an exports file
 export GOROOT_BOOTSTRAP="$GOROOT"
 
-if [ -f $gvm_script_path ]; then
+if [ -s $gvm_script_path ]; then
   . "$gvm_script_path"
 fi
 

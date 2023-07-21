@@ -1,9 +1,9 @@
 #!/usr/bin/env zsh
 
-if [ -z $(command -v "yarn") ]; then
-  log_begin "Yarn"
+if [ -z "$(command -v 'yarn')" ]; then
+  log_begin "yarn"
 
   npm i -g yarn
 
-  log_end "Yarn"
+  log_end "yarn"
 fi

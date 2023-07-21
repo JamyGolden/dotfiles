@@ -20,7 +20,7 @@ kp() {
 
   if [ -z "$1" ]; then
     echo "You need to specify a port to kill. '$ ps aux | less' or '$ procs' to view running ports."
-    return
+    return 0
   fi
 
   # If arg is a valif port
@@ -70,7 +70,7 @@ gcb() {
 
   if [ -z "$branches" ]; then
     echo "There are no branches to delete"
-    return
+    return 0
   fi
 
   echo $branches | xargs git branch -d
@@ -85,7 +85,7 @@ grho() {
   if [ -n "$(git status | grep 'modified')" ]; then
     echo "This will reset your unstaged files. Please first stash your files."
     git st
-    return
+    return 0
   fi
 
   # Don't checkout to primary branch if git is already there

@@ -2,7 +2,7 @@
 
 # https://github.com/ajeetdsouza/zoxide
 
-if [ -f "$XDG_DATA_HOME/cargo/bin/zoxide" ]; then
+if [ -s "$XDG_DATA_HOME/cargo/bin/zoxide" ]; then
   eval "$(zoxide init zsh)"
 fi
 

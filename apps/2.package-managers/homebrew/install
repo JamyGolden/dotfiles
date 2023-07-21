@@ -1,9 +1,13 @@
 #!/usr/bin/env zsh
 
 if [[ "$OS_TYPE" == "mac" ]]; then
-  if [ -z $(command -v "brew") ]; then
+  log_begin "Homebrew"
+
+  if [ -z "$(command -v 'brew')" ]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   fi
 
   brew update
+
+  log_end "Hombrew"
 fi

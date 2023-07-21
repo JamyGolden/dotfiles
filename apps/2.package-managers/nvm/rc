@@ -13,4 +13,3 @@ if [ -n "$ZSH_VERSION" ]; then
   # This loads nvm zsh_completion
   [ -s "$NVM_DIR/zsh_completion" ] && \. "$NVM_DIR/zsh_completion"
 fi
-

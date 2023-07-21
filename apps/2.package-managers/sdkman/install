@@ -1,5 +1,9 @@
 #!/usr/bin/env zsh
 
 if [[ "$OS_TYPE" != "mac" ]]; then
+  log_begin "sdkman"
+
   curl -s "https://get.sdkman.io" | bash
+
+  log_end "sdkman"
 fi

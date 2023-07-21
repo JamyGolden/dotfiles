@@ -1,10 +1,9 @@
 #!/usr/bin/env zsh
 
-if [ -z $(command -v "node") ]; then
+if [ -z "$(command -v 'node')" ]; then
   log_begin "Node"
 
   nvm install node
 
-  log_begin "Node"
+  log_end "Node"
 fi
-
