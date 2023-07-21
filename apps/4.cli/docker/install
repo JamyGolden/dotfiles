@@ -1,7 +1,9 @@
 #!/usr/bin/env zsh
 
-# Mac
-# ---
+if [[ -n "$(command -v 'docker')" ]]; then
+  return 0
+fi
+
 log_begin "docker"
 
 if [[ "$OS_TYPE" == "mac" ]]; then

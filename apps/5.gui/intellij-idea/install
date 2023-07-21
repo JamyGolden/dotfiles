@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+log_begin "intellij-idea"
+
 if [[ "$OS_TYPE" == "mac" ]]; then
   brew install intellij-idea
 elif [[ "$OS_TYPE" == "debian" ]]; then
@@ -17,5 +19,7 @@ elif [[ "$OS_TYPE" == "debian" ]]; then
 
   unset applications_path jetbrains_product_code
 else
-  echo "Intellij install not supported by OS."
+  echo "'intellij-idea' install not supported by OS."
 fi
+
+log_end "intellij-idea"

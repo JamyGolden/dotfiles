@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+log_begin "alacritty"
+
 if [[ "$OS_TYPE" == "mac" ]]; then
   brew install alacritty
 elif [[ "$OS_TYPE" == "debian" ]]; then
@@ -24,5 +26,7 @@ elif [[ "$OS_TYPE" == "debian" ]]; then
   rm -r $install_path
   unset install_path
 else
-  echo "Alacritty install not supported by OS."
+  echo "'alacritty' install not supported by OS."
 fi
+
+log_end "alacritty"
