@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+if [[ -z "$(command -v 'procs')" ]]; then
+  log_begin "procs"
+
+  cargo install procs
+
+  log_end "procs"
+fi

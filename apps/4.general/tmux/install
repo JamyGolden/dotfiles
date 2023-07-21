@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+
+if [[ -z "$(command -v 'tmux')" ]]; then
+  log_begin "tmux"
+
+  if [[ "$OS_TYPE" == "mac" ]]; then
+    brew install tmux
+  elif [[ "$OS_TYPE" == "debian" ]]; then
+    sudo apt install tmux
+  else
+    echo "'tmux' install not supported by OS."
+  fi
+
+  log_end "tmux"
+fi

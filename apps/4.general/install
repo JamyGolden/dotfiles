@@ -3,41 +3,6 @@
 # These apps are installed in a typical and common way so it's easier to
 # group them than to have seperate directories for each app
 
-# CLI tools
-# ---------
-
-cli_tools_to_install=(
-  "direnv"
-  "jq"
-  "rename"
-  "tmux"
-  "trash-cli"
-)
-for i in "${cli_tools_to_install[@]}"; do
-  if [[ -z "$(command -v $i)" ]]; then
-    log_begin "$i"
-
-    if [[ "$OS_TYPE" == "mac" ]]; then
-      brew install $i
-    elif [[ "$OS_TYPE" == "debian" ]]; then
-      sudo apt install $i
-    fi
-
-    log_end "$i"
-  fi
-done
-
-cargo_tools_to_install=("exa" "bat" "procs" "ripgrep")
-for i in "${cargo_tools_to_install[@]}"; do
-  if [[ -z "$(command -v $i)" ]]; then
-    log_begin "$1"
-
-    cargo install $i
-
-    log_end "$1"
-  fi
-done
-
 # GUI apps
 # --------
 
