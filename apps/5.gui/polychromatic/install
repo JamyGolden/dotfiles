@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+
+if [[ "$OS_TYPE" == "debian" ]]; then
+  log_begin "polychromatic"
+
+  sudo add-apt-repository ppa:polychromatic/stable
+  sudo apt update
+
+  # Full installation
+  sudo apt install polychromatic
+
+  log_end "polychromatic"
+fi
