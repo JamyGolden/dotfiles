@@ -42,6 +42,17 @@ log_end() {
 # We need XDG paths and $DOTFILES_REPO_PATH
 source .zshenv
 
+# Set architecture type to install correct binaries
+ARCH_TYPE="$(uname -m)"
+if [ "$ARCH_TYPE" == "x86_64" ]; then
+  ARCH_TYPE=x86_64
+elif [[ "$ARCH" == aarch* ]]; then
+  ARCH_TYPE=arm64
+else
+  echoerr "unsupported arch: $ARCH"
+  exit 1
+fi
+
 # ---------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------
