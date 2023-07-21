@@ -18,8 +18,9 @@ if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
   exit 0
 fi
 
-if ! tmux has-session -t $selected_name 2> /dev/null; then
+if [[ ! "$(tmux has-session -t $selected_name 2> /dev/null)" ]]; then
   editor_window_name="$EDITOR"
+  editor_window_name="${editor_window_name/*\//}" # Get binary name from path
 
   tmux new-session -d -s $selected_name -n $editor_window_name -c $selected_path # Create initial window
   tmux send-keys -t $selected_name:$editor_window_name.0 "$EDITOR ." Enter # Open nvim
