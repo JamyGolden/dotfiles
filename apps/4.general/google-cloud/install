@@ -1,3 +1,22 @@
 #!/usr/bin/env zsh
 
-echo "You should manually install google-cloud-cli: https://cloud.google.com/sdk/docs/install-sdk"
+if [[ "$OS_TYPE" == "debian" ]; then
+  log_begin "google cloud cli"
+
+  sudo apt-get install apt-transport-https ca-certificates gnupg curl sudo
+
+  # Add google cloud key
+  echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+  sudo curl -fsSLo /usr/share/keyring/cloud.google.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+
+  # add kubectl key
+  echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+  sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+
+  sudo apt update
+  sudo apt install google-cloud-cli kubectl
+
+  log_end "google cloud cli"
+else
+  echo "You should manually install google-cloud-cli: https://cloud.google.com/sdk/docs/install-sdk"
+fi

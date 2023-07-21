@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+expect_exists "$(command -v 'gcloud')" "gcloud"
+expect_exists "$(command -v 'kubectl')" "kubectl"
