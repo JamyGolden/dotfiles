@@ -112,8 +112,8 @@ $ ./install_post.sh # Postinstall
 
 ## Tests
 
-Run `.config/zsh/.z_tests` to test your zsh setup to ensure it's running
-correctly.
+After everything is installed, run `./z_tests` in your shell to test
+your zsh setup to ensure it's running correctly.
 
 [Zsh]: https://zsh.sourceforge.io/
 [OhMyZsh]: https://ohmyz.sh/
