@@ -3,7 +3,7 @@
 if [[ "$OS_TYPE" == "mac" ]]; then
   brew install nvim
 else
-  install_path="$HOME/.local/bin/nvim"
+  install_path="$XDG_BIN_HOME/nvim"
 
   if [ -z "$install_path" ]; then
   	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage

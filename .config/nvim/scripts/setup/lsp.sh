@@ -40,7 +40,7 @@ if [[ "$OS_TYPE" == "debian" ]]; then
   sudo apt install ninja-build
   # Language Servers
   # ----------------
-  path_local_scripts="$HOME/.local/bin"
+  path_local_scripts="$XDG_BIN_HOME"
   path_lsp_repos="$HOME/projects/lsp"
 
   mkdir -p $path_lsp_repos

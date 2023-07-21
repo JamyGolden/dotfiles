@@ -3,8 +3,7 @@
 # PATH specific
 # -------------
 path_dirs=(
-  "$HOME/.local/bin"
-  "$HOME/bin"
+  "$XDG_BIN_HOME"
   "/usr/local/bin"
 )
 

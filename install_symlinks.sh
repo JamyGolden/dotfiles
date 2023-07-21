@@ -55,5 +55,5 @@ fi
 
 # General scripts on $PATH
 # ------------------------
-mkdir -p "$HOME/.local/bin"
+mkdir -p "$XDG_BIN_HOME"
 symlink_to_home ".local/bin/parallel-commands"
