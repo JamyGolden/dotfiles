@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+if [[ -z "$(command -v 'btm')" ]]; then
+  log_begin "btm"
+
+  cargo install bottom --locked
+
+  log_end "btm"
+fi
