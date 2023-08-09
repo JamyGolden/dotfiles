@@ -1,10 +1,33 @@
-local keymaps = require 'jamygolden/utils/keymaps'
-local nmap = keymaps.nmap
+local function add_file()
+  require("harpoon.mark").add_file()
+end
 
------------------------------------------------------------------------
--- Keymaps
------------------------------------------------------------------------
-nmap('<Leader>aa', ':lua require("harpoon.mark").add_file()<CR>')
-nmap('<Leader>af', ':lua require("harpoon.ui").toggle_quick_menu()<CR>')
-nmap('<Leader>an', ':lua require("harpoon.ui").nav_next()<CR>')
-nmap('<Leader>aN', ':lua require("harpoon.ui").nav_prev()<CR>')
+local function toggle_quick_menu()
+  require("harpoon.ui").toggle_quick_menu()
+end
+
+local function nav_next()
+  require("harpoon.ui").nav_next()
+end
+
+local function nav_prev()
+  require("harpoon.ui").nav_prev()
+end
+
+local mappings = {
+  { "<leader>aa", add_file, desc = "Harpoon - Add Mark" },
+  { "<leader>af", toggle_quick_menu, desc = "Harpoon - Toggle menu" },
+  { "<leader>an", nav_next, desc = "Harpoon - Next" },
+  { "<leader>aN", nav_prev, desc = "Harpoon - Prev" },
+}
+
+local M = {
+  "ThePrimeagen/harpoon",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+  },
+  event = "VeryLazy",
+  keys = mappings,
+}
+
+return M

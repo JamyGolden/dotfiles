@@ -1,4 +1,10 @@
+local paths = require 'jamygolden/utils/paths'
 local opt = vim.opt
+
+-- This file is automatically loaded by plugins.core
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+vim.g.maplocalleader = "\\"
 
 -----------------------------------------------------------------------
 -- General
@@ -30,3 +36,6 @@ opt.number = true -- line numbers and distances
 opt.undolevels = 1000 -- Number of undo levels
 opt.undofile = true
 opt.relativenumber = true
+opt.undodir=paths.undo_dir .. '/' -- Persistent undo
+opt.directory=paths.swp_dir .. '/' -- swp file tmp storage
+opt.backupdir=paths.backup_dir .. '/' -- backup file tmp storage

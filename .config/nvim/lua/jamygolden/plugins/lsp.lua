@@ -1,30 +1,15 @@
-local cmd = vim.cmd
-local lspconfig = require('lspconfig')
-local keymaps = require 'jamygolden/utils/keymaps'
-local mason = require('mason')
-local mason_lspconfig = require('mason-lspconfig')
-local cmp_nvim_lsp = require('cmp_nvim_lsp')
-local nmap = keymaps.nmap
+local lsp_flags = {
+  -- This is the default in Nvim 0.7+
+  debounce_text_changes = 150,
+}
 
------------------------------------------------------------------------
--- Setup
------------------------------------------------------------------------
-mason.setup()
-mason_lspconfig.setup()
-
--- Mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap=true, silent=true }
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
-
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  if client.name == "tsserver" or client.name == "lua_ls"  then
+    client.server_capabilities.documentFormattingProvider = false
+  end
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -46,116 +31,193 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
--- Code completion setup
-local capabilities = cmp_nvim_lsp.default_capabilities()
-
-local lsp_flags = {
-  -- This is the default in Nvim 0.7+
-  debounce_text_changes = 150,
-}
-
--- lua
-lspconfig.lua_ls.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-  flags = lsp_flags,
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file('', true),
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
+return {
+  -----------------------------------------------------------------------
+  -- LSP
+  -----------------------------------------------------------------------
+  {
+    "williamboman/mason.nvim",
+    event = "BufReadPre",
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    event = "BufReadPre",
+    dependencies = {
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-cmdline",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-path",
+      "hrsh7th/nvim-cmp",
+      "neovim/nvim-lspconfig",
     },
+    keys = {
+      {'<leader>n', function() vim.diagnostic.goto_next() end , desc = 'Go to next error' },
+      {'<leader>N', function() vim.diagnostic.goto_prev() end , desc = 'Go to next error' },
+    },
+    config = function()
+      local lspconfig = require('lspconfig')
+      local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+      local servers = {
+        "kotlin_language_server",
+        "rust_analyzer",
+        "jsonls",
+        "tsserver",
+      }
+
+      for _, lsp in pairs(servers) do
+        lspconfig[lsp].setup({
+          capabilities = capabilities,
+          flags = lsp_flags,
+          on_attach = on_attach,
+        })
+      end
+
+      -- lua
+      lspconfig.lua_ls.setup {
+        capabilities = capabilities,
+        on_attach = on_attach,
+        flags = lsp_flags,
+        settings = {
+          Lua = {
+            runtime = {
+              -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+              version = 'LuaJIT',
+            },
+            diagnostics = {
+              -- Get the language server to recognize the `vim` global
+              globals = {'vim'},
+            },
+            workspace = {
+              -- Make the server aware of Neovim runtime files
+              library = vim.api.nvim_get_runtime_file('', true),
+              checkThirdParty = false,
+            },
+            -- Do not send telemetry data containing a randomized but unique identifier
+            telemetry = {
+              enable = false,
+            },
+          },
+        },
+      }
+
+      -- stylelint
+      lspconfig.stylelint_lsp.setup {
+        capabilities = capabilities,
+        on_attach = on_attach,
+        flags = lsp_flags,
+        filetypes = { "css" },
+        settings = {
+          stylelintplus = {
+            autoFixOnSave = true,
+            autoFixOnFormat = true
+          }
+        },
+      }
+
+      -- eslint
+      lspconfig.eslint.setup {
+        capabilities = capabilities,
+        on_attach = function(client, bufnr)
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = bufnr,
+            command = "EslintFixAll",
+          })
+          on_attach(client, bufnr)
+        end,
+        flags = lsp_flags,
+        settings = {
+          filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx', 'vue' },
+          eslint = {
+            alwaysShowStatus = true,
+            autoFixOnSave = true,
+            debug = true,
+            format = {
+              enable = true,
+            },
+            packageManager = 'yarn',
+            run = 'onSave',
+            trace = {
+              server = 'verbose',
+            },
+            validate = {
+              'javascript',
+              'javascriptreact',
+              'typescript',
+              'typescriptreact',
+            },
+          }
+        }
+      }
+    end
+  },
+
+  -----------------------------------------------------------------------
+  -- Completion
+  -----------------------------------------------------------------------
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-nvim-lua",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-cmdline",
+      "saadparwaiz1/cmp_luasnip",
+      "L3MON4D3/LuaSnip",
+    },
+    config = function()
+      local cmp = require("cmp")
+
+      cmp.setup({
+        snippet = {
+          expand = function(args)
+            require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+          end,
+        },
+        mapping = cmp.mapping.preset.insert({
+          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-f>'] = cmp.mapping.scroll_docs(4),
+          ['<C-Space>'] = cmp.mapping.complete(),
+          ['<C-e>'] = cmp.mapping.abort(),
+          ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        }),
+        sources = cmp.config.sources({
+          { name = 'nvim_lsp' },
+          { name = 'nvim_lua' },
+          { name = 'luasnip' }, -- For luasnip users.
+        }, {
+          { name = 'buffer' },
+          { name = 'path' },
+        })
+      })
+
+      -- Set configuration for specific filetype.
+      cmp.setup.filetype('gitcommit', {
+        sources = cmp.config.sources({
+          { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+        }, {
+          { name = 'buffer' },
+        })
+      })
+
+      -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+      cmp.setup.cmdline({ '/', '?' }, {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+          { name = 'buffer' }
+        }
+      })
+
+      -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+      cmp.setup.cmdline(':', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+          { name = 'path' }
+        }, {
+          { name = 'cmdline' }
+        })
+      })
+    end
   },
 }
-
--- kotlin
-lspconfig.kotlin_language_server.setup{
-  capabilities = capabilities,
-  on_attach = on_attach,
-  flags = lsp_flags,
-}
-
--- rust
-lspconfig.rust_analyzer.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-  flags = lsp_flags,
-}
-
--- tsserver
-lspconfig.tsserver.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-  flags = lsp_flags,
-}
-
--- stylelint
--- vim.cmd([[autocmd BufWritePre *.css lua vim.lsp.buf.formatting_sync()]])
-lspconfig.stylelint_lsp.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-  flags = lsp_flags,
-  filetypes = { 'css' },
-  settings = {
-    stylelintplus = {
-      autoFixOnSave = true,
-      autoFixOnFormat = true
-   }
-  }
-}
-
--- eslint
-cmd([[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll]])
-lspconfig.eslint.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-  flags = lsp_flags,
-  settings = {
-    filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx', 'vue' },
-    eslint = {
-      alwaysShowStatus = true,
-      autoFixOnSave = true,
-      debug = true,
-      format = {
-        enable = true,
-      },
-      packageManager = 'yarn',
-      run = 'onSave',
-      trace = {
-        server = 'verbose',
-      },
-      validate = {
-        'javascript',
-        'javascriptreact',
-        'typescript',
-        'typescriptreact',
-      },
-    }
-  }
-}
-
--- json
-lspconfig.jsonls.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-  flags = lsp_flags,
-}
-
------------------------------------------------------------------------
--- Keymaps
------------------------------------------------------------------------
-nmap('<Leader>n', ':lua vim.diagnostic.goto_next()<cr>')
-nmap('<Leader>N', ':lua vim.diagnostic.goto_prev()<cr>')

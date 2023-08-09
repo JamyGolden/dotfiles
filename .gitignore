@@ -1,6 +1,8 @@
 .config/nvim/plugin
 .config/nvim/colors
 .config/tmux/plugins
+.config/nvim/lazy-lock.json
+.config/nvim/lua/.luarc.json
 .config/zsh/.zsh_secrets
 .config/zsh/.z_secrets
 .config/zsh/.zsh_sessions
