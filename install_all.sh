@@ -57,7 +57,7 @@ fi
 # CLI
 # ---------------------------------------------------------------------
 
-for app_path in $(find "$DOTFILES_REPO_PATH/apps" -type f -name 'install' | sort); do
+for app_path in $(find "$DOTFILES_REPO_PATH/apps" -type f -name "install" | sort); do
   . "$app_path"
 done
 

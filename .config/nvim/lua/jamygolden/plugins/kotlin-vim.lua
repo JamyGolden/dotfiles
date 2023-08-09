@@ -1,3 +1,3 @@
 return {
-  'udalov/kotlin-vim'
+  "udalov/kotlin-vim"
 }

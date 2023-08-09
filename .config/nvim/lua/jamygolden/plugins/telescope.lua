@@ -1,45 +1,45 @@
 local find_git_files = function()
-  require('telescope.builtin').git_files({ show_untracked = true })
+  require("telescope.builtin").git_files({ show_untracked = true })
 end
 
 local find_files = function()
-  require('telescope.builtin').find_files()
+  require("telescope.builtin").find_files()
 end
 
 local live_grep = function()
-  require('telescope.builtin').live_grep()
+  require("telescope.builtin").live_grep()
 end
 
 local resume_search = function()
-  require('telescope.builtin').resume()
+  require("telescope.builtin").resume()
 end
 
 local grep_open_file = function()
-  require('telescope.builtin').live_grep({ grep_open_files = true })
+  require("telescope.builtin").live_grep({ grep_open_files = true })
 end
 
 local find_buffers = function()
-  require('telescope.builtin').buffers()
+  require("telescope.builtin").buffers()
 end
 
 local help_pages = function()
-  require('telescope.builtin').help_tags()
+  require("telescope.builtin").help_tags()
 end
 
 local grep_current_buffer = function()
-  require('telescope.builtin').current_buffer_fuzzy_find()
+  require("telescope.builtin").current_buffer_fuzzy_find()
 end
 
 local search_git_branches = function()
-  require('telescope.builtin').git_branches()
+  require("telescope.builtin").git_branches()
 end
 
 local search_git_commits = function()
-  require('telescope.builtin').git_commits()
+  require("telescope.builtin").git_commits()
 end
 
 local search_git_status = function()
-  require('telescope.builtin').git_status()
+  require("telescope.builtin").git_status()
 end
 -- local trouble = require("trouble.providers.telescope")
 
@@ -59,7 +59,7 @@ return {
   },
   opts = {
     defaults = {
-      file_ignore_patterns = { 'node_modules/', '.git/', 'dist/', 'build/', '.yarn' },
+      file_ignore_patterns = { "node_modules/", ".git/", "dist/", "build/", ".yarn" },
     },
     pickers = {
       find_files = {
@@ -83,7 +83,7 @@ return {
     { "<leader>fh", help_pages, desc = "Help Pages" },
     { "<leader>f/", grep_current_buffer, desc = "Buffer" },
 
-    -- Using the `<leader>g` namespace because it's conceptially vim related
+    -- Using the `<leader>g` namespace because it"s conceptially vim related
     { "<leader>gst", search_git_status, desc = "Git Status" },
     { "<leader>gbr", search_git_branches, desc = "Git Branches" },
     { "<leader>gc", search_git_commits, desc = "Git Commits" },

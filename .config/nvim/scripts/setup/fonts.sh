@@ -31,7 +31,7 @@ if [ "${#fonts}" -eq 0 ]; then
   exit 0
 fi;
 
-version='3.0.2'
+version="3.0.2"
 fonts_dir="$XDG_DATA_HOME/fonts"
 
 if [ ! -d "$fonts_dir" ]; then
@@ -48,7 +48,7 @@ for font in "${fonts[@]}"; do
 done
 
 # Remove unwanted files
-find "$fonts_dir" -name '*Windows Compatible*' -delete
+find "$fonts_dir" -name "*Windows Compatible*" -delete
 rm "$fonts_dir/LICENSE"
 rm "$fonts_dir/readme.md"
 

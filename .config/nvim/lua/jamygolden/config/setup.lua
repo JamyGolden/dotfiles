@@ -1,4 +1,4 @@
-local paths = require 'jamygolden/utils/paths'
+local paths = require("jamygolden/utils/paths")
 local opt = vim.opt
 local fn = vim.fn
 
@@ -7,9 +7,9 @@ local fn = vim.fn
 -----------------------------------------------------------------------
 local function create_dir(path)
   if not fn.isdirectory(path) then
-    print('creating directory: ' .. path)
-    os.execute('mkdir -p ' .. path)
-    os.execute('chmod 0770 ' .. path)
+    print("creating directory: " .. path)
+    os.execute("mkdir -p " .. path)
+    os.execute("chmod 0770 " .. path)
   end
 end
 
@@ -22,7 +22,7 @@ create_dir(paths.undo_dir)
 -----------------------------------------------------------------------
 -- Fonts
 -----------------------------------------------------------------------
-if not vim.fn.has('mac') then
+if not vim.fn.has("mac") then
   local font_name = os.getenv("FONT_NAME")
   local font_filename = "Fira Mono Regular Nerd Font Complete.otf"
 

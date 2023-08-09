@@ -14,4 +14,4 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.maplocalleader = "\\"
 
-require('lazy').setup('jamygolden/plugins')
+require("lazy").setup("jamygolden/plugins")

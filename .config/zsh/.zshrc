@@ -9,7 +9,7 @@ source $ZSH/oh-my-zsh.sh
 . "$ZDOTDIR/.zsh_exports"
 . "$ZDOTDIR/.zsh_functions"
 
-for app_rc_file in $(find "$DOTFILES_REPO_PATH/apps" -type f -name 'rc' | sort); do
+for app_rc_file in $(find "$DOTFILES_REPO_PATH/apps" -type f -name "rc" | sort); do
   . "$app_rc_file"
 done
 

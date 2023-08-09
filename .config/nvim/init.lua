@@ -1,1 +1,1 @@
-require('jamygolden/init')
+require("jamygolden/init")

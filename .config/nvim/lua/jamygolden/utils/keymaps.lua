@@ -1,4 +1,4 @@
-local table_utils = require('jamygolden/utils/table')
+local table_utils = require("jamygolden/utils/table")
 local keymap = vim.keymap
 local mergeTables = table_utils.merge
 

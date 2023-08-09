@@ -82,7 +82,7 @@ expect_export() {
 }
 
 # Run all test files
-for app_test_file in $(find "./apps" -type f -name 'tests' | sort); do
+for app_test_file in $(find "./apps" -type f -name "tests" | sort); do
   . $app_test_file
 done
 

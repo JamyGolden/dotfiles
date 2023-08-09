@@ -16,7 +16,7 @@ find_replace () {
 
 # Kill port
 kp() {
-  port_re='^[0-9]{4}$'
+  port_re="^[0-9]{4}$"
 
   if [ -z "$1" ]; then
     echo "You need to specify a port to kill. '$ ps aux | less' or '$ procs' to view running ports."
@@ -53,9 +53,9 @@ kp() {
 # Git Primary BRanch - returns `master` or `main`
 gpbr() {
   if [ -n "$(git branch | grep main)" ]; then
-    echo 'main'
+    echo "main"
   elif [ -n "$(git branch | grep master)" ]; then
-    echo 'master'
+    echo "master"
   fi
 }
 
@@ -117,12 +117,12 @@ gbrr() {
   refbranch=${1:-origin/$primary_branch_name}
   count=$2
 
-  git for-each-ref --sort=-committerdate refs/heads --format='%(refname:short)|%(HEAD)%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)' --color=always --count=${count:-20} | while read line;
-  do branch=$(echo "$line" | awk 'BEGIN { FS = "|" }; { print $1 }' | tr -d '*');
+  git for-each-ref --sort=-committerdate refs/heads --format="%(refname:short)|%(HEAD)%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)" --color=always --count=${count:-20} | while read line;
+  do branch=$(echo "$line" | awk 'BEGIN { FS = "|" }; { print $1 }' | tr -d "*");
     ahead=$(git rev-list --count "$refbranch..$branch");
     behind=$(git rev-list --count "$branch..$refbranch");
     colorline=$(echo "$line" | sed 's/^[^|]*|//');
 
-    echo "$ahead|$behind|$colorline" | awk -F'|' -vOFS='|' '{$5=substr($5,1,70)}1';
+    echo "$ahead|$behind|$colorline" | awk -F"|" -vOFS="|" "{\$5=substr(\$5,1,70)}1";
   done | ( echo "ahead|behind|branch|age|lastcommit|author\n" && cat) | column -ts'|';
 }

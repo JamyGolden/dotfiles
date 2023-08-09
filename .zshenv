@@ -18,7 +18,7 @@ else
   export OS_TYPE="unknown"
 fi
 
-for app_env_file in $(find "$DOTFILES_REPO_PATH/apps" -type f -name 'env' | sort); do
+for app_env_file in $(find "$DOTFILES_REPO_PATH/apps" -type f -name "env" | sort); do
   . "$app_env_file"
 done
 

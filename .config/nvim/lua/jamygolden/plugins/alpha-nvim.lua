@@ -1,7 +1,7 @@
 local function setup()
   local alphaPresent, alpha = pcall(require, "alpha")
-  local quotes = require('jamygolden/utils/quotes')
-  local tableUtils = require('jamygolden/utils/table')
+  local quotes = require("jamygolden/utils/quotes")
+  local tableUtils = require("jamygolden/utils/table")
   local get_table_length = tableUtils.get_length
 
   if not (alphaPresent) then
@@ -181,7 +181,7 @@ end
 return {
   "goolord/alpha-nvim",
   dependencies = {
-    { "nvim-tree/nvim-web-devicons" },
+    "nvim-tree/nvim-web-devicons",
   },
   config = function()
     setup()
