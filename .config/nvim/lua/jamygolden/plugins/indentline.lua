@@ -1,4 +1,3 @@
--- Visually represent initial line space tabs
   return {
     "Yggdroot/indentLine",
     config = function()

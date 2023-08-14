@@ -1,4 +1,11 @@
-local function setup()
+local M = {
+  "goolord/alpha-nvim",
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+  },
+}
+
+function M.config()
   local alphaPresent, alpha = pcall(require, "alpha")
   local quotes = require("jamygolden/utils/quotes")
   local tableUtils = require("jamygolden/utils/table")
@@ -178,12 +185,4 @@ local function setup()
   alpha.setup(opts)
 end
 
-return {
-  "goolord/alpha-nvim",
-  dependencies = {
-    "nvim-tree/nvim-web-devicons",
-  },
-  config = function()
-    setup()
-  end
-}
+return M

@@ -1,3 +1,35 @@
+local M = {
+  "nvim-telescope/telescope.nvim",
+  commit = vim.fn.has("nvim-0.9.0") == 0 and "057ee0f8783" or nil,
+  cmd = "Telescope",
+  version = false, -- telescope did only one release, so use HEAD for now
+  event = "VeryLazy",
+  dependencies = {
+    "nvim-telescope/telescope-fzf-native.nvim",
+    "nvim-lua/plenary.nvim",
+    build = "make",
+    config = function()
+      require("telescope").load_extension("fzf")
+    end,
+  },
+  opts = {
+    defaults = {
+      file_ignore_patterns = { "node_modules/", ".git/", "dist/", "build/", ".yarn" },
+    },
+    pickers = {
+      find_files = {
+        hidden = true
+      },
+      live_grep = {
+        additional_args = function()
+          return { "--hidden" }
+        end
+      },
+      find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
+    },
+  },
+}
+
 local find_git_files = function()
   require("telescope.builtin").git_files({ show_untracked = true })
 end
@@ -41,39 +73,8 @@ end
 local search_git_status = function()
   require("telescope.builtin").git_status()
 end
--- local trouble = require("trouble.providers.telescope")
 
-return {
-  "nvim-telescope/telescope.nvim",
-  commit = vim.fn.has("nvim-0.9.0") == 0 and "057ee0f8783" or nil,
-  cmd = "Telescope",
-  version = false, -- telescope did only one release, so use HEAD for now
-  event = "VeryLazy",
-  dependencies = {
-    "nvim-telescope/telescope-fzf-native.nvim",
-    "nvim-lua/plenary.nvim",
-    build = "make",
-    config = function()
-      require("telescope").load_extension("fzf")
-    end,
-  },
-  opts = {
-    defaults = {
-      file_ignore_patterns = { "node_modules/", ".git/", "dist/", "build/", ".yarn" },
-    },
-    pickers = {
-      find_files = {
-        hidden = true
-      },
-      live_grep = {
-        additional_args = function()
-          return { "--hidden" }
-        end
-      },
-      find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
-    },
-  },
-  keys = {
+M.keys = {
     { "<leader>k", find_git_files, desc = "Find Git Files (root dir)" },
     { "<leader>fk", find_files, desc = "Find Files (root dir)"},
     { "<leader>ff", live_grep, desc = "Grep (root dir)" },
@@ -82,10 +83,6 @@ return {
     { "<leader>fb", find_buffers, desc = "Find Files in Buffer" },
     { "<leader>fh", help_pages, desc = "Help Pages" },
     { "<leader>f/", grep_current_buffer, desc = "Buffer" },
-
-    -- Using the `<leader>g` namespace because it"s conceptially vim related
-    { "<leader>gst", search_git_status, desc = "Git Status" },
-    { "<leader>gbr", search_git_branches, desc = "Git Branches" },
-    { "<leader>gc", search_git_commits, desc = "Git Commits" },
-  },
 }
+
+return M
