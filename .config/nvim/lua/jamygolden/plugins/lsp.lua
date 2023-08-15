@@ -152,15 +152,31 @@ return {
   -- Completion
   -----------------------------------------------------------------------
   {
+    "L3MON4D3/LuaSnip",
+    dependencies = { "rafamadriz/friendly-snippets" },
+    config = function()
+      require("luasnip.loaders.from_vscode").lazy_load() -- Load default snippets
+      require("luasnip.loaders.from_vscode").lazy_load({ -- Load my snippets
+        paths = { "./lua/jamygolden/snippets" }
+      })
+    end
+  },
+  {
     "hrsh7th/nvim-cmp",
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-nvim-lua",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-cmdline",
-      "saadparwaiz1/cmp_luasnip",
-      "L3MON4D3/LuaSnip",
+      { "hrsh7th/cmp-nvim-lsp" },
+      { "hrsh7th/cmp-nvim-lua" },
+      { "hrsh7th/cmp-buffer" },
+      { "hrsh7th/cmp-path" },
+      { "hrsh7th/cmp-cmdline" },
+      {
+        "saadparwaiz1/cmp_luasnip",
+        dependencies = { "L3MON4D3/LuaSnip", "rafamadriz/friendly-snippets"}
+      },
+    },
+    keys = {
+      { "<Tab>", function() require("luasnip").jump(1) end, desc = "Jump ahead (Luasnip)" },
+      { "<S-Tab>", function() require("luasnip").jump(-1) end, desc = "Jump backwards (Luasnip)" },
     },
     config = function()
       local cmp = require("cmp")
@@ -183,9 +199,9 @@ return {
           { name = "nvim_lua" },
           { name = "luasnip" }, -- For luasnip users.
         }, {
-          { name = "buffer" },
-          { name = "path" },
-        })
+            { name = "buffer" },
+            { name = "path" },
+          })
       })
 
       -- Set configuration for specific filetype.
@@ -193,8 +209,8 @@ return {
         sources = cmp.config.sources({
           { name = "cmp_git" }, -- You can specify the `cmp_git` source if you were installed it.
         }, {
-          { name = "buffer" },
-        })
+            { name = "buffer" },
+          })
       })
 
       -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won"t work anymore).
@@ -211,8 +227,8 @@ return {
         sources = cmp.config.sources({
           { name = "path" }
         }, {
-          { name = "cmdline" }
-        })
+            { name = "cmdline" }
+          })
       })
     end
   },

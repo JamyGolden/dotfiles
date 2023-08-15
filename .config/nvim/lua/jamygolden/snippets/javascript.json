@@ -1,0 +1,26 @@
+{
+  "forOf": {
+    "prefix": "forof",
+    "body": "for (const ${1:item} of ${2:iterable}) {\n${3}\n}"
+  },
+  "forLoop": {
+    "prefix": "forl",
+    "body": "for (let i; i < ${1:array}; i++) {\n${2}\n}"
+  },
+  "before": {
+    "prefix": "before",
+    "body": "before(() => {\n\t${0}\n})"
+  },
+  "beforeEach": {
+    "prefix": "bef",
+    "body": "beforeEach(() => {\n\t${0}\n})"
+  },
+  "after": {
+    "prefix": "after",
+    "body": "after(() => {\n\t${0}\n})"
+  },
+  "afterEach": {
+    "prefix": "aft",
+    "body": "afterEach(() => {\n\t${0}\n})"
+  }
+}
