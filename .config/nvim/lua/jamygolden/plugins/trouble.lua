@@ -5,7 +5,7 @@ return {
   cmd = { "TroubleToggle", "Trouble" },
   opts = { use_diagnostic_signs = true },
   keys = {
-    { "<leader>xx", function() require("trouble").open() end, desc = "Document Diagnostics (Trouble)" },
+    { "<leader>xx", function() require("trouble").toggle() end, desc = "Document Diagnostics (Trouble)" },
     { "<leader>xw", function() require("trouble").open("workspace_diagnostics") end, desc = "Workspace Diagnostics (Trouble)" },
     { "<leader>xd", function() require("trouble").open("document_diagnostics") end, desc = "Document Diagnostics (Trouble)" },
     { "<leader>xl", function() require("trouble").open("loclist") end, desc = "Location List (Trouble)" },
