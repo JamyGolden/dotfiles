@@ -174,10 +174,6 @@ return {
         dependencies = { "L3MON4D3/LuaSnip", "rafamadriz/friendly-snippets"}
       },
     },
-    keys = {
-      { "<Tab>", function() require("luasnip").jump(1) end, desc = "Jump ahead (Luasnip)" },
-      { "<S-Tab>", function() require("luasnip").jump(-1) end, desc = "Jump backwards (Luasnip)" },
-    },
     config = function()
       local cmp = require("cmp")
 
