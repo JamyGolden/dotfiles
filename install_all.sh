@@ -61,4 +61,8 @@ for app_path in $(find "$DOTFILES_REPO_PATH/apps" -type f -name "install" | sort
   . "$app_path"
 done
 
+if [ -s "$DOTFILES_REPO_PATH/secrets/install" ]; then
+  . "$DOTFILES_REPO_PATH/secrets/install"
+fi
+
 unset app_path

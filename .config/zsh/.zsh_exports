@@ -21,6 +21,10 @@ for app_exports_file in $(find "$DOTFILES_REPO_PATH/apps" -type f -name 'exports
   . "$app_exports_file"
 done
 
+if [ -f "$DOTFILES_REPO_PATH/exports" ]; then
+  . "$DOTFILES_REPO_PATH/exports"
+fi
+
 unset app_exports_file
 
 # Other

@@ -15,8 +15,12 @@ done
 
 unset app_rc_file
 
-if [ -s "$ZDOTDIR/.zsh_secrets" ]; then
-  . "$ZDOTDIR/.zsh_secrets"
+if [ -f "$DOTFILES_REPO_PATH/secrets/exports" ]; then
+  . "$DOTFILES_REPO_PATH/secrets/exports"
+fi
+
+if [ -f "$DOTFILES_REPO_PATH/secrets/.zsh_secrets" ]; then
+  . "$DOTFILES_REPO_PATH/secrets/.zsh_secrets"
 fi
 
 # The alias below is required to be set in the .zshrc file, even though

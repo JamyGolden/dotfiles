@@ -5,10 +5,10 @@ if [ "$(command -v 'direnv')" ]; then
   eval "$(direnv hook bash)"
 fi
 
-z_dotfiles_path="$HOME"/.config/zsh
-
-if [ -s "$z_dotfiles_path/.z_secrets" ]; then
-  . "$z_dotfiles_path/.z_secrets"
+if [ -f "$DOTFILES_REPO_PATH/.zshenv" ]; then
+  . "$DOTFILES_REPO_PATH/.zshenv"
 fi
 
-unset z_dotfiles_path
+if [ -f "$DOTFILES_REPO_PATH/secrets/exports" ]; then
+  . "$DOTFILES_REPO_PATH/secrets/exports"
+fi

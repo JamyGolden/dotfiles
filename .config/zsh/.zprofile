@@ -1,3 +1,3 @@
-if [ -s "$ZDOTDIR/.z_secrets" ]; then
-  . "$ZDOTDIR/.z_secrets"
+if [ -f "$DOTFILES_REPO_PATH/secrets/.z_secrets" ]; then
+  . "$DOTFILES_REPO_PATH/secrets/.z_secrets"
 fi

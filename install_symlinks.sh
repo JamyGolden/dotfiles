@@ -33,19 +33,14 @@ symlink_to_home ".config/stylelua"
 symlink_to_home ".config/tmux"
 symlink_to_home ".config/zsh"
 
-# z and zsh secrets
+# zsh
 # -----------------
 symlink_to_home ".zshenv"
-# .profile
+
+# Fix for intellij which doesn't use zshell correctly
 if [[ "$OS_TYPE" == "debian" ]]; then
   symlink_to_home ".profile"
 fi
-
-# z secrets
-symlink "$DOTFILES_REPO_PATH/secrets/.z_secrets" "$HOME/.config/zsh/.z_secrets"
-
-# zsh secrets
-symlink "$DOTFILES_REPO_PATH/secrets/.zsh_secrets" "$HOME/.config/zsh/.zsh_secrets"
 
 # Mac only
 # --------
