@@ -40,13 +40,11 @@
     ; standard
     ; --------
     co = checkout
-    commit-pop = reset HEAD~
-    undo = reset --soft 'HEAD@{1}'
+    commit-pop = reset --soft HEAD~
     st = status -s
-    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     br = branch
     amend = commit --amend
-    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     fix = commit --fixup
     pfwl = push --force-with-lease origin HEAD
     ra = rebase --abort
