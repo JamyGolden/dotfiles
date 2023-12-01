@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
 
-expect_exists "$(command -v 'starhip')" "starhip"
+expect_exists "$(command -v 'starship')" "starship"
 expect_export "STARSHIP_CONFIG" "$XDG_CONFIG_HOME"/starship.toml
-expect_exists "$XDG_CONFIG_HOME"/starship.toml "starhip config file"
+expect_exists "$XDG_CONFIG_HOME"/starship.toml "starship config file"
