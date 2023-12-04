@@ -6,10 +6,12 @@ local M = {
   event = "VeryLazy",
   dependencies = {
     "nvim-telescope/telescope-fzf-native.nvim",
+    "debugloop/telescope-undo.nvim",
     "nvim-lua/plenary.nvim",
     build = "make",
     config = function()
       require("telescope").load_extension("fzf")
+      require("telescope").load_extension("undo")
     end,
   },
   opts = {
@@ -74,6 +76,10 @@ local search_git_status = function()
   require("telescope.builtin").git_status()
 end
 
+local search_undo = function()
+  require("telescope").extensions.undo.undo()
+end
+
 M.keys = {
     { "<leader>k", find_git_files, desc = "Find Git Files (root dir)" },
     { "<leader>fk", find_files, desc = "Find Files (root dir)"},
@@ -83,6 +89,8 @@ M.keys = {
     { "<leader>fb", find_buffers, desc = "Find Files in Buffer" },
     { "<leader>fh", help_pages, desc = "Help Pages" },
     { "<leader>f/", grep_current_buffer, desc = "Buffer" },
+    { "<leader>fu", search_undo, desc = "Undo history" },
+    { "<leader>u", search_undo, desc = "Undo history" },
 }
 
 return M
