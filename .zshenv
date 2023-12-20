@@ -1,6 +1,7 @@
 # Repo path
 # ---------
-export DOTFILES_REPO_PATH="$HOME/projects/jamygolden-dotfiles"
+export PROJECTS_PATH="$HOME/projects"
+export DOTFILES_REPO_PATH="$PROJECTS_PATH/jamygolden-dotfiles"
 
 # XDG
 # ---
