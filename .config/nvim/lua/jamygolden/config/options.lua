@@ -39,3 +39,15 @@ opt.relativenumber = true
 opt.undodir=paths.undo_dir .. "/" -- Persistent undo
 opt.directory=paths.swp_dir .. "/" -- swp file tmp storage
 opt.backupdir=paths.backup_dir .. "/" -- backup file tmp storage
+
+-- Disable Background Color Erase (BCE) so that color schemes render
+-- properly when inside 256-color tmux and GNU screen.
+if vim.o.term:match('256color') then
+  vim.o.t_ut = ''
+end
+
+vim.api.nvim_exec([[
+  if &term =~ '256color'
+    set t_ut=
+  endif
+]], false)
