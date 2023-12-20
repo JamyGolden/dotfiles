@@ -1,9 +1,9 @@
 local keymaps = require("jamygolden/utils/keymaps")
 local map = keymaps.map
 
-local set_path_to_global_clipboard_func = function()
-  return function(is_absolute)
-    local current_file_path = vim.fn.expand(is_absolute and "%" or "%:~:.")
+local set_path_to_global_clipboard_func = function(is_absolute)
+  return function()
+    local current_file_path = vim.fn.expand(is_absolute and "%:p" or "%:~:.")
 
     vim.fn.setreg("+y", current_file_path)
   end
@@ -17,7 +17,7 @@ map({ "v" }, "<leader>p", "\"_dP")
 map({ "n" }, "<leader>qq", ":q<cr>")
 map({ "n" }, "<leader>qQ", ":qa<cr>")
 map({ "n" }, "<leader>cp", set_path_to_global_clipboard_func())
-map({ "n" }, "<leader>ca", set_path_to_global_clipboard_func())
+map({ "n" }, "<leader>cP", set_path_to_global_clipboard_func(true))
 
 -- Close tmp windows (Like GitFugitive) with <leader>q
 map({ "n" }, "<leader>q", function()
