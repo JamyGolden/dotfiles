@@ -69,6 +69,31 @@ return {
         })
       end
 
+      -- rust
+      lspconfig.rust_analyzer.setup {
+        capabilities = capabilities,
+        flags = lsp_flags,
+      on_attach = function(client, bufnr)
+        -- Only format if server supports it
+        if client.server_capabilities.documentFormattingProvider then
+            local group = vim.api.nvim_create_augroup("LspFormatting", {})
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                group = group,
+                buffer = bufnr,
+                callback = function()
+                    -- Using vim.lsp.buf.format instead of formatting_sync for better compatibility
+                    vim.lsp.buf.format({
+                        filter = function(client)
+                            return client.name == "rust_analyzer"
+                        end,
+                        bufnr = bufnr
+                    })
+                end,
+            })
+        end
+    end,
+      }
+
       -- lua
       lspconfig.lua_ls.setup {
         capabilities = capabilities,
