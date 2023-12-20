@@ -2,6 +2,6 @@
 
 # https://direnv.net/
 
-if [ -n "$ZSH_VERSION" ]; then
+if [[ -n "$ZSH_VERSION" && "$(command -v 'direnv')" ]]; then
   eval "$(direnv hook zsh)"
 fi
