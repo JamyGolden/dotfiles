@@ -91,6 +91,7 @@ M.keys = {
     { "<leader>f/", grep_current_buffer, desc = "Buffer" },
     { "<leader>fu", search_undo, desc = "Undo history" },
     { "<leader>u", search_undo, desc = "Undo history" },
+    { "<leader>fs", search_git_status, desc = "Git Status" },
 }
 
 return M
