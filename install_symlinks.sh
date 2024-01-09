@@ -32,6 +32,7 @@ symlink_to_home ".config/readline"
 symlink_to_home ".config/stylelua"
 symlink_to_home ".config/tmux"
 symlink_to_home ".config/zsh"
+symlink_to_home ".config/starship.toml"
 
 # zsh
 # -----------------

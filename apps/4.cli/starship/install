@@ -1,3 +1,7 @@
 #!/usr/bin/env zsh
 
+if [[ $OS_TYPE == "mac" ]]; then
+  brew install cmake
+fi
+
 cargo install starship --locked
