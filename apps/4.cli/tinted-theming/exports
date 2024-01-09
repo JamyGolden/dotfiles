@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+export BASE16_THEME_DEFAULT="ocean"
+
+if [[ "$OS_TYPE" == "mac" ]]; then
+  export BASE16_SHELL_SUBLIMEMERGE_PACKAGE_PATH="$HOME/Library/Application Support/Sublime Merge/Packages"
+fi
