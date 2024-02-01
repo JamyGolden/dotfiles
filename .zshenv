@@ -36,3 +36,6 @@ export LESSHISTFILE="$XDG_STATE_HOME/less/history"
 export SCREENRC="$XDG_CONFIG_HOME/screen/screenrc"
 export USERXSESSIONRC="$XDG_CACHE_HOME/X11/xsessionrc"
 export WINEPREFIX="$XDG_DATA_HOME/wine"
+
+# ZSH specific
+export WORDCHARS='*?.[]~=&;!#$%^(){}<>' # https://www.zsh.org/mla/workers/1998/msg01024.html

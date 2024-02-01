@@ -20,22 +20,9 @@ if [ ! -d "$HOME/projects/tinted-theming" ]; then
   mkdir "$HOME/projects/tinted-theming"
 fi
 
-# Install base16-shell
-# --------------------
-tintedtheming_shell_path="$HOME/projects/tinted-theming/shell"
-tintedtheming_ohmyzsh_path="$XDG_CONFIG_HOME/oh-my-zsh/plugins/base16-shell"
-if [ ! -d "$tintedtheming_shell_path" ]; then
-  git clone git@github.com:tinted-theming/base16-shell.git "$tintedtheming_shell_path"
-fi
-if [ ! -d "$tintedtheming_ohmyzsh_path" ]; then
-  mkdir -p "$tintedtheming_ohmyzsh_path"
-fi
-remove_and_symlink "$tintedtheming_shell_path/base16-shell.plugin.zsh" \
-  "$tintedtheming_ohmyzsh_path/base16-shell.plugin.zsh"
-
 # Install base16-fzf
 # ------------------
-tintedtheming_fzf_path="$HOME/projects/tinted-theming/fzf"
+tintedtheming_fzf_path="$HOME/projects/tinted-theming/base16-fzf"
 if [ ! -d "$tintedtheming_fzf_path" ]; then
   git clone git@github.com:tinted-theming/base16-fzf.git "$tintedtheming_fzf_path"
 fi
@@ -45,7 +32,7 @@ remove_and_symlink "$tintedtheming_fzf_path" \
 
 # Install base16-vim
 # ------------------
-tintedtheming_vim_path="$HOME/projects/tinted-theming/vim"
+tintedtheming_vim_path="$HOME/projects/tinted-theming/base16-vim"
 if [ ! -d "$tintedtheming_vim_path" ]; then
   git clone git@github.com:tinted-theming/base16-vim.git "$tintedtheming_vim_path"
 fi
@@ -54,7 +41,7 @@ remove_and_symlink "$tintedtheming_vim_path/colors" "$XDG_CONFIG_HOME/nvim/color
 # Install tmux plugins
 # --------------------
 tmux_plugins_path="$XDG_CONFIG_HOME/tmux/plugins"
-tintedtheming_tmux_path="$HOME/projects/tinted-theming/tmux"
+tintedtheming_tmux_path="$HOME/projects/tinted-theming/base16-tmux"
 
 # Clean out tmux plugins dir
 if [ -d $tmux_plugins_path ]; then

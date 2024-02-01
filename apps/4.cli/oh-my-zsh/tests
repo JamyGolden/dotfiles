@@ -1,4 +1,0 @@
-#!/usr/bin/env zsh
-
-expect_export "ZSH_CUSTOM" "$XDG_CONFIG_HOME/oh-my-zsh/custom"
-expect_exists "$XDG_CONFIG_HOME/oh-my-zsh" "oh-my-zsh"

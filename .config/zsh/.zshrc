@@ -1,10 +1,3 @@
-export ZSH="$XDG_CONFIG_HOME/oh-my-zsh"
-export BASE16_THEME_DEFAULT="ocean"
-ZSH_THEME="nanotech"
-
-plugins=(history zsh-autosuggestions zsh-vi-mode base16-shell)
-
-source $ZSH/oh-my-zsh.sh
 
 . "$ZDOTDIR/.zsh_exports"
 . "$ZDOTDIR/.zsh_functions"

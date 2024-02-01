@@ -1,3 +1,0 @@
-#!/usr/bin/env zsh
-
-export ZSH_CUSTOM="$XDG_CONFIG_HOME/oh-my-zsh/custom"

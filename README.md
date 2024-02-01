@@ -12,11 +12,6 @@ Currently only Debian Linux is supported.
 ### Shell
 
 Z shell ([Zsh]) is installed on Linux and assumed to be there on MacOS.
-[OhMyZsh], a Zsh framework, is installed 
-
-#### OhMyZsh plugins
-- [zsh-autosuggestions]
-- [zsh-vi-mode]
 
 ### Cli tools
 
@@ -116,7 +111,6 @@ After everything is installed, run `./z_tests` in your shell to test
 your zsh setup to ensure it's running correctly.
 
 [Zsh]: https://zsh.sourceforge.io/
-[OhMyZsh]: https://ohmyz.sh/
 [zsh-autosuggestions]: https://github.com/zsh-users/zsh-autosuggestions
 [zsh-vi-mode]: https://github.com/jeffreytse/zsh-vi-mode
 [base16-shell]: https://github.com/tinted-theming/base16-shell
