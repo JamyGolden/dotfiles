@@ -81,17 +81,17 @@ local search_undo = function()
 end
 
 M.keys = {
-    { "<leader>k", find_git_files, desc = "Find Git Files (root dir)" },
-    { "<leader>fk", find_files, desc = "Find Files (root dir)"},
-    { "<leader>ff", live_grep, desc = "Grep (root dir)" },
-    { "<leader>fr", resume_search, desc = "Resume Search" },
-    { "<leader>fo", grep_open_file, desc = "Grep Open File" },
-    { "<leader>fb", find_buffers, desc = "Find Files in Buffer" },
-    { "<leader>fh", help_pages, desc = "Help Pages" },
-    { "<leader>f/", grep_current_buffer, desc = "Buffer" },
-    { "<leader>fu", search_undo, desc = "Undo history" },
-    { "<leader>u", search_undo, desc = "Undo history" },
-    { "<leader>fs", search_git_status, desc = "Git Status" },
+  { "<leader>k", find_git_files, desc = "Find Git Files (root dir)" },
+  { "<leader>fk", find_files, desc = "Find Files (root dir)"},
+  { "<leader>ff", live_grep, desc = "Grep (root dir)" },
+  { "<leader>fr", resume_search, desc = "Resume Search" },
+  { "<leader>fo", grep_open_file, desc = "Grep Open File" },
+  { "<leader>fb", find_buffers, desc = "Find Files in Buffer" },
+  { "<leader>fh", help_pages, desc = "Help Pages" },
+  { "<leader>f/", grep_current_buffer, desc = "Buffer" },
+  { "<leader>fu", search_undo, desc = "Undo history" },
+  { "<leader>u", search_undo, desc = "Undo history" },
+  { "<leader>fs", search_git_status, desc = "Git Status" },
 }
 
 return M
