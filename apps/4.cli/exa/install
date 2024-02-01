@@ -1,9 +1,0 @@
-#!/usr/bin/env zsh
-
-if [[ -z "$(command -v 'exa')" ]]; then
-  log_begin "exa"
-
-  cargo install exa
-
-  log_end "exa"
-fi

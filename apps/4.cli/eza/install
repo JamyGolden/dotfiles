@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+if [[ -z "$(command -v 'eza')" ]]; then
+  log_begin "eza"
+
+  cargo install eza
+
+  log_end "eza"
+fi

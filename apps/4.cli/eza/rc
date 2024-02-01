@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 original_cmd="ls"
-new_cmd="exa"
+new_cmd="eza"
 new_cmd_path=$(command -v "$new_cmd")
 
 if [[ -n "$new_cmd_path" && "$new_cmd_path" != "$new_cmd" ]]; then
