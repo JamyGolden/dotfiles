@@ -2,6 +2,10 @@
 
 # https://direnv.net/
 
-if [[ -n "$ZSH_VERSION" && "$(command -v 'direnv')" ]]; then
-  eval "$(direnv hook zsh)"
-fi
+setup_rc() {
+  if [[ -n "$ZSH_VERSION" && "$(command -v 'direnv')" ]]; then
+    eval "$(direnv hook zsh)"
+  fi
+}
+
+setup_rc

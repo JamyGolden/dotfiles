@@ -1,3 +1,7 @@
 #!/usr/bin/env zsh
 
-alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
+setup_rc() {
+  alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
+}
+
+setup_rc

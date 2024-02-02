@@ -2,8 +2,12 @@
 
 # https://www.docker.com/
 
-# Docker Desktop App
-# ------------------
-if [[ "$OS_TYPE" == "mac" ]]; then
-  [ -s "$HOME/.docker/init-zsh.sh" ] && \. "$HOME/.docker/init-zsh.sh" || true
-fi
+setup_rc() {
+  # Docker Desktop App
+  # ------------------
+  if [[ "$OS_TYPE" == "mac" ]]; then
+    [ -s "$HOME/.docker/init-zsh.sh" ] && \. "$HOME/.docker/init-zsh.sh" || true
+  fi
+}
+
+setup_rc

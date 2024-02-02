@@ -1,11 +1,13 @@
 #!/usr/bin/env zsh
 
-original_cmd="cat"
-new_cmd="bat"
-new_cmd_path=$(command -v "$new_cmd")
+setup_rc() {
+  local original_cmd="cat"
+  local new_cmd="bat"
+  local new_cmd_path=$(command -v "$new_cmd")
 
-if [[ -n "$new_cmd_path" && "$new_cmd_path" != "$new_cmd" ]]; then
-  alias $original_cmd=$new_cmd
-fi
+  if [[ -n "$new_cmd_path" && "$new_cmd_path" != "$new_cmd" ]]; then
+    alias $original_cmd=$new_cmd
+  fi
+}
 
-unset original_cmd new_cmd new_cmd_path
+setup_rc

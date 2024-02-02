@@ -2,7 +2,9 @@
 
 # https://sdkman.io/
 
-export SDKMAN_DIR="$XDG_DATA_HOME/sdkman"
+setup_rc() {
+  [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] \
+    && source "$SDKMAN_DIR/bin/sdkman-init.sh"
+}
 
-[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] \
-  && source "$SDKMAN_DIR/bin/sdkman-init.sh"
+setup_rc

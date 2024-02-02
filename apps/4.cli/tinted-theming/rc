@@ -1,5 +1,9 @@
 #!/usr/bin/env zsh
 
-if [ -n "$(command -v 'base16-shell')" ]; then
-  base16-shell init
-fi
+setup_rc() {
+  if [ -n "$(command -v 'base16-shell')" ]; then
+    base16-shell init
+  fi
+}
+
+setup_rc

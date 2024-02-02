@@ -1,11 +1,7 @@
 #!/usr/bin/env zsh
 
-original_cmd="jq"
-new_cmd="jaq"
-new_cmd_path=$(command -v "$new_cmd")
+setup_rc() {
+  alias jq=$(command -v "jaq")
+}
 
-if [[ -n "$new_cmd_path" && "$new_cmd_path" != "$new_cmd" ]]; then
-  alias $original_cmd=$new_cmd
-fi
-
-unset original_cmd new_cmd new_cmd_path
+setup_rc

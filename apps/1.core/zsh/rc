@@ -1,18 +1,22 @@
 #!/usr/bin/env zsh
 
-# Ensure $HISTFILE is setup correctly
-if [ ! -f "$XDG_STATE_HOME/zsh/history" ]; then
-  echo "Your \$HISTFILE is being set somewhere else, check /etc/zshrc" \
-    "and comment it out"
-fi
-
-local plugins=(
-  "$XDG_CONFIG_HOME/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
-  "$XDG_CONFIG_HOME/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
-)
-
-for plugin in $plugins; do
-  if [ -f "$plugin" ]; then
-    source "$plugin"
+setup_rc() {
+  # Ensure $HISTFILE is setup correctly
+  if [ ! -f "$XDG_STATE_HOME/zsh/history" ]; then
+    echo "Your \$HISTFILE is being set somewhere else, check /etc/zshrc" \
+      "and comment it out"
   fi
-done
+
+  local plugins=(
+    "$XDG_CONFIG_HOME/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
+    "$XDG_CONFIG_HOME/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
+  )
+
+  for plugin in $plugins; do
+    if [ -f "$plugin" ]; then
+      source "$plugin"
+    fi
+  done
+}
+
+setup_rc
