@@ -1,12 +1,9 @@
-
 . "$ZDOTDIR/.zsh_exports"
 . "$ZDOTDIR/.zsh_functions"
 
 for app_rc_file in $(find "$DOTFILES_REPO_PATH/apps" -type f -name "rc" | sort); do
   . "$app_rc_file"
 done
-
-unset app_rc_file
 
 if [ -f "$DOTFILES_REPO_PATH/secrets/exports" ]; then
   . "$DOTFILES_REPO_PATH/secrets/exports"
