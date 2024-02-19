@@ -31,7 +31,7 @@ if [ "${#fonts}" -eq 0 ]; then
   exit 0
 fi;
 
-version="3.0.2"
+version="3.1.1"
 fonts_dir="$XDG_DATA_HOME/fonts"
 
 if [ ! -d "$fonts_dir" ]; then
