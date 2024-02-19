@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # We need XDG paths and $DOTFILES_REPO_PATH
-. zshenv
+. "./.zshenv"
 
 symlink() {
   target_path="$1"

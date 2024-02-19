@@ -44,7 +44,7 @@ source .zshenv
 
 # Set architecture type to install correct binaries
 ARCH_TYPE="$(uname -m)"
-if [ "$ARCH_TYPE" == "x86_64" ]; then
+if [[ "$ARCH_TYPE" == "x86_64" ]]; then
   ARCH_TYPE=x86_64
 elif [[ "$ARCH" == aarch* ]]; then
   ARCH_TYPE=arm64
