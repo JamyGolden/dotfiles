@@ -7,7 +7,7 @@ log_begin "docker"
 if [[ "$OS_TYPE" == "mac" ]]; then
   if [ -z "$(command -v 'docker')" ]; then
     arch_string="$ARCH_TYPE"
-    if [[ "$ARCH_TYPE" != "arm64" ]];
+    if [[ "$ARCH_TYPE" != "arm64" ]]; then
       arch_string="amd64"
     fi
 
