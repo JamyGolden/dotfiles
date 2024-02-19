@@ -1,0 +1,14 @@
+[font]
+size = 16.0
+
+[font.bold]
+family = "FiraMono Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "FiraMono Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "FiraMono Nerd Font"
+style = "Medium"
