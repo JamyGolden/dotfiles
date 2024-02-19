@@ -1,19 +1,11 @@
-return {
-  "github/copilot.vim",
-  config = function()
-    -- Force enable for work projects if the env var is set
-    local workDirectoryPath = os.getenv("WORK_DIRECTORY")
-    if workDirectoryPath then
-      vim.api.nvim_create_autocmd({ 'BufEnter' }, {
-        pattern = os.getenv("WORK_DIRECTORY") .. "/*",
-        command = "Copilot enable"
-      })
-    else
-      -- Force disable everywhere
-      vim.api.nvim_create_autocmd({ 'BufEnter' }, {
-        pattern = os.getenv("WORK_DIRECTORY") .. "/*",
-        command = "Copilot enable"
-      })
-    end
-  end
-}
+-- Force enable for work projects if the env var is a substr of cwd
+local workDirectoryPath = os.getenv("WORK_DIRECTORY") or ""
+local startMatch = string.find(vim.fn.getcwd(), workDirectoryPath)
+
+if startMatch then
+  return {
+    "github/copilot.vim",
+  }
+else
+  return {}
+end
