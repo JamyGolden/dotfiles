@@ -1,0 +1,28 @@
+shell = "zsh -c '{}'"
+default-scheme = "base16-oceanicnext"
+
+[[items]]
+path = "~/projects/tinted-theming/tinted-shell"
+name = "tinted-shell"
+hook = ". %f"
+themes-dir = "scripts"
+supported-systems = ["base16", "base24"]
+
+[[items]]
+path = "~/projects/tinted-theming/tinted-tmux"
+name = "tinted-tmux"
+hook = "test -n \"$TMUX\" && tmux source-file %f"
+themes-dir = "colors"
+supported-systems = ["base16", "base24"]
+
+[[items]]
+path = "~/projects/tinted-theming/tinted-vim"
+name = "tinted-vim"
+themes-dir = "colors"
+supported-systems = ["base16", "base24"]
+
+[[items]]
+path = "~/projects/tinted-theming/base16-fzf"
+name = "fzf"
+hook = ". %f"
+themes-dir = "bash"

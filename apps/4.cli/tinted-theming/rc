@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 
 setup_rc() {
-  if [ -n "$(command -v 'base16-shell')" ]; then
-    base16-shell init
+  if [ -n "$(command -v 'tinty')" ]; then
+    tinty init
   fi
 }
 

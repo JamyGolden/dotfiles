@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+if [ -z "$(command -v 'tinty')" ]; then
+  cargo install tinty
+fi
