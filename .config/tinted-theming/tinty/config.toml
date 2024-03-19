@@ -22,7 +22,7 @@ themes-dir = "colors"
 supported-systems = ["base16", "base24"]
 
 [[items]]
-path = "~/projects/tinted-theming/base16-fzf"
-name = "fzf"
-hook = ". %f"
-themes-dir = "bash"
+path = "~/projects/tinted-theming/tinted-fzf"
+name = "tinted-fzf"
+themes-dir = "sh"
+supported-systems = ["base16", "base24"]

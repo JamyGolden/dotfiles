@@ -1,8 +1,36 @@
 #!/usr/bin/env zsh
 
+# Tinty isn't able to apply environment variables to your shell due to
+# the way shell sub-processes work. This is a work around by running
+# Tinty through a function and then executing the shell scripts.
+tinty_source_fzf_theme() {
+  tinty $@
+  subcommand="$1"
+
+  if [ "$subcommand" = "apply" ] || [ "$subcommand" = "init" ]; then
+    tinty_data_dir="$XDG_DATA_HOME/tinted-theming/tinty"
+    fzf_name="tinted-fzf" # Same as config.toml `[[items]]` `name` value
+    fzf_themes_dir="sh" # Same as config.toml `[[items]]` `themes-dir` value
+    fzf_theme_file="$tinty_data_dir/$fzf_name-$fzf_themes_dir-file.sh"
+
+    if [ -f "$fzf_theme_file" ]; then
+      . "$fzf_theme_file"
+    fi
+
+    unset tinty_data_dir fzf_name fzf_themes_dir fzf_theme_file
+  fi
+}
+
 setup_rc() {
+  local fzf_ansi_script="$PROJECTS_PATH/tinted-theming/tinted-fzf/ansi/ansi.sh";
+  if [ -f "$fzf_ansi_script" ]; then
+    . "$fzf_ansi_script"
+  fi
+
   if [ -n "$(command -v 'tinty')" ]; then
-    tinty init
+    tinty_source_fzf_theme "init"
+
+    alias tinty=tinty_source_fzf_theme
   fi
 }
 

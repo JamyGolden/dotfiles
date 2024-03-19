@@ -1,38 +1,34 @@
-local theme_script_path = vim.fn.expand("$XDG_CONFIG_HOME/tinted-theming/set_theme.lua")
-local is_set_theme_file_readable = vim.fn.filereadable(theme_script_path) == 1 and true or false
-local theme_name_path = vim.fn.expand("$XDG_CONFIG_HOME/tinted-theming/theme_name")
+local default_theme = "base16-oceanicnext"
 
-local function read_file(path)
-  local file, err = io.open(path, "r")
+local function get_tinty_theme()
+  local theme_name = vim.fn.system("tinty current &> /dev/null && tinty current")
 
-  if not file then
-    print("Error opening file: " .. err)
-
-    return nil
+  if vim.v.shell_error ~= 0 then
+    return default_theme
+  else
+    return theme_name
   end
-
-  local content = file:read("*a")
-  file:close()
-
-  return content
 end
 
 local function handle_focus_gained()
+  local new_theme_name = get_tinty_theme()
   local current_theme_name = vim.g.colors_name
-  local new_theme_name = "base16-" .. read_file(theme_name_path)
 
   if current_theme_name ~= new_theme_name then
-    dofile(theme_script_path)
+    vim.cmd("colorscheme " .. new_theme_name)
   end
 end
 
-if is_set_theme_file_readable then
+local function main()
   vim.o.termguicolors = true
-  vim.g.base16colorspace = 256
+  vim.g.tinted_colorspace = 256
+  local current_theme_name = get_tinty_theme()
 
-  dofile(theme_script_path)
+  vim.cmd("colorscheme " .. current_theme_name)
 
   vim.api.nvim_create_autocmd("FocusGained", {
     callback = handle_focus_gained,
   })
 end
+
+main()
