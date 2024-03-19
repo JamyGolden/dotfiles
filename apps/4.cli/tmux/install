@@ -7,10 +7,15 @@ if [[ -z "$(command -v 'tmux')" ]]; then
     brew install tmux
   elif [[ "$OS_TYPE" == "debian" ]]; then
     if [ -n "$PROJECTS_PATH" ]; then
-      sudo apt install libevent-dev # Install deps
+      sudo apt install libevent-dev libncurses5-dev libncursesw5-dev # Install deps
 
-      git clone https://github.com/tmux/tmux.git "$PROJECTS_PATH/tmux"
-      cd "$PROJECTS_PATH/tmux"
+      if [ -z "$PROJECTS_PATH/tmux" ]; then
+        git clone https://github.com/tmux/tmux.git "$PROJECTS_PATH/tmux"
+        cd "$PROJECTS_PATH/tmux"
+      else
+        cd "$PROJECTS_PATH/tmux"
+        git pull
+      fi
       git tag --list | tail -n 1 | xargs git checkout # Checkout to latest tag
       sh autogen.sh
       ./configure && make
