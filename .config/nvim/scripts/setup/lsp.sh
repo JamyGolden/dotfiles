@@ -36,6 +36,12 @@ if [[ "$OS_TYPE" == "mac" ]]; then
   brew install kotlin-language-server lua-language-server
 fi
 
+if [[ -n "$(command -v 'rust-analyzer')" ]]; then
+  if [[ "$OS_TYPE" == "mac" ]]; then
+    brew install rust-analyzer
+  fi
+fi
+
 if [[ "$OS_TYPE" == "debian" ]]; then
   sudo apt install ninja-build
   # Language Servers
