@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+
+export BAT_THEME="base16-256"

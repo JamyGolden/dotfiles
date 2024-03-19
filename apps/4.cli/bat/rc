@@ -6,7 +6,7 @@ setup_rc() {
   local new_cmd_path=$(command -v "$new_cmd")
 
   if [[ -n "$new_cmd_path" && "$new_cmd_path" != "$new_cmd" ]]; then
-    alias $original_cmd=$new_cmd
+    alias $original_cmd="$new_cmd --theme='base16-256'"
   fi
 }
 
