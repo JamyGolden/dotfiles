@@ -1,3 +1,0 @@
-#!/usr/bin/env zsh
-
-export NVM_DIR="$([ -z "${XDG_DATA_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_DATA_HOME}/nvm")"

@@ -1,4 +1,0 @@
-#!/usr/bin/env zsh
-
-expect_export "NVM_DIR" "$XDG_DATA_HOME/nvm"
-expect_exists "$NVM_DIR/nvm.sh"
