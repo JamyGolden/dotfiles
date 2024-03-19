@@ -13,20 +13,21 @@ gui_apps_to_install=(
   "alfred|"
   "bitwarden|com.bitwarden.desktop"
   "discord|discordapp"
+  "ferdium|org.ferdium.Ferdium"
   "firefox|org.mozilla.firefox"
   "google-chrome|com.google.Chrome"
   "signal|org.signal.Signal"
   "slack|com.slack.Slack"
+  "steam|com.valvesoftware.Steam"
   "sublime-merge|com.sublimemerge.App"
   "sublime-text|com.sublimetext.three"
   "telegram|org.telegram.desktop"
   "visual-studio-code|com.visualstudio.code"
   "vlc|org.videolan.VLC"
-  "whatsapp|io.github.mimbrero.WhatsAppDesktop"
   "|com.github.tchx84.Flatseal"
   "|io.github.Hexchat"
   "|io.github.seadve.Kooha"
-  "|org.openrgb.OpenRGB"
+  "|com.usebottles.bottles"
 )
 for i in "${gui_apps_to_install[@]}"; do
   mac_app_name=${i%\|*}
