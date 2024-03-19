@@ -4,7 +4,10 @@
 # the way shell sub-processes work. This is a work around by running
 # Tinty through a function and then executing the shell scripts.
 tinty_source_fzf_theme() {
-  tinty $@
+  local config_path="$XDG_CONFIG_HOME/tinted-theming/tinty/config.toml"
+  local data_path="$XDG_DATA_HOME/tinted-theming/tinty"
+
+  tinty --config="$config_path" --data-dir="$data_path" $@
   subcommand="$1"
 
   if [ "$subcommand" = "apply" ] || [ "$subcommand" = "init" ]; then
