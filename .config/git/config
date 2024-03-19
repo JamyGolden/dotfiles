@@ -2,7 +2,7 @@
     defaultBranch = main
 [user]
     name = Jamy Golden
-    email = jamy@jamygolden.com
+    email = code@jamygolden.com
 [core]
     editor = nvim
     ignorecase = false
@@ -21,7 +21,6 @@
     conflictstyle = diff3
 [diff]
     colorMoved = default
-
 [alias]
     ; functions
     ; use `main` as primary branch if it exists, otherwise `master`
