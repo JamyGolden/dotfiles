@@ -17,15 +17,17 @@ for path_dir in "${path_dirs[@]}"; do
   export PATH="$path_dir:$PATH"
 done
 
+unset path_dirs
+
 for app_exports_file in $(find "$DOTFILES_REPO_PATH/apps" -type f -name 'exports' | sort); do
   . "$app_exports_file"
 done
 
+unset app_exports_file
+
 if [ -f "$DOTFILES_REPO_PATH/exports" ]; then
   . "$DOTFILES_REPO_PATH/exports"
 fi
-
-unset app_exports_file
 
 # Other
 # -------------
@@ -40,5 +42,3 @@ if [[ "$OS_TYPE" == "debian" ]]; then
   # https://github.com/bazelbuild/rules_closure/issues/351
   export OPENSSL_CONF=/dev/null
 fi
-
-unset path_dirs
