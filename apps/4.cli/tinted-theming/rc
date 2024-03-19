@@ -2,6 +2,10 @@
 
 setup_rc() {
   if [ -n "$(command -v 'tinty')" ]; then
+    local config_path="$XDG_CONFIG_HOME/tinted-theming/tinty/config.toml"
+    local data_path="$XDG_DATA_HOME/tinted-theming/tinty"
+
+    alias tinty="tinty --config='$config_path' --data-dir='$data_path'"
     tinty init
   fi
 }

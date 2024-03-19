@@ -14,7 +14,7 @@ return {
       "make",
       "markdown",
       "markdown_inline",
-      "rust",
+      -- "rust",
       "tsx",
       "typescript",
       "vim",

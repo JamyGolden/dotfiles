@@ -47,8 +47,8 @@ return {
       "neovim/nvim-lspconfig",
     },
     keys = {
-      {"<leader>n", function() vim.diagnostic.goto_next() end , desc = "Go to next error" },
-      {"<leader>N", function() vim.diagnostic.goto_prev() end , desc = "Go to next error" },
+      {"<leader>nn", function() vim.diagnostic.goto_next() end , desc = "Go to next error" },
+      {"<leader>nN", function() vim.diagnostic.goto_prev() end , desc = "Go to prev error" },
     },
     config = function()
       local lspconfig = require("lspconfig")
@@ -56,7 +56,6 @@ return {
 
       local servers = {
         "kotlin_language_server",
-        "rust_analyzer",
         "jsonls",
         "tsserver",
       }
@@ -68,31 +67,6 @@ return {
           on_attach = on_attach,
         })
       end
-
-      -- rust
-      lspconfig.rust_analyzer.setup {
-        capabilities = capabilities,
-        flags = lsp_flags,
-      on_attach = function(client, bufnr)
-        -- Only format if server supports it
-        if client.server_capabilities.documentFormattingProvider then
-            local group = vim.api.nvim_create_augroup("LspFormatting", {})
-            vim.api.nvim_create_autocmd("BufWritePre", {
-                group = group,
-                buffer = bufnr,
-                callback = function()
-                    -- Using vim.lsp.buf.format instead of formatting_sync for better compatibility
-                    vim.lsp.buf.format({
-                        filter = function(client)
-                            return client.name == "rust_analyzer"
-                        end,
-                        bufnr = bufnr
-                    })
-                end,
-            })
-        end
-    end,
-      }
 
       -- lua
       lspconfig.lua_ls.setup {

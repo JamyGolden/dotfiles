@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+
+if [[ $IS_MAC == 1 ]]; then
+  PATH="/opt/homebrew/opt/curl/bin:$PATH"
+fi
+
+# For compilers to find curl
+export LDFLAGS="-L/opt/homebrew/opt/curl/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/curl/include"
+
+# For pkg-config to find curl
+export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig"

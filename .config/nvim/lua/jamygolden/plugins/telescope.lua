@@ -81,8 +81,8 @@ local search_undo = function()
 end
 
 M.keys = {
-  { "<leader>k", find_git_files, desc = "Find Git Files (root dir)" },
-  { "<leader>fk", find_files, desc = "Find Files (root dir)"},
+  { "<leader>fk", find_git_files, desc = "Find Git Files (root dir)" },
+  -- { "<leader>fk", find_files, desc = "Find Files (root dir)"},
   { "<leader>ff", live_grep, desc = "Grep (root dir)" },
   { "<leader>fr", resume_search, desc = "Resume Search" },
   { "<leader>fo", grep_open_file, desc = "Grep Open File" },

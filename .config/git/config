@@ -2,7 +2,7 @@
     defaultBranch = main
 [user]
     name = Jamy Golden
-    email = jamy@jamygolden.com
+    email = code@jamygolden.com
 [core]
     editor = nvim
     ignorecase = false
