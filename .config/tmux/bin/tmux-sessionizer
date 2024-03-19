@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
   selected_path=$1
 else
-  selected_path=$(fd . ~/projects ~/projects/finn ~/projects/tinted-theming --type=d --max-depth=1 | fzf)
+  selected_path=$(fd . $PROJECTS_PATH $PROJECTS_PATH/finn $PROJECTS_PATH/tinted-theming --type=d --max-depth=1 | fzf)
 fi
 
 if [[ -z $selected_path ]]; then
