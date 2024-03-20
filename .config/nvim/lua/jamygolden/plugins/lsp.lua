@@ -58,6 +58,7 @@ return {
         "kotlin_language_server",
         "jsonls",
         "tsserver",
+        "markdown_oxide",
       }
 
       for _, lsp in pairs(servers) do
