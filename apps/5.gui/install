@@ -28,6 +28,7 @@ gui_apps_to_install=(
   "|io.github.Hexchat"
   "|io.github.seadve.Kooha"
   "|com.usebottles.bottles"
+  "obsidian|md.obsidian.Obsidian"
 )
 for i in "${gui_apps_to_install[@]}"; do
   mac_app_name=${i%\|*}
