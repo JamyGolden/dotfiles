@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+if [[ -z "$(command -v 'atuin')" ]]; then
+  log_begin "atuin"
+
+  cargo install atuin
+
+  log_end "atuin"
+fi

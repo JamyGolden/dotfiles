@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+setup_rc() {
+  eval "$(atuin init zsh)"
+}
+
+setup_rc
