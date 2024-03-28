@@ -25,7 +25,7 @@ return {
         "vim",
         "yaml"
       },
-      highlight = true,
+      highlight = { enable = true },
       indent = { enable = true },
       sync_install = false,
     })
