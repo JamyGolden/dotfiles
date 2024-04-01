@@ -25,7 +25,7 @@ local M = {
 }
 
 M.keys = {
-  { "<leader>rg", code_action, desc = "Undo history" },
+  { "<leader>ra", code_action, desc = "Code action" },
   { "<leader>rK", hover_info, desc = "Hover information" },
   { "<leader>ri", explain_error, desc = "Explain error" },
   { "<leader>r6", go_to_parent_module, desc = "Go to parent module" },
