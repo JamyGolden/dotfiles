@@ -86,3 +86,8 @@ if [[ "$OS_TYPE" == "debian" ]]; then
     unset -f path_lua_language_server
   fi
 fi
+
+# For treesitter markdown
+if [ -z "$(command -v 'markdown-oxide')" ]; then
+  cargo install --locked --git https://github.com/Feel-ix-343/markdown-oxide.git markdown-oxide
+fi
