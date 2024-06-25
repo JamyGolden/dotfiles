@@ -16,7 +16,7 @@ return {
         hide_gitignored = true,
       },
       follow_current_file = {
-        enabled = true -- This will find and focus the file in the active buffer every
+        enabled = true, -- This will find and focus the file in the active buffer every
       },
     },
     window = {
@@ -24,10 +24,10 @@ return {
         ["m"] = { -- takes text input for destination, also accepts the optional config.show_path option like "add".
           "move",
           config = {
-            show_path = "relative" -- "none", "relative", "absolute"
-          }
-        }
-      }
-    }
-  }
+            show_path = "relative", -- "none", "relative", "absolute"
+          },
+        },
+      },
+    },
+  },
 }

@@ -36,12 +36,12 @@ opt.number = true -- line numbers and distances
 opt.undolevels = 1000 -- Number of undo levels
 opt.undofile = true
 opt.relativenumber = true
-opt.undodir=paths.undo_dir .. "/" -- Persistent undo
-opt.directory=paths.swp_dir .. "/" -- swp file tmp storage
-opt.backupdir=paths.backup_dir .. "/" -- backup file tmp storage
+opt.undodir = paths.undo_dir .. "/" -- Persistent undo
+opt.directory = paths.swp_dir .. "/" -- swp file tmp storage
+opt.backupdir = paths.backup_dir .. "/" -- backup file tmp storage
 
 -- Disable Background Color Erase (BCE) so that color schemes render
 -- properly when inside 256-color tmux and GNU screen.
-if vim.fn.getenv('TERM') == '256color' then
-  vim.o.t_ut = ''
+if vim.fn.getenv("TERM") == "256color" then
+  vim.o.t_ut = ""
 end

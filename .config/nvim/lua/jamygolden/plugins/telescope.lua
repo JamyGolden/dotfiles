@@ -20,12 +20,12 @@ local M = {
     },
     pickers = {
       find_files = {
-        hidden = true
+        hidden = true,
       },
       live_grep = {
         additional_args = function()
           return { "--hidden" }
-        end
+        end,
       },
       find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
     },
@@ -82,11 +82,12 @@ end
 
 M.keys = {
   { "<leader>k", find_git_files, desc = "Find Git Files (root dir)" },
-  { "<leader>fk", find_files, desc = "Find Files (root dir)"},
+  { "<leader>fk", find_files, desc = "Find Files (root dir)" },
   { "<leader>ff", live_grep, desc = "Grep (root dir)" },
   { "<leader>fr", resume_search, desc = "Resume Search" },
   { "<leader>fo", grep_open_file, desc = "Grep Open File" },
   { "<leader>fb", find_buffers, desc = "Find Files in Buffer" },
+  { "<leader>fc", search_git_commits, desc = "Find Git Commits" },
   { "<leader>fh", help_pages, desc = "Help Pages" },
   { "<leader>f/", grep_current_buffer, desc = "Buffer" },
   { "<leader>fu", search_undo, desc = "Undo history" },

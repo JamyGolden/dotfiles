@@ -7,9 +7,7 @@ end
 local function title(tabpage, bufnr, sel)
   local bufname = vim.api.nvim_buf_get_name(bufnr)
   local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
-  local text = (bufname ~= "") and vim.fn.fnamemodify(bufname, ":t")
-    or (filetype ~= "") and filetype
-    or "[No Name]"
+  local text = (bufname ~= "") and vim.fn.fnamemodify(bufname, ":t") or (filetype ~= "") and filetype or "[No Name]"
 
   if sel then
     return table.concat({ "%#TabLineSel#", "%=", (" %s "):format(text) })

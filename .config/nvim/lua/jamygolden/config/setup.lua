@@ -29,7 +29,7 @@ if not vim.fn.has("mac") then
   create_dir(paths.undo_dir)
 
   if fn.empty(fn.glob(paths.fonts_dir)) > 0 and #font_name > 0 then
-    print("Installing font at "..font_filename)
+    print("Installing font at " .. font_filename)
     os.execute(string.format("%s/scripts/setup.sh", paths.nvim_config_dir))
   end
 end

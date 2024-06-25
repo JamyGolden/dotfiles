@@ -25,10 +25,10 @@ return {
         "tsx",
         "typescript",
         "vim",
-        "yaml"
+        "yaml",
       },
       highlight = { enable = true },
       indent = { enable = true },
     })
-  end
+  end,
 }

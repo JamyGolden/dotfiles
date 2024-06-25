@@ -11,8 +11,8 @@ function M.config()
   local tableUtils = require("jamygolden/utils/table")
   local get_table_length = tableUtils.get_length
 
-  if not (alphaPresent) then
-    print("Error requiring 'alpha'");
+  if not alphaPresent then
+    print("Error requiring 'alpha'")
     return
   end
 
@@ -61,7 +61,6 @@ function M.config()
     return greetingsTable[greetingIndex] .. ", " .. name
   end
 
-
   local userName = os.getenv("USER")
   local greeting = getGreeting(userName)
 
@@ -98,7 +97,7 @@ function M.config()
   }
 
   local function getRandomQuote()
-    math.randomseed( os.time() )
+    math.randomseed(os.time())
     local randomQuoteNumber = math.random(get_table_length(quotes))
 
     return quotes[randomQuoteNumber]
