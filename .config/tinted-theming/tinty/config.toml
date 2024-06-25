@@ -2,10 +2,10 @@ shell = "zsh -c '{}'"
 default-scheme = "base16-oceanicnext"
 
 [[items]]
-path = "~/projects/tinted-theming/tinted-shell"
-name = "tinted-shell"
-hook = ". %f"
-themes-dir = "scripts"
+path = "~/projects/tinted-theming/tinted-alacritty"
+name = "tinted-alacritty"
+hook = "cp -f %f ~/.config/alacritty/colors.toml"
+themes-dir = "colors"
 supported-systems = ["base16", "base24"]
 
 [[items]]
