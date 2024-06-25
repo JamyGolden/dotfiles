@@ -2,41 +2,18 @@ return {
   "folke/trouble.nvim",
   event = "VeryLazy",
   dependencies = { "nvim-tree/nvim-web-devicons" },
-  cmd = { "TroubleToggle", "Trouble" },
+  cmd = "Trouble",
   opts = { use_diagnostic_signs = true },
   keys = {
-    { "<leader>xx", function() require("trouble").toggle() end, desc = "Document Diagnostics (Trouble)" },
-    { "<leader>xw", function() require("trouble").open("workspace_diagnostics") end, desc = "Workspace Diagnostics (Trouble)" },
-    { "<leader>xd", function() require("trouble").open("document_diagnostics") end, desc = "Document Diagnostics (Trouble)" },
-    { "<leader>xl", function() require("trouble").open("loclist") end, desc = "Location List (Trouble)" },
-    { "<leader>xq", function() require("trouble").open("quickfix") end, desc = "Quickfix List (Trouble)" },
+    { "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics (Trouble)" },
+    { "<leader>xb", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Buffer Diagnostics (Trouble)" },
+    { "<leader>xs", "<cmd>Trouble symbols toggle focus=false<cr>", desc = "Symbols (Trouble)" },
     {
-      "[q",
-      function()
-        if require("trouble").is_open() then
-          require("trouble").previous({ skip_groups = true, jump = true })
-        else
-          local ok, err = pcall(vim.cmd.cprev)
-          if not ok then
-            vim.notify(err, vim.log.levels.ERROR)
-          end
-        end
-      end,
-      desc = "Previous trouble/quickfix item",
+      "<leader>xl",
+      "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+      desc = "LSP Definitions / references / ... (Trouble)",
     },
-    {
-      "]q",
-      function()
-        if require("trouble").is_open() then
-          require("trouble").next({ skip_groups = true, jump = true })
-        else
-          local ok, err = pcall(vim.cmd.cnext)
-          if not ok then
-            vim.notify(err, vim.log.levels.ERROR)
-          end
-        end
-      end,
-      desc = "Next trouble/quickfix item",
-    },
+    { "<leader>xL", "<cmd>Trouble loclist toggle<cr>", desc = "Location List (Trouble)" },
+    { "<leader>xq", "<cmd>Trouble qflist toggle<cr>", desc = "Quickfix List (Trouble)" },
   },
 }
