@@ -115,33 +115,38 @@ return {
           -- this first function is the "default handler"
           -- it applies to every language server without a "custom handler"
           function(server_name)
-            require("lspconfig")[server_name].setup({})
+            local lspconfig = require("lspconfig")
+
+            if server_name == "lua_ls" then
+              lspconfig.lua_ls.setup({
+                settings = {
+                  Lua = {
+                    runtime = { version = "LuaJIT" },
+                    telemetry = { enable = false },
+                    diagnostics = {
+                      globals = { "vim", "require", "pcall", "pairs" },
+                    },
+                    workspace = {
+                      library = vim.api.nvim_get_runtime_file("", true),
+                      checkThirdParty = false,
+                    },
+                    completion = {
+                      workspaceWord = true,
+                      callSnippet = "Replace",
+                    },
+                    hint = {
+                      enable = true,
+                    },
+                    format = {
+                      enable = false,
+                    },
+                  },
+                },
+              })
+            else
+              lspconfig[server_name].setup({})
+            end
           end,
-          lua_ls = {
-            settings = {
-              Lua = {
-                runtime = { version = "LuaJIT" },
-                telemetry = { enable = false },
-                diagnostics = {
-                  globals = { "vim", "require", "pcall", "pairs" },
-                },
-                workspace = {
-                  library = vim.api.nvim_get_runtime_file("", true),
-                  checkThirdParty = false,
-                },
-                completion = {
-                  workspaceWord = true,
-                  callSnippet = "Replace",
-                },
-                hint = {
-                  enable = true,
-                },
-                format = {
-                  enable = false,
-                },
-              },
-            },
-          },
         },
       })
 
