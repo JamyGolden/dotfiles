@@ -9,21 +9,22 @@ return {
       vim.g.lsp_zero_extend_lspconfig = 0
     end,
     config = function()
-      local lsp = require("lsp-zero").preset({})
+      local lsp_zero = require("lsp-zero")
 
-      lsp.format_on_save({
+      --- if you want to know more about lsp-zero and mason.nvim
+      --- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
+      lsp_zero.on_attach(function(_, bufnr)
+        -- see :help lsp-zero-keybindings
+        -- to learn the available actions
+        lsp_zero.default_keymaps({ buffer = bufnr })
+      end)
+
+      lsp_zero.format_on_save({
         servers = {
+          ["lua_ls"] = { "lua" },
           ["rust-analyzer"] = { "rust" },
-          ["stylelint_lsp"] = { "css", "less", "scss" },
-          ["biome"] = {
-            "javascript",
-            "javascriptreact",
-            "json",
-            "jsonc",
-            "typescript",
-            "typescript.tsx",
-            "typescriptreact",
-          },
+          ["biome"] = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json", "jsonc" },
+          -- stylelint_lsp auto fixes based on settings
         },
       })
     end,
@@ -33,7 +34,6 @@ return {
     lazy = false,
     config = true,
   },
-
   -- Autocompletion
   {
     "hrsh7th/nvim-cmp",
@@ -72,6 +72,58 @@ return {
 
   -- LSP
   {
+    "williamboman/mason-lspconfig.nvim",
+    event = "BufReadPre",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "neovim/nvim-lspconfig",
+    },
+    config = function()
+      require("lsp-zero").extend_lspconfig()
+      local lspconfig = require("lspconfig")
+
+      lspconfig.kotlin_language_server.setup({})
+      lspconfig.jsonls.setup({})
+      lspconfig.tsserver.setup({})
+      lspconfig.markdown_oxide.setup({})
+      lspconfig.stylelint_lsp.setup({
+        filetypes = { "css", "scss" },
+        settings = {
+          stylelintplus = {
+            autoFixOnSave = true,
+            autoFixOnFormat = true,
+          },
+        },
+      })
+      lspconfig.biome.setup({})
+      lspconfig.lua_ls.setup({
+        settings = {
+          Lua = {
+            runtime = { version = "LuaJIT" },
+            telemetry = { enable = false },
+            diagnostics = {
+              globals = { "vim", "require", "pcall", "pairs" },
+            },
+            workspace = {
+              library = vim.api.nvim_get_runtime_file("", true),
+              checkThirdParty = false,
+            },
+            completion = {
+              workspaceWord = true,
+              callSnippet = "Replace",
+            },
+            hint = {
+              enable = true,
+            },
+            format = {
+              enable = true,
+            },
+          },
+        },
+      })
+    end,
+  },
+  {
     "neovim/nvim-lspconfig",
     cmd = { "LspInfo", "LspInstall", "LspStart" },
     event = { "BufReadPre", "BufNewFile" },
@@ -96,71 +148,5 @@ return {
         desc = "Go to next error",
       },
     },
-    config = function()
-      -- This is where all the LSP shenanigans will live
-      local lsp_zero = require("lsp-zero")
-      lsp_zero.extend_lspconfig()
-
-      --- if you want to know more about lsp-zero and mason.nvim
-      --- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
-      lsp_zero.on_attach(function(_, bufnr)
-        -- see :help lsp-zero-keybindings
-        -- to learn the available actions
-        lsp_zero.default_keymaps({ buffer = bufnr })
-      end)
-
-      require("mason-lspconfig").setup({
-        ensure_installed = {},
-        handlers = {
-          -- this first function is the "default handler"
-          -- it applies to every language server without a "custom handler"
-          function(server_name)
-            local lspconfig = require("lspconfig")
-
-            if server_name == "lua_ls" then
-              lspconfig.lua_ls.setup({
-                settings = {
-                  Lua = {
-                    runtime = { version = "LuaJIT" },
-                    telemetry = { enable = false },
-                    diagnostics = {
-                      globals = { "vim", "require", "pcall", "pairs" },
-                    },
-                    workspace = {
-                      library = vim.api.nvim_get_runtime_file("", true),
-                      checkThirdParty = false,
-                    },
-                    completion = {
-                      workspaceWord = true,
-                      callSnippet = "Replace",
-                    },
-                    hint = {
-                      enable = true,
-                    },
-                    format = {
-                      enable = false,
-                    },
-                  },
-                },
-              })
-            else
-              lspconfig[server_name].setup({})
-            end
-          end,
-        },
-      })
-
-      -- Autoformatting Setup
-      require("conform").setup({
-        formatters_by_ft = {
-          lua = { "stylua" },
-        },
-        format_on_save = {
-          -- These options will be passed to conform.format()
-          timeout_ms = 500,
-          lsp_format = "fallback",
-        },
-      })
-    end,
   },
 }
