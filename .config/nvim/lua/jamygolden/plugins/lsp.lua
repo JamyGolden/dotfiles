@@ -1,4 +1,29 @@
+local table_utils = require("jamygolden/utils/table")
+local lua_ls_settings = require("jamygolden/plugins/lsp/lua_ls")
+local stylelint_lsp_settings = require("jamygolden/plugins/lsp/stylelint_lsp")
+
+local servers = {
+  ["lua_ls"] = lua_ls_settings,
+  ["stylelint_lsp"] = stylelint_lsp_settings,
+
+  ["biome"] = {},
+  ["jsonls"] = {},
+  ["kotlin_language_server"] = {},
+  ["markdown_oxide"] = {},
+  ["tsserver"] = {},
+}
+
+local formatters = {
+  ["lua_ls"] = { "lua" },
+  ["rust-analyzer"] = { "rust" },
+  ["biome"] = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json", "jsonc" },
+  -- stylelint_lsp auto fixes based on lsp settings
+}
+
 return {
+  -----------------------------------------------------------------------
+  -- LSP
+  -----------------------------------------------------------------------
   {
     "VonHeikemen/lsp-zero.nvim",
     branch = "v3.x",
@@ -8,38 +33,75 @@ return {
       vim.g.lsp_zero_extend_cmp = 0
       vim.g.lsp_zero_extend_lspconfig = 0
     end,
-    config = function()
-      local lsp_zero = require("lsp-zero")
-
-      --- if you want to know more about lsp-zero and mason.nvim
-      --- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
-      lsp_zero.on_attach(function(_, bufnr)
-        -- see :help lsp-zero-keybindings
-        -- to learn the available actions
-        lsp_zero.default_keymaps({ buffer = bufnr })
-      end)
-
-      lsp_zero.format_on_save({
-        servers = {
-          ["lua_ls"] = { "lua" },
-          ["rust-analyzer"] = { "rust" },
-          ["biome"] = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json", "jsonc" },
-          -- stylelint_lsp auto fixes based on settings
-        },
-      })
-    end,
   },
   {
-    "williamboman/mason.nvim",
-    lazy = false,
-    config = true,
+    "neovim/nvim-lspconfig",
+    event = "BufReadPre",
+    dependencies = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+      "hrsh7th/cmp-nvim-lsp",
+      "VonHeikemen/lsp-zero.nvim",
+    },
+    keys = {
+      { "<leader>n", function() vim.diagnostic.goto_next() end, desc = "Go to next error" },
+      { "<leader>N", function() vim.diagnostic.goto_prev() end, desc = "Go to next error" },
+    },
+    config = function()
+      local mason_lspconfig = require("mason-lspconfig")
+      local lsp_zero = require('lsp-zero')
+      local lspconfig = require("lspconfig")
+
+      require("lsp-zero").extend_lspconfig()
+      require("mason").setup()
+
+      lsp_zero.on_attach(function(_, bufnr)
+        lsp_zero.default_keymaps({buffer = bufnr})
+      end)
+      lsp_zero.format_on_save({
+        servers = formatters,
+      })
+      mason_lspconfig.setup {
+        ensure_installed = table_utils.get_keys(servers),
+      }
+
+      for lsp, settings in pairs(servers) do
+        lspconfig[lsp].setup(settings)
+      end
+    end
   },
-  -- Autocompletion
+
+  -----------------------------------------------------------------------
+  -- Completion
+  -----------------------------------------------------------------------
+  {
+    "L3MON4D3/LuaSnip",
+    -- follow latest release.
+    version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    -- install jsregexp (optional!).
+    build = "make install_jsregexp",
+    dependencies = { "rafamadriz/friendly-snippets" },
+    config = function()
+      require("luasnip.loaders.from_vscode").lazy_load() -- Load default snippets
+      require("luasnip.loaders.from_vscode").lazy_load({ -- Load my snippets
+        paths = { "./lua/jamygolden/snippets" }
+      })
+    end
+  },
+
   {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     dependencies = {
-      { "L3MON4D3/LuaSnip" },
+      { "hrsh7th/cmp-nvim-lsp" },
+      { "hrsh7th/cmp-nvim-lua" },
+      { "hrsh7th/cmp-buffer" },
+      { "hrsh7th/cmp-path" },
+      { "hrsh7th/cmp-cmdline" },
+      {
+        "saadparwaiz1/cmp_luasnip",
+        dependencies = { "L3MON4D3/LuaSnip", "rafamadriz/friendly-snippets" }
+      },
     },
     config = function()
       -- Here is where you configure the autocompletion settings.
@@ -66,87 +128,15 @@ return {
             require("luasnip").lsp_expand(args.body)
           end,
         },
+        sources = cmp.config.sources({
+          { name = "nvim_lsp" },
+          { name = "nvim_lua" },
+          { name = "luasnip" }, -- For luasnip users.
+        }, {
+          { name = "buffer" },
+          { name = "path" },
+        })
       })
     end,
-  },
-
-  -- LSP
-  {
-    "williamboman/mason-lspconfig.nvim",
-    event = "BufReadPre",
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "neovim/nvim-lspconfig",
-    },
-    config = function()
-      require("lsp-zero").extend_lspconfig()
-      local lspconfig = require("lspconfig")
-
-      lspconfig.kotlin_language_server.setup({})
-      lspconfig.jsonls.setup({})
-      lspconfig.tsserver.setup({})
-      lspconfig.markdown_oxide.setup({})
-      lspconfig.stylelint_lsp.setup({
-        filetypes = { "css", "scss" },
-        settings = {
-          stylelintplus = {
-            autoFixOnSave = true,
-            autoFixOnFormat = true,
-          },
-        },
-      })
-      lspconfig.biome.setup({})
-      lspconfig.lua_ls.setup({
-        settings = {
-          Lua = {
-            runtime = { version = "LuaJIT" },
-            telemetry = { enable = false },
-            diagnostics = {
-              globals = { "vim", "require", "pcall", "pairs" },
-            },
-            workspace = {
-              library = vim.api.nvim_get_runtime_file("", true),
-              checkThirdParty = false,
-            },
-            completion = {
-              workspaceWord = true,
-              callSnippet = "Replace",
-            },
-            hint = {
-              enable = true,
-            },
-            format = {
-              enable = true,
-            },
-          },
-        },
-      })
-    end,
-  },
-  {
-    "neovim/nvim-lspconfig",
-    cmd = { "LspInfo", "LspInstall", "LspStart" },
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      { "hrsh7th/cmp-nvim-lsp" },
-      { "williamboman/mason-lspconfig.nvim" },
-      { "stevearc/conform.nvim" },
-    },
-    keys = {
-      {
-        "<leader>n",
-        function()
-          vim.diagnostic.goto_next()
-        end,
-        desc = "Go to next error",
-      },
-      {
-        "<leader>N",
-        function()
-          vim.diagnostic.goto_prev()
-        end,
-        desc = "Go to next error",
-      },
-    },
   },
 }
