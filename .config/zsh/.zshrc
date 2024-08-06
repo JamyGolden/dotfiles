@@ -13,6 +13,9 @@ if [ -f "$DOTFILES_REPO_PATH/secrets/.zsh_secrets" ]; then
   . "$DOTFILES_REPO_PATH/secrets/.zsh_secrets"
 fi
 
+autoload -U compinit
+compinit
+
 # The alias below is required to be set in the .zshrc file, even though
 # it is set in "$XDG_CONFIG_HOME/zsh/.zsh_aliases". The below comment is
 # a hack to trick the lsp make file into leaving .zshrc uneditted

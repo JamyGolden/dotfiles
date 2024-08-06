@@ -5,6 +5,7 @@
 .config/nvim/lua/.luarc.json
 .config/zsh/.zsh_sessions
 .config/zsh/.zsh_history
+.config/zsh/.zcompcache
 .config/alacritty/colors.toml
 
 # For compdumps in .config/zsh
