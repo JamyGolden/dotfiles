@@ -42,6 +42,7 @@ return {
       "williamboman/mason-lspconfig.nvim",
       "hrsh7th/cmp-nvim-lsp",
       "VonHeikemen/lsp-zero.nvim",
+      "stevearc/conform.nvim",
     },
     keys = {
       { "<leader>n", function() vim.diagnostic.goto_next() end, desc = "Go to next error" },
@@ -70,6 +71,30 @@ return {
       end
     end
   },
+{
+  'stevearc/conform.nvim',
+  opts = {
+      formatters = {
+        ktlint_heh = {
+          command = "ktlint",
+          args = { "--editorconfig", "/Volumes/projects/finn/travel-app/.editorconfig", "--format", "--stdin", "--log-level=none" },
+        }
+        detekt = {
+          command = "detekt",
+          args = { "--editorconfig", "/Volumes/projects/finn/travel-app/.editorconfig", "--input", "-", "--output", "-" },
+        }
+      },
+      formatters_by_ft = {
+        --kotlin = { "ktlint", "detekt" },
+        kotlin = { "ktlint_heh" },
+      },
+      format_on_save = {
+        -- These options will be passed to conform.format()
+        timeout_ms = 500,
+        lsp_format = "fallback",
+      },
+    },
+},
 
   -----------------------------------------------------------------------
   -- Completion
