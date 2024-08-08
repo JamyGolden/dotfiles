@@ -1,4 +1,4 @@
 #!/usr/bin/env zsh
 
-expect_exists "$XDG_DATA_HOME/cargo/bin/zoxide" "zoxide"
-expect_exists "$(command -v 'zoxide')" "zoxide"
+expect_exists "$XDG_DATA_HOME/cargo/bin/zoxide" "cargo zoxide"
+expect_exists "$(command -v 'zoxide')" "global zoxide"
