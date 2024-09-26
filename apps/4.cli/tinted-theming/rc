@@ -3,7 +3,7 @@
 # Tinty isn't able to apply environment variables to your shell due to
 # the way shell sub-processes work. This is a work around by running
 # Tinty through a function and then executing the shell scripts.
-tinty_source_fzf_theme() {
+tinty_source_shell_theme() {
   local config_path="$XDG_CONFIG_HOME/tinted-theming/tinty/config.toml"
   local data_path="$XDG_DATA_HOME/tinted-theming/tinty"
 
@@ -11,17 +11,16 @@ tinty_source_fzf_theme() {
   subcommand="$1"
 
   if [ "$subcommand" = "apply" ] || [ "$subcommand" = "init" ]; then
-    tinty_data_dir="$XDG_DATA_HOME/tinted-theming/tinty"
-    fzf_name="tinted-fzf" # Same as config.toml `[[items]]` `name` value
-    fzf_themes_dir="sh" # Same as config.toml `[[items]]` `themes-dir` value
-    fzf_theme_file="$tinty_data_dir/$fzf_name-$fzf_themes_dir-file.sh"
+    tinty_data_dir="${XDG_DATA_HOME:-$HOME/.local/share}/tinted-theming/tinty"
 
-    if [ -f "$fzf_theme_file" ]; then
-      . "$fzf_theme_file"
-    fi
+    for tinty_script_file in $(find "$tinty_data_dir" -maxdepth 1 -type f -name "*.sh"); do
+      . $tinty_script_file
+    done
 
-    unset tinty_data_dir fzf_name fzf_themes_dir fzf_theme_file
+    unset tinty_data_dir
   fi
+
+  unset subcommand
 }
 
 setup_rc() {
@@ -31,9 +30,9 @@ setup_rc() {
   fi
 
   if [ -n "$(command -v 'tinty')" ]; then
-    tinty_source_fzf_theme "init"
+    tinty_source_shell_theme "init"
 
-    alias tinty=tinty_source_fzf_theme
+    alias tinty=tinty_source_shell_theme
   fi
 }
 
