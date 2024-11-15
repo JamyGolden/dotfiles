@@ -10,7 +10,7 @@ local servers = {
   ["jsonls"] = {},
   ["kotlin_language_server"] = {},
   ["markdown_oxide"] = {},
-  ["tsserver"] = {},
+  ["ts_ls"] = {},
 }
 
 local formatters = {
