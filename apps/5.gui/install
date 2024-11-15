@@ -53,4 +53,13 @@ for i in "${gui_apps_to_install[@]}"; do
   fi
 done
 
+if [[ $OS_TYPE == "debian" ]]; then
+  # Permission setup
+  # ----------------
+  # start sublime-merge
+  rmdir /home/jamygolden/.var/app/com.sublimemerge.App/config/git
+  ln -s "$DOTFILES_REPO_PATH/.config/git" ~/.var/app/com.sublimemerge.App/config/git
+  # end sublime-merge
+fi
+
 unset mac_app_name linux_app_name
