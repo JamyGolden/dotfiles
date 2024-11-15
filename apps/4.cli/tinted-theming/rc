@@ -29,11 +29,7 @@ setup_rc() {
     . "$fzf_ansi_script"
   fi
 
-  if [ -n "$(command -v 'tinty')" ]; then
-    tinty_source_shell_theme "init"
-
-    alias tinty=tinty_source_shell_theme
-  fi
+  tinty init
 }
 
 setup_rc
