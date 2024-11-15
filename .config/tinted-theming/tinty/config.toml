@@ -4,14 +4,17 @@ default-scheme = "base16-oceanicnext"
 [[items]]
 path = "~/projects/tinted-theming/tinted-alacritty"
 name = "tinted-alacritty"
-hook = "cp -f %f ~/.config/alacritty/colors.toml && touch ~/.config/alacritty/alacritty.toml"
-themes-dir = "colors"
+hook = """
+cp -f %f ~/.config/alacritty/colors.toml
+touch ~/.config/alacritty/alacritty.toml
+"""
+themes-dir = "colors-256"
 supported-systems = ["base16", "base24"]
 
 [[items]]
 path = "~/projects/tinted-theming/tinted-tmux"
 name = "tinted-tmux"
-hook = "test -n \"$TMUX\" && tmux source-file %f"
+hook = "tmux run 2> /dev/null && tmux source-file %f"
 themes-dir = "colors"
 supported-systems = ["base16", "base24"]
 
@@ -22,7 +25,8 @@ themes-dir = "colors"
 supported-systems = ["base16", "base24"]
 
 [[items]]
-path = "~/projects/tinted-theming/tinted-fzf"
-name = "tinted-fzf"
-themes-dir = "sh"
+path = "~/projects/tinted-theming/tinted-jqp"
+name = "tinted-jqp"
+themes-dir = "themes"
+hook = "cp -f %f ~/.jqp.yaml"
 supported-systems = ["base16", "base24"]
