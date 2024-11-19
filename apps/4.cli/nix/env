@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+
+PATH="$HOME/.nix-profile/bin:$HOME/.nix-profile/sbin:/nix/var/nix/profiles/default/bin:$PATH"

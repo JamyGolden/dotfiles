@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+setup_rc() {
+  local nix_session_path=$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+
+  if [[ -f $nix_session_path ]]; then
+    . $nix_session_path
+  fi
+}
+
+setup_rc

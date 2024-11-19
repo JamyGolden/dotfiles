@@ -17,6 +17,10 @@ setup_rc() {
       source "$plugin"
     fi
   done
+
+  if [[ -f "$XDG_CONFIG_HOME/home-manager/nix-rc.sh" ]]; then
+    . "$XDG_CONFIG_HOME/home-manager/nix-rc.sh"
+  fi
 }
 
 setup_rc
