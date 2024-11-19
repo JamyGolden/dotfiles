@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+
+setup_rc() {
+  local asdf_path="$XDG_DATA_HOME/asdf/asdf.sh"
+
+  if [[ -f $asdf_path ]]; then
+    . "$asdf_path"
+    fpath=(${ASDF_DIR}/completions $fpath)
+  fi
+}
+
+setup_rc
