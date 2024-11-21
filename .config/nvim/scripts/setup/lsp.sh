@@ -29,6 +29,11 @@ if ! npm_package_exists_check "stylelint-lsp"; then
   npm i -g stylelint-lsp
 fi
 
+# nix lsp
+if [[ -n "$(command -v 'nil')" ]]; then
+  cargo install --git https://github.com/oxalica/nil nil
+fi
+
 if [[ "$OS_TYPE" == "mac" ]]; then
   brew install ninja
 

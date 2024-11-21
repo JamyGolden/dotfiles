@@ -9,6 +9,7 @@ local servers = {
   ["biome"] = {},
   ["jsonls"] = {},
   ["kotlin_language_server"] = {},
+  ["nil_ls"] = {},
   ["markdown_oxide"] = {},
   ["ts_ls"] = {},
 }

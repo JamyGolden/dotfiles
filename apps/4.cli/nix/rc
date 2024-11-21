@@ -6,6 +6,8 @@ setup_rc() {
   if [[ -f $nix_session_path ]]; then
     . $nix_session_path
   fi
+
+  alias switch="nix run home-manager/master -- switch"
 }
 
 setup_rc
