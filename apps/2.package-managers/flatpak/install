@@ -6,7 +6,7 @@ if [[ "$OS_TYPE" == "debian" && -z "$(command -v 'flatpak')"  ]]; then
   log_begin "flatpak"
 
   sudo apt install flatpak
-  flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+  flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
   log_end "flatpak"
 else
