@@ -3,22 +3,31 @@ local lua_ls_settings = require("jamygolden/plugins/lsp/lua_ls")
 local stylelint_lsp_settings = require("jamygolden/plugins/lsp/stylelint_lsp")
 
 local servers = {
-  ["lua_ls"] = lua_ls_settings,
-  ["stylelint_lsp"] = stylelint_lsp_settings,
-
-  ["biome"] = {},
+  ["eslint"] = {
+    on_attach = function(client, bufnr)
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        buffer = bufnr,
+        command = "EslintFixAll",
+      })
+    end,
+  },
+  -- ["biome"] = {},
   ["jsonls"] = {},
   ["kotlin_language_server"] = {},
-  ["nil_ls"] = {},
+  ["lua_ls"] = lua_ls_settings,
   ["markdown_oxide"] = {},
+  ["nil_ls"] = {},
+  ["stylelint_lsp"] = stylelint_lsp_settings,
   ["ts_ls"] = {},
 }
 
 local formatters = {
+  -- [Formatter name] = filetype
   ["lua_ls"] = { "lua" },
   ["rust-analyzer"] = { "rust" },
-  ["biome"] = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json", "jsonc" },
+  -- ["biome"] = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json", "jsonc" },
   -- stylelint_lsp auto fixes based on lsp settings
+  -- eslint auto fixes based on lsp settings
 }
 
 return {
