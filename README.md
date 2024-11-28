@@ -9,6 +9,14 @@ Currently only Debian Linux is supported.
 
 ## What's included?
 
+### Nix home-manager
+
+`nix run home-manager/master -- switch`
+
+`home-manager switch --flake /path/to/.config/home-manager#jamygolden`
+
+`man home-configuration.nix`
+
 ### Shell
 
 Z shell ([Zsh]) is installed on Linux and assumed to be there on MacOS.
