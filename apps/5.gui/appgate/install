@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+
+log_begin "appgate"
+
+if [[ "$OS_TYPE" == "mac" ]]; then
+  brew install appgate
+elif [[ "$OS_TYPE" == "debian" ]]; then
+  curl -o ~/Downloads/AppGate-SDP-client.deb https://bin.appgate-sdp.com/latest/ubuntu/AppGate-SDP-client.deb
+  sudo apt install ~/Downloads/AppGate-SDP-client.deb
+else
+  echo "'alacritty' install not supported by OS."
+fi
+
+log_end "appgate"
