@@ -33,7 +33,6 @@ let
     # ===================
     # GUI
     # ===================
-    appgate-sdp
     bitwarden
     discord
     ferdium
