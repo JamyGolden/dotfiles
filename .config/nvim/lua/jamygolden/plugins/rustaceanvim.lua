@@ -22,6 +22,13 @@ local M = {
   "mrcjkb/rustaceanvim",
   version = "^4",
   ft = { "rust" },
+  config = function()
+    vim.g.rustaceanvim = {
+      server = {
+        capabilities = require('cmp_nvim_lsp').default_capabilities(),
+      }
+    }
+  end
 }
 
 M.keys = {
