@@ -14,6 +14,11 @@ if ! npm_package_exists_check "typescript"; then
   npm i -g typescript
 fi
 
+# nix
+if [[ -n "$(command -v 'nil')" ]]; then
+  cargo install --git https://github.com/oxalica/nil nil
+fi
+
 # typescript-language-server
 if ! npm_package_exists_check "typescript-language-server"; then
   npm i -g typescript-language-server
