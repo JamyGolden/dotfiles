@@ -4,10 +4,6 @@ default-scheme = "base16-oceanicnext"
 [[items]]
 path = "~/projects/tinted-theming/tinted-alacritty"
 name = "tinted-alacritty"
-hook = """
-cp -f %f ~/.config/alacritty/colors.toml
-touch ~/.config/alacritty/alacritty.toml
-"""
 themes-dir = "colors-256"
 supported-systems = ["base16", "base24"]
 
