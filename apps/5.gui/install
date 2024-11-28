@@ -57,8 +57,8 @@ if [[ $OS_TYPE == "debian" ]]; then
   # Permission setup
   # ----------------
   # start sublime-merge
-  rmdir /home/jamygolden/.var/app/com.sublimemerge.App/config/git
-  ln -s "$DOTFILES_REPO_PATH/.config/git" ~/.var/app/com.sublimemerge.App/config/git
+  rmdir $HOME/.var/app/com.sublimemerge.App/config/git
+  ln -s "$DOTFILES_REPO_PATH/.config/git" $HOME/.var/app/com.sublimemerge.App/config/git
   # end sublime-merge
 fi
 

@@ -3,7 +3,7 @@
 if [ -z "$(command -v 'node')" ]; then
   log_begin "Node"
 
-  nvm install node
+  fnm install --lts
 
   log_end "Node"
 fi

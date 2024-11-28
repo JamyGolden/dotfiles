@@ -17,6 +17,11 @@ if [[ -z "$(command -v 'tmux')" ]]; then
         git pull
       fi
       git tag --list | tail -n 1 | xargs git checkout # Checkout to latest tag
+
+      # Required for aclocal for autoge.sh
+      sudo apt-get install autotools-dev
+      sudo apt-get install automake
+
       sh autogen.sh
       ./configure && make
 

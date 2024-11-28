@@ -22,8 +22,10 @@ elif [[ "$OS_TYPE" == "debian" ]]; then
   # zsh
   # Install and use z shell
   # -----------------------
-  sudo apt install zsh
-  chsh -s $(which zsh)
+  if [[ "$SHELL" != "/usr/bin/zsh" ]]; then
+    sudo apt install zsh
+    chsh -s $(which zsh)
+  fi
 fi
 
 # ---------------------------------------------------------------------
