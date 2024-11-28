@@ -1,20 +1,27 @@
 #!/usr/bin/env zsh
 
-if [[ "$OS_TYPE" == "debian" ]; then
+if [[ "$OS_TYPE" == "debian" ]]; then
   log_begin "google cloud cli"
 
-  sudo apt-get install apt-transport-https ca-certificates gnupg curl sudo
+  sudo apt install apt-transport-https ca-certificates gnupg curl
 
-  # Add google cloud key
-  echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-  sudo curl -fsSLo /usr/share/keyring/cloud.google.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+  # Add google-cloud key
+  curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg
+  if [[ ! -e "/etc/apt/sources.list.d/google-cloud-sdk.list" ]]; then
+    echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+  fi
 
-  # add kubectl key
-  echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
-  sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
-
+  # Install google-cloud
   sudo apt update
-  sudo apt install google-cloud-cli kubectl
+  sudo apt install google-cloud-cli
+
+  # Install kubernetes
+  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+  curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+  echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
+  chmod +x kubectl
+  mv kubectl $XDG_BIN_HOME
+  rm kubectl.sha256
 
   log_end "google cloud cli"
 else
