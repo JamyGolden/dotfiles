@@ -34,7 +34,7 @@ in
     packages = packageGroup.packages;
 
     file = {
-      ".zsh_functions".source = ../.config/zsh/zsh_functions;
+      ".zsh_functions".source = ../config/zsh/zsh_functions;
       "${paths.xdgBinHome}/parallel-commands".source = ../bin/parallel-commands;
       "${paths.xdgBinHome}/tmux-sessionizer".source = ../bin/tmux-sessionizer;
     } // packageGroup.files;

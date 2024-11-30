@@ -10,6 +10,8 @@ nix-channel --update
 
 nix-shell '<home-manager>' -A install
 
+ln -s $DOTFILES_REPO_PATH/config/nix $HOME/.config/nix
+
 # To install zsh
 echo "/home/$USER/.nix-profile/bin/zsh" | sudo tee -a /etc/shells
 cat /etc/shells # to ensure path exists

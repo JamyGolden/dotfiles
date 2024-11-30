@@ -1,4 +1,7 @@
 {
+  config
+}:
+{
   enable = true;
   settings = {
     font = {
@@ -17,7 +20,7 @@
       };
     };
     general = {
-      import = ["~/.local/share/tinted-theming/tinty/tinted-alacritty-colors-256-file.toml"];
+      import = ["${config.xdg.dataHome}/tinted-theming/tinty/tinted-alacritty-colors-256-file.toml"];
     };
   };
 }

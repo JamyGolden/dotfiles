@@ -11,7 +11,7 @@
     enable = true;
   };
 
-  alacritty = import ./alacritty.nix;
+  alacritty = import ./alacritty.nix { inherit config; };
   atuin = import ./atuin.nix;
   direnv = import ./direnv.nix;
   eza = import ./eza.nix;

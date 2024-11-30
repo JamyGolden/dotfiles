@@ -20,7 +20,7 @@
     cd = "z"; # zoxide
     jq = "jaq";
     ps = "procs";
-    switch = "home-manager switch --flake ${paths.dotfilesRepo}/.config/home-manager#jamygolden";
+    switch = "home-manager switch --flake ${paths.dotfilesRepo}#jamygolden";
     yarn = ''
       yarn --use-yarnrc "${config.xdg.configHome}/yarn/config";
     '';
