@@ -1,6 +1,8 @@
 {
+  config,
   email,
   fullName,
+  paths,
   pkgs,
   ...
 }:
@@ -22,5 +24,5 @@
   tmux = import ./tmux.nix { inherit pkgs; };
   vim = import ./vim.nix;
   zoxide = import ./zoxide.nix;
-  zsh = import ./zsh.nix { inherit pkgs; };
+  zsh = import ./zsh.nix { inherit config paths pkgs; };
 }

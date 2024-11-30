@@ -47,5 +47,5 @@ in
     XDG_INCLUDE_HOME = paths.xdgIncludeHome;
   };
 
-  programs = import ./programs { inherit email fullName pkgs; };
+  programs = import ./programs { inherit config email fullName paths pkgs; };
 }

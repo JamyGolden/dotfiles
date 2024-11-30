@@ -1,4 +1,6 @@
 {
+  config,
+  paths,
   pkgs
 }:
 {
@@ -16,6 +18,10 @@
 
   shellAliases = {
     cd = "z"; # zoxide
+    yarn = ''
+      yarn --use-yarnrc "${config.xdg.configHome}/yarn/config";
+    '';
+    switch = "home-manager switch --flake ${paths.dotfilesRepo}/.config/home-manager#jamygolden";
   };
 
   profileExtra = ''

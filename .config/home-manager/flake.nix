@@ -30,7 +30,7 @@
 
       paths = {
         projects = let v = builtins.getEnv "PROJECTS_PATH"; in if v != "" then v else "$HOME/projects";
-        dotfilesRepo = let v = builtins.getEnv "DOTFILES_REPO_PATH"; in if v != "" then v else "$HOME/projects/user-dotfiles";
+        dotfilesRepo = let v = builtins.getEnv "DOTFILES_REPO_PATH"; in if v != "" then v else "$HOME/projects/jamygolden-dotfiles";
         xdgBinHome = let v = builtins.getEnv "XDG_BIN_HOME"; in if v != "" then v else "$HOME/.local/bin";
         xdgIncludeHome = let v = builtins.getEnv "XDG_INCLUDE_HOME"; in if v != "" then v else "$HOME/.local/include";
         xdgDataDirs = "$HOME/.nix-profile/share:$XDG_DATA_DIRS";
@@ -39,7 +39,15 @@
       homeConfigurations.${username}= home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
-        extraSpecialArgs = {inherit email fullName homeDirectory username stateVersion paths;};
+        extraSpecialArgs = {
+          inherit
+            email
+            fullName
+            homeDirectory
+            paths
+            stateVersion
+            username;
+        };
 
         modules = [
           ./home.nix
