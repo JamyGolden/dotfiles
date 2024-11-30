@@ -33,7 +33,9 @@ in
     inherit homeDirectory stateVersion username;
     packages = packageGroup.packages;
 
-    file = {} // packageGroup.files;
+    file = {
+      ".zsh_functions".source = ../zsh/zsh_functions;
+    } // packageGroup.files;
   };
 
   home.activation = lib.mkMerge [

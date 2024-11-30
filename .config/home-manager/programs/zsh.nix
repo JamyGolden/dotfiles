@@ -26,6 +26,12 @@
     '';
   };
 
+  initExtra = ''
+    if [ -e "$HOME/.zsh_functions" ]; then
+      . "$HOME/.zsh_functions"
+    fi
+  '';
+
   profileExtra = ''
     if [ -f "$DOTFILES_REPO_PATH/secrets/exports" ]; then
       . "$DOTFILES_REPO_PATH/secrets/exports"

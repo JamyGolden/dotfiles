@@ -1,4 +1,5 @@
 {
+  config,
   email,
   fullName,
 }:
@@ -20,22 +21,22 @@
     # use `main` as primary branch if it exists, otherwise `master`
     # -------------------------------------------------------------
     # Reset main branch to origin/main (rho - ResetHomeOrigin)
-    rho = "!zsh -c 'source $DOTFILES_REPO_PATH/.config/zsh/.zsh_functions && grho'";
+    rho = "!zsh -c 'source $HOME/.zsh_functions && grho'";
 
     # Rebase current branch with origin/main
-    sync = "!zsh -c 'source $DOTFILES_REPO_PATH/.config/zsh/.zsh_functions && gsync'";
+    sync = "!zsh -c 'source $HOME/.zsh_functions && gsync'";
 
     # Interactive rebase with (as - AutoSquash)
-    as = "!zsh -c 'source $DOTFILES_REPO_PATH/.config/zsh/.zsh_functions && gas'";
+    as = "!zsh -c 'source $HOME/.zsh_functions && gas'";
 
     # List branches by most recent branch commit (brr - BRanchRecent)
-    brr = "!zsh -c 'source $DOTFILES_REPO_PATH/.config/zsh/.zsh_functions && gbrr'";
+    brr = "!zsh -c 'source $HOME/.zsh_functions && gbrr'";
 
     # Checkout local branch with fzf (ch - CHeckout)
-    ch = "!zsh -c 'source $DOTFILES_REPO_PATH/.config/zsh/.zsh_functions && gch'";
+    ch = "!zsh -c 'source $HOME/.zsh_functions && gch'";
 
     # Clean already rebased branches (cb - CleanBranches)
-    cb = "!zsh -c 'source $DOTFILES_REPO_PATH/.config/zsh/.zsh_functions && gcb'";
+    cb = "!zsh -c 'source $HOME/.zsh_functions && gcb'";
 
     # standard
     # ---------

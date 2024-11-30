@@ -17,7 +17,7 @@
   eza = import ./eza.nix;
   fd = import ./fd.nix;
   fzf = import ./fzf.nix;
-  git = import ./git.nix { inherit email fullName; };
+  git = import ./git.nix { inherit config email fullName; };
   gradle = import ./gradle.nix;
   java = import ./java.nix { inherit pkgs; };
   lazygit = import ./lazygit.nix;
