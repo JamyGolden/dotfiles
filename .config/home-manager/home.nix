@@ -35,6 +35,8 @@ in
 
     file = {
       ".zsh_functions".source = ../zsh/zsh_functions;
+      "${paths.xdgBinHome}/parallel-commands".source = ../../bin/parallel-commands;
+      "${paths.xdgBinHome}/tmux-sessionizer".source = ../../bin/tmux-sessionizer;
     } // packageGroup.files;
   };
 
@@ -46,7 +48,6 @@ in
     PROJECTS_PATH = paths.projects;
     DOTFILES_REPO_PATH = paths.dotfilesRepo;
     XDG_BIN_HOME = paths.xdgBinHome;
-    XDG_INCLUDE_HOME = paths.xdgIncludeHome;
   };
 
   programs = import ./programs { inherit config email fullName paths pkgs; };

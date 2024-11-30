@@ -1,4 +1,5 @@
 {
+  paths,
   pkgs,
   ...
 }:
@@ -66,7 +67,7 @@
     bind | split-window -h -c "#{pane_current_path}"
     bind - split-window -v -c "#{pane_current_path}"
 
-    bind-key -r f run-shell "tmux neww $DOTFILES_REPO_PATH/.config/tmux/bin/tmux-sessionizer"
+    bind-key -r f run-shell "tmux neww ${paths.xdgBinHome}/tmux-sessionizer"
     bind-key g new-window "lazygit"
   '';
 }
