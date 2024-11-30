@@ -7,6 +7,7 @@
 .config/zsh/.zsh_history
 .config/zsh/.zcompcache
 .config/alacritty/colors.toml
+tmux-client-*.log
 
 # For compdumps in .config/zsh
 .zcompdump*
