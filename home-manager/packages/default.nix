@@ -1,10 +1,11 @@
-{ lib, pkgs }:
+{ config, lib, pkgs }:
 
 let
   fnm = import ./fnm.nix { inherit lib pkgs; };
   google-cloud = import ./google-cloud.nix { inherit pkgs; };
   intellij-idea = import ./intellij-idea.nix { inherit pkgs; };
   lua = import ./lua.nix { inherit pkgs; };
+  nvim = import ./nvim.nix { inherit config pkgs; };
   readline = import ./readline.nix;
   rustup = import ./rustup.nix { inherit lib pkgs; };
 
@@ -62,16 +63,18 @@ let
 in {
   packages = nixTools
     ++ fnm.packages
-    ++ lua.packages
     ++ google-cloud.packages
     ++ intellij-idea.packages
+    ++ lua.packages
+    ++ nvim.packages
     ++ rustup.packages;
 
   activation.setupFnm = fnm.activation;
   activation.setupRustup = rustup.activation;
 
-  files = 
+  files =
     intellij-idea.files
     // lua.files
+    // nvim.files
     // readline.files;
 }

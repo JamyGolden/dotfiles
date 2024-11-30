@@ -12,7 +12,7 @@
 }:
 
 let
-  packageGroup = import ./packages { inherit lib pkgs; };
+  packageGroup = import ./packages { inherit config lib pkgs; };
 in
 {
   imports = [];

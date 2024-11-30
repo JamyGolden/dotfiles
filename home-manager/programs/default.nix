@@ -23,7 +23,6 @@
   lazygit = import ./lazygit.nix;
   starship = import ./starship.nix;
   tmux = import ./tmux.nix { inherit paths pkgs; };
-  vim = import ./vim.nix;
   zoxide = import ./zoxide.nix;
   zsh = import ./zsh.nix { inherit config paths pkgs; };
 }
