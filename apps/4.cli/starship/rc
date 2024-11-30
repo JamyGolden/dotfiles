@@ -1,7 +1,0 @@
-#!/usr/bin/env zsh
-
-setup_rc() {
-  eval "$(starship init zsh)"
-}
-
-setup_rc

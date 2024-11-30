@@ -1,4 +1,0 @@
-#!/usr/bin/env zsh
-
-expect_exists "$(command -v 'jaq')" "jaq"
-expect_exists "$(command -v 'jq')" "jq"

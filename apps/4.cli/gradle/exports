@@ -1,5 +1,0 @@
-#!/usr/bin/env zsh
-
-if [[ "$OS_TYPE" == "debian" ]]; then
-  PATH="/opt/gradle/gradle-7.5/bin:$PATH"
-fi

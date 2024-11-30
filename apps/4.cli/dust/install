@@ -1,9 +1,0 @@
-#!/usr/bin/env zsh
-
-if [[ -z "$(command -v 'dust')" ]]; then
-  log_begin "dust"
-
-  cargo install du-dust
-
-  log_end "dust"
-fi

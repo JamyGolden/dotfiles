@@ -1,7 +1,0 @@
-#!/usr/bin/env zsh
-
-# gvm go
-PATH="$HOME/.gvm/gos/go1.20.5/bin:$PATH"
-
-# Installed go packages
-PATH="$HOME/go/bin:$PATH"

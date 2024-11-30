@@ -1,9 +1,0 @@
-#!/usr/bin/env zsh
-
-setup_rc() {
-  if [ -n "$(command -v 'atuin')" ]; then
-    eval "$(atuin init zsh)"
-  fi
-}
-
-setup_rc

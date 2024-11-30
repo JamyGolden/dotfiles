@@ -1,9 +1,0 @@
-#!/usr/bin/env zsh
-
-if [[ -z "$(command -v 'rg')" ]]; then
-  log_begin "ripgrep"
-
-  cargo install ripgrep
-
-  log_end "ripgrep"
-fi

@@ -1,4 +1,0 @@
-#!/usr/bin/env zsh
-
-expect_exists "$(command -v 'node')" "node"
-expect_export "NODE_REPL_HISTORY" "$XDG_DATA_HOME/node_repl_history"

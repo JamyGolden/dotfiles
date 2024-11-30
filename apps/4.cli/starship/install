@@ -1,9 +1,0 @@
-#!/usr/bin/env zsh
-
-if [[ $OS_TYPE == "mac" ]]; then
-  brew install cmake
-fi
-
-if [[ -z "$(command -v 'starship')" ]]; then
-  cargo install starship --locked
-fi

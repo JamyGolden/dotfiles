@@ -1,4 +1,0 @@
-#!/usr/bin/env zsh
-
-expect_export "SDKMAN_DIR" "$XDG_DATA_HOME/sdkman"
-expect_exists "$SDKMAN_DIR/bin/sdkman-init.sh" "sdkman"

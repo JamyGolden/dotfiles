@@ -1,4 +1,0 @@
-#!/usr/bin/env zsh
-
-export MANPATH="$XDG_DATA_HOME/man:$MANPATH"
-export CPATH="$XDG_INCLUDE_HOME:$CPATH"

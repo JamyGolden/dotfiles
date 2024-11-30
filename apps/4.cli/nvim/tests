@@ -1,4 +1,0 @@
-#!/usr/bin/env zsh
-
-expect_export "EDITOR" "$(which nvim)"
-expect_exists "$(command -v 'nvim')" "$XDG_BIN_HOME/nvim"

@@ -1,3 +1,0 @@
-#!/usr/bin/env zsh
-
-expect_export "FNM_DIR" "$XDG_DATA_HOME/fnm"

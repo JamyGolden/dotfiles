@@ -1,9 +1,0 @@
-#!/usr/bin/env zsh
-
-if [[ "$OS_TYPE" == "mac" ]]; then
-  PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-else
-  export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
-  # https://stackoverflow.com/questions/14412728/could-not-initialize-class-sun-awt-x11-xtoolkit
-  export JAVA_OPTS="$JAVA_OPTS -Djava.awt.headless=true"
-fi

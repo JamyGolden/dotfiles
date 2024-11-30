@@ -1,7 +1,0 @@
-#!/usr/bin/env zsh
-
-# nvm is initialised via a script, so check dir to test for existance
-
-if [ "$(command -v 'fnm')" ]; then
-  cargo install fnm
-fi

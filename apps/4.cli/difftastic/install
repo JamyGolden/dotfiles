@@ -1,9 +1,0 @@
-#!/usr/bin/env zsh
-
-if [[ -z "$(command -v 'difft')" ]]; then
-  log_begin "difft"
-
-  cargo install difftastic
-
-  log_end "difft"
-fi

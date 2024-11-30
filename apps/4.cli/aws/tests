@@ -1,5 +1,0 @@
-#!/usr/bin/env zsh
-
-expect_export "AWS_CONFIG_FILE" "$XDG_CONFIG_HOME/aws/config"
-expect_export "AWS_PROFILE" "default"
-expect_export "AWS_SHARED_CREDENTIALS_FILE" "$XDG_CONFIG_HOME/aws/credentials"

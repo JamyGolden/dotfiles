@@ -1,9 +1,0 @@
-#!/usr/bin/env zsh
-
-if [[ -z "$(command -v 'bat')" ]]; then
-  log_begin "bat"
-
-  cargo install bat
-
-  log_end "bat"
-fi

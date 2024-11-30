@@ -1,9 +1,0 @@
-#!/usr/bin/env zsh
-
-# https://github.com/junegunn/fzf
-
-setup_rc() {
-  [ -s "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
-}
-
-setup_rc

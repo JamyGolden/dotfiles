@@ -1,7 +1,0 @@
-#!/usr/bin/env zsh
-
-setup_rc() {
-  alias jq=$(command -v "jaq")
-}
-
-setup_rc

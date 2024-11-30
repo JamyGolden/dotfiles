@@ -1,9 +1,0 @@
-#!/usr/bin/env zsh
-
-if [[ "$OS_TYPE" == "mac" ]]; then
-  expect "$GPG_TTY" ""
-else
-  expect_export "$GPG_TTY"
-fi
-
-expect_exists "$(command -v 'git')" "git"
