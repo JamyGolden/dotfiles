@@ -1,3 +1,4 @@
+ # Fnm - A node version manager
 { pkgs, lib, ... }:
 
 {

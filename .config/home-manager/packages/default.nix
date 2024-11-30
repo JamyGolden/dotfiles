@@ -17,19 +17,21 @@ let
     dust
     jaq
     neovim
+    nix-prefetch-git
+    openrazer-daemon
     procs
     rename
     ripgrep
     tealdeer
     trash-cli
     wget
-    yarn
-    openrazer-daemon
 
-    # Languages
+    # Languages / Package managers
     # ------------------
     go
     lua
+    luarocks
+    yarn
 
     # ===================
     # GUI
@@ -49,6 +51,7 @@ let
     telegram-desktop
     vlc
     vscode
+    zed-editor
 
     # ===================
     # Fonts
