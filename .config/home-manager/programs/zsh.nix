@@ -18,10 +18,12 @@
 
   shellAliases = {
     cd = "z"; # zoxide
+    jq = "jaq";
+    ps = "procs";
+    switch = "home-manager switch --flake ${paths.dotfilesRepo}/.config/home-manager#jamygolden";
     yarn = ''
       yarn --use-yarnrc "${config.xdg.configHome}/yarn/config";
     '';
-    switch = "home-manager switch --flake ${paths.dotfilesRepo}/.config/home-manager#jamygolden";
   };
 
   profileExtra = ''
