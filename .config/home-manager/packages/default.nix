@@ -2,6 +2,7 @@
 
 let
   fnm = import ./fnm.nix { inherit lib pkgs; };
+  google-cloud = import ./google-cloud.nix { inherit lib pkgs; };
   intellij-idea = import ./intellij-idea.nix { inherit lib pkgs; };
   rustup = import ./rustup.nix { inherit lib pkgs; };
 
@@ -58,6 +59,7 @@ let
 in {
   packages = nixTools
     ++ fnm.packages
+    ++ google-cloud.packages
     ++ intellij-idea.packages
     ++ rustup.packages;
 
