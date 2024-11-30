@@ -1,4 +1,0 @@
-#!/usr/bin/env zsh
-
-export ZELLIJ_CONFIG_DIR="$XDG_CONFIG_HOME/zellij"
-export ZELLIJ_CONFIG_FILE="$XDG_CONFIG_HOME/zellij/config.kdl"

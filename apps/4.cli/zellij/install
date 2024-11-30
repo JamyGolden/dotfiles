@@ -1,9 +1,0 @@
-#!/usr/bin/env zsh
-
-if [[ -z "$(command -v 'zellij')" ]]; then
-  log_begin "zellij"
-
-  cargo install zellij --locked
-
-  log_end "zellij"
-fi
