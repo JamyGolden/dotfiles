@@ -61,6 +61,9 @@
     export SCREENRC="$XDG_CONFIG_HOME/screen/screenrc"
     export USERXSESSIONRC="$XDG_CACHE_HOME/X11/xsessionrc"
     export WINEPREFIX="$XDG_DATA_HOME/wine"
+    export MYSQL_HISTFILE="$XDG_DATA_HOME"/mysql_history
+    export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+    export CARGO_HOME="$XDG_DATA_HOME/cargo"
 
     # ZSH specific
     export WORDCHARS='*?.[]~=&;!#$%^(){}<>' # https://www.zsh.org/mla/workers/1998/msg01024.html
