@@ -3,15 +3,16 @@ local lua_ls_settings = require("jamygolden/plugins/lsp/lua_ls")
 local stylelint_lsp_settings = require("jamygolden/plugins/lsp/stylelint_lsp")
 
 local servers = {
+  -- ["biome"] = {},
   ["eslint"] = {
-    on_attach = function(client, bufnr)
+    on_attach = function(_, bufnr)
       vim.api.nvim_create_autocmd("BufWritePre", {
         buffer = bufnr,
         command = "EslintFixAll",
       })
-    end,
+    end
   },
-  -- ["biome"] = {},
+  ["stylelint_lsp"] = stylelint_lsp_settings,
   ["jsonls"] = {},
   ["kotlin_language_server"] = {},
   ["lua_ls"] = lua_ls_settings,
@@ -66,7 +67,7 @@ return {
       require("mason").setup()
 
       lsp_zero.on_attach(function(_, bufnr)
-        lsp_zero.default_keymaps({buffer = bufnr})
+        lsp_zero.default_keymaps({ buffer = bufnr })
       end)
       lsp_zero.format_on_save({
         servers = formatters,
