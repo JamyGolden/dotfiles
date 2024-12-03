@@ -23,10 +23,3 @@ path = "~/projects/tinted-theming/tinted-vim"
 name = "tinted-vim"
 themes-dir = "colors"
 supported-systems = ["base16", "base24"]
-
-[[items]]
-path = "~/projects/tinted-theming/tinted-jqp"
-name = "tinted-jqp"
-themes-dir = "themes"
-hook = "cp -f %f ~/.jqp.yaml"
-supported-systems = ["base16", "base24"]
