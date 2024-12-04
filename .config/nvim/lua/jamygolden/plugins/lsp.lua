@@ -1,18 +1,11 @@
 local table_utils = require("jamygolden/utils/table")
 local lua_ls_settings = require("jamygolden/plugins/lsp/lua_ls")
 local stylelint_lsp_settings = require("jamygolden/plugins/lsp/stylelint_lsp")
+local eslint_settings = require("jamygolden/plugins/lsp/eslint")
 
 local servers = {
   -- ["biome"] = {},
-  ["eslint"] = {
-    on_attach = function(_, bufnr)
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        buffer = bufnr,
-        command = "EslintFixAll",
-      })
-    end
-  },
-  ["stylelint_lsp"] = stylelint_lsp_settings,
+  ["eslint"] = eslint_settings,
   ["jsonls"] = {},
   ["kotlin_language_server"] = {},
   ["lua_ls"] = lua_ls_settings,
