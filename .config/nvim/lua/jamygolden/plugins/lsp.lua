@@ -65,8 +65,18 @@ return {
       lsp_zero.format_on_save({
         servers = formatters,
       })
+
+      local mason_ensure_installed_keys = table_utils.get_keys(servers);
+      -- Remove the nil_ls lsp key and replace with "nil" for Mason
+      for key, value in pairs(mason_ensure_installed_keys) do
+        if value == "nil_ls" then
+          mason_ensure_installed_keys[key] = nil
+          table.insert(mason_ensure_installed_keys, "nil");
+        end
+      end
+
       mason_lspconfig.setup {
-        ensure_installed = table_utils.get_keys(servers),
+        ensure_installed = mason_ensure_installed_keys
       }
 
       for lsp, settings in pairs(servers) do
